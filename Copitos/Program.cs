@@ -19,7 +19,7 @@ namespace Copitos
         public void mostrar()
         {
             Console.SetCursorPosition(x, y);
-            Console.Write("*");
+            Console.Write(y);
         }
 
         public void bajar(List<Copo> list)
@@ -40,7 +40,7 @@ namespace Copitos
                 y++;
 
                 Console.SetCursorPosition(x, y);
-                Console.Write("*");
+                Console.Write(y);
             }
         }
     }
@@ -55,105 +55,20 @@ namespace Copitos
             DateTime hora = DateTime.Now;
             DateTime horaActual = DateTime.Now;
             TimeSpan tiempoTrasncurrido;
-            /*
-                        list.Add(new Copo(0, 0));
-                        list.Add(new Copo(1, 0));
-                        list.Add(new Copo(2, 0));
-                        list.Add(new Copo(3, 0));
-                        list.Add(new Copo(0, 1));
-                        list.Add(new Copo(1, 1));
-                        list.Add(new Copo(2, 1));
-                        list.Add(new Copo(3, 1));
-                        list.Add(new Copo(4, 1));
-                        list.Add(new Copo(5, 1));
-                        list.Add(new Copo(6, 1));
-                        list.Add(new Copo(7, 1));
-                        list.Add(new Copo(8, 1));
-                        list.Add(new Copo(9, 1));
-
-
-                        int sePaso = 0;
-
-                        for(int i = 10;i > -1; i--)
-                        {
-                            int cont = 0;
-
-                            foreach (Copo copitos in list)
-                            {
-                                if (copitos.y == i)
-                                {
-                                    cont++;
-
-                                    if (cont == 9)
-                                    {
-                                        sePaso = i;
-
-                                        Console.WriteLine(sePaso);
-                                        list.RemoveAll(c => c.y == sePaso);
-
-                                        break;
-                                    }
-                                }
-
-                            }
-                        }
-
-                        foreach(Copo copitos in list)
-                        {
-                            Console.WriteLine($"x: {copitos.x}, y: {copitos.y}");
-                        }
-            */
-
-            //int coposEnY = list.Count(c => c.y == list.Last().y);
-
-            //    Console.WriteLine(sePaso); 
-
-            /*  if ( == 9)
-              {
-                  list.RemoveAll(c => c.y == sePaso);
-              }
-
-              // coposEnY = list.Count(c => c.y == list.Last().y);
-
-
-              for (int i = 10; i > -1; i--)
-              {
-                  int cont = 0;
-
-                  foreach (Copo copitos in list)
-                  {
-                      if (copitos.y == i)
-                      {
-                          cont++;
-
-                          if (cont == 9)
-                          {
-                              sePaso = i;
-                              break;
-                          }
-                      }
-
-                  }
-              }
-
-              Console.WriteLine(sePaso); //0
-            */
-
 
             //hecho por mi
+
+            int borraos = 0;    
+
             while (true)
             {
                 horaActual = DateTime.Now;
                 tiempoTrasncurrido = horaActual - hora;
-                if (tiempoTrasncurrido.Milliseconds == 300)
+                if (tiempoTrasncurrido.Milliseconds >= 900)
                 {
-
-                    
 
                     list.Add(new Copo(rand.Next(9), 0));
                     hora = DateTime.Now;
-
-
 
                     foreach (Copo copoLista in list)
                     {
@@ -163,7 +78,7 @@ namespace Copitos
 
                     int sePaso = 0;
 
-                    for (int i = 10; i > -1; i--)
+                    for (int i = 9; i > 0; i--)
                     {
                         int cont = 0;
 
@@ -175,10 +90,14 @@ namespace Copitos
 
                                 if (cont == 9)
                                 {
+                                    borraos++;
                                     sePaso = i;
                                     Console.WriteLine("");
                                     Console.SetCursorPosition(0, 10);
                                     Console.WriteLine("Fila eliminada: " + sePaso);
+                                    Console.SetCursorPosition(0, 11);
+                                    Console.WriteLine("cant filas borradas: " + borraos);
+
                                     list.RemoveAll(c => c.y == sePaso);
 
                                     break;
@@ -189,7 +108,7 @@ namespace Copitos
                     }
                 }
             }
-           
+
             Console.ReadKey();
         }
     }
