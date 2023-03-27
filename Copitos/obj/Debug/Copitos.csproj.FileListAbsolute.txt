@@ -1,8 +1,0 @@
-C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\Copitos\bin\Debug\Copitos.exe.config
-C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\Copitos\bin\Debug\Copitos.exe
-C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\Copitos\bin\Debug\Copitos.pdb
-C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\Copitos\obj\Debug\Copitos.csproj.AssemblyReference.cache
-C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\Copitos\obj\Debug\Copitos.csproj.SuggestedBindingRedirects.cache
-C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\Copitos\obj\Debug\Copitos.csproj.CoreCompileInputs.cache
-C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\Copitos\obj\Debug\Copitos.exe
-C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\Copitos\obj\Debug\Copitos.pdb
