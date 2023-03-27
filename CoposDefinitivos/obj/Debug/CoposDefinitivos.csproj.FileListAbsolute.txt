@@ -1,0 +1,8 @@
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\CoposDefinitivos\bin\Debug\CoposDefinitivos.exe.config
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\CoposDefinitivos\bin\Debug\CoposDefinitivos.exe
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\CoposDefinitivos\bin\Debug\CoposDefinitivos.pdb
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\CoposDefinitivos\obj\Debug\CoposDefinitivos.csproj.AssemblyReference.cache
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\CoposDefinitivos\obj\Debug\CoposDefinitivos.csproj.SuggestedBindingRedirects.cache
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\CoposDefinitivos\obj\Debug\CoposDefinitivos.csproj.CoreCompileInputs.cache
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\CoposDefinitivos\obj\Debug\CoposDefinitivos.exe
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\CoposDefinitivos\obj\Debug\CoposDefinitivos.pdb

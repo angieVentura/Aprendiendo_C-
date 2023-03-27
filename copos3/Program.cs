@@ -94,19 +94,17 @@ namespace Copitos
                             if (list[i].y == final)
                             {
                                 list.RemoveAt(i);
-                                for (int j = maxAnc; j >= 0; j-- )
+                                for (int j = maxAnc; j >= 0; j--)
                                 {
                                     Console.SetCursorPosition(j, final);
                                     Console.Write(" ");
                                 }
-                               
+
                             }
                         }
 
                     }
 
-                    Console.SetCursorPosition(10, 10);
-                    Console.WriteLine("A");
 
                 }
             }
