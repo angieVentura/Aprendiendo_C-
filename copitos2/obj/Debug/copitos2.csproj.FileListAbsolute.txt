@@ -1,8 +1,0 @@
-C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\copitos2\bin\Debug\copitos2.exe.config
-C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\copitos2\bin\Debug\copitos2.exe
-C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\copitos2\bin\Debug\copitos2.pdb
-C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\copitos2\obj\Debug\copitos2.csproj.AssemblyReference.cache
-C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\copitos2\obj\Debug\copitos2.csproj.SuggestedBindingRedirects.cache
-C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\copitos2\obj\Debug\copitos2.csproj.CoreCompileInputs.cache
-C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\copitos2\obj\Debug\copitos2.exe
-C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\copitos2\obj\Debug\copitos2.pdb

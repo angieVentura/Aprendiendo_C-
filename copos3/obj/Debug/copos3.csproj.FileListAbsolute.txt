@@ -1,8 +1,0 @@
-C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\copos3\bin\Debug\copos3.exe.config
-C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\copos3\bin\Debug\copos3.exe
-C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\copos3\bin\Debug\copos3.pdb
-C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\copos3\obj\Debug\copos3.csproj.AssemblyReference.cache
-C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\copos3\obj\Debug\copos3.csproj.SuggestedBindingRedirects.cache
-C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\copos3\obj\Debug\copos3.csproj.CoreCompileInputs.cache
-C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\copos3\obj\Debug\copos3.exe
-C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\copos3\obj\Debug\copos3.pdb
