@@ -1,0 +1,8 @@
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\ListaDinamica\bin\Debug\listaDinamica.exe.config
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\ListaDinamica\bin\Debug\listaDinamica.exe
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\ListaDinamica\bin\Debug\listaDinamica.pdb
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\ListaDinamica\obj\Debug\listaDinamica.csproj.AssemblyReference.cache
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\ListaDinamica\obj\Debug\listaDinamica.csproj.SuggestedBindingRedirects.cache
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\ListaDinamica\obj\Debug\listaDinamica.csproj.CoreCompileInputs.cache
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\ListaDinamica\obj\Debug\listaDinamica.exe
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\ListaDinamica\obj\Debug\listaDinamica.pdb
