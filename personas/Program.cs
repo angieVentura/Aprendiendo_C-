@@ -69,12 +69,6 @@ namespace personasDNI
         static void Main(string[] args)
         {
             List<Persona> list = new List<Persona>();
-            Persona persona1;
-
-            list.Add(new Persona("Sergio", "12.345.678"));
-            list.Add(new Persona("Pablo", "87.654.321"));
-            list.Add(new Persona("Florencia", "12.435.678"));
-
 
             int op;
             Console.WriteLine("Ingrese un 1 para buscar una persona por DNI.");
