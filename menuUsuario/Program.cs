@@ -64,7 +64,7 @@ namespace ABM
                 if (list[i].dni == dni)
                 {
                     list.RemoveAt(i);
-                    return list[i].name;
+                    return "eliminao";
                 }
 
             }
@@ -121,7 +121,11 @@ namespace ABM
                 Console.WriteLine(menu[i]);
             }
 
-            op = Convert.ToInt16(Console.ReadLine());
+            bool success = int.TryParse(Console.ReadLine(), out op);
+
+            if (!success) {
+                Environment.Exit(0);
+            }
 
             while (true)
             {
@@ -149,10 +153,11 @@ namespace ABM
                         {
                             Console.WriteLine("La usuario que quiere borrar no existe");
 
+
                         }
                         else
                         {
-                            Console.WriteLine(encontrau + " fue borrado");
+                            Console.WriteLine("El usuario fue eliminado exisosamente");
                         }
                         break;
 
@@ -248,7 +253,13 @@ namespace ABM
                     Console.SetCursorPosition(5, i + 1);
                     Console.WriteLine(menu[i]);
                 }
-                op = Convert.ToInt16(Console.ReadLine());
+                success = int.TryParse(Console.ReadLine(), out op);
+
+                if (!success)
+
+                {
+                    Environment.Exit(0);
+                }
             }
 
 
