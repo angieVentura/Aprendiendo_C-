@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4EA34DC0-9CB5-4130-8F7B-67039AA469D9}</ProjectGuid>
+    <ProjectGuid>{92D8DCE9-1F90-4A28-AA77-24E428B12853}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>menuUsuario</RootNamespace>
-    <AssemblyName>menuUsuario</AssemblyName>
+    <RootNamespace>menuUsuario._2._0</RootNamespace>
+    <AssemblyName>menuUsuario.2.0</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
