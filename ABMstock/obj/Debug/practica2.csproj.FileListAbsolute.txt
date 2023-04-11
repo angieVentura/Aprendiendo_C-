@@ -1,0 +1,8 @@
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\practica2\bin\Debug\practica2.exe.config
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\practica2\bin\Debug\practica2.exe
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\practica2\bin\Debug\practica2.pdb
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\practica2\obj\Debug\practica2.csproj.AssemblyReference.cache
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\practica2\obj\Debug\practica2.csproj.SuggestedBindingRedirects.cache
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\practica2\obj\Debug\practica2.csproj.CoreCompileInputs.cache
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\practica2\obj\Debug\practica2.exe
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\practica2\obj\Debug\practica2.pdb
