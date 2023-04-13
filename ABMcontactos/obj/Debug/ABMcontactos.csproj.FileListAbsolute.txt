@@ -1,0 +1,8 @@
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\ABMcontactos\obj\Debug\ABMcontactos.csproj.AssemblyReference.cache
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\ABMcontactos\obj\Debug\ABMcontactos.csproj.SuggestedBindingRedirects.cache
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\ABMcontactos\obj\Debug\ABMcontactos.csproj.CoreCompileInputs.cache
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\ABMcontactos\bin\Debug\ABMcontactos.exe.config
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\ABMcontactos\bin\Debug\ABMcontactos.exe
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\ABMcontactos\bin\Debug\ABMcontactos.pdb
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\ABMcontactos\obj\Debug\ABMcontactos.exe
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\ABMcontactos\obj\Debug\ABMcontactos.pdb
