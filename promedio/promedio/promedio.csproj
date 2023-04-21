@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{EAA25CC5-6FA5-4792-A841-315D979DF26B}</ProjectGuid>
+    <ProjectGuid>{522FA6B8-F2BA-4137-B4F9-AA29EBBEBF34}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>promedio</RootNamespace>
     <AssemblyName>promedio</AssemblyName>
