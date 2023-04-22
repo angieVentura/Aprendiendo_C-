@@ -1,0 +1,8 @@
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\adivinanzaDeNúmeros\bin\Debug\adivinanzaDeNúmeros.exe.config
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\adivinanzaDeNúmeros\bin\Debug\adivinanzaDeNúmeros.exe
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\adivinanzaDeNúmeros\bin\Debug\adivinanzaDeNúmeros.pdb
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\adivinanzaDeNúmeros\obj\Debug\adivinanzaDeNúmeros.csproj.AssemblyReference.cache
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\adivinanzaDeNúmeros\obj\Debug\adivinanzaDeNúmeros.csproj.SuggestedBindingRedirects.cache
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\adivinanzaDeNúmeros\obj\Debug\adivinanzaDeNúmeros.csproj.CoreCompileInputs.cache
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\adivinanzaDeNúmeros\obj\Debug\adivinanzaDeNúmeros.exe
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\adivinanzaDeNúmeros\obj\Debug\adivinanzaDeNúmeros.pdb
