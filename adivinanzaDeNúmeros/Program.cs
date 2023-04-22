@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace adivinanzaDeNúmeros
 {
@@ -21,17 +17,17 @@ namespace adivinanzaDeNúmeros
             Console.WriteLine("Adivina el número");
             Console.WriteLine("\nIngresa un número");
             numE = int.TryParse(Console.ReadLine(), out numUs);
-            if (!numE) Environment.Exit(0); 
-            if(num == numUs ) estado= false;
+            if (!numE) Environment.Exit(0);
+            if (num == numUs) estado = false;
 
             while (estado)
             {
                 cont--;
-                if(cont == 0)
+                if (cont == 0)
                 {
                     Console.WriteLine("Perdiste :(");
                     Console.ReadKey();
-                    Environment.Exit(0);    
+                    Environment.Exit(0);
                 }
                 Console.WriteLine($"Incorrecto, cantidad de intentos restante: {cont}");
                 numE = int.TryParse(Console.ReadLine(), out numUs);

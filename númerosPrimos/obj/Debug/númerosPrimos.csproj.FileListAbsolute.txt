@@ -1,0 +1,8 @@
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\númerosPrimos\obj\Debug\númerosPrimos.csproj.AssemblyReference.cache
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\númerosPrimos\obj\Debug\númerosPrimos.csproj.SuggestedBindingRedirects.cache
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\númerosPrimos\obj\Debug\númerosPrimos.csproj.CoreCompileInputs.cache
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\númerosPrimos\bin\Debug\númerosPrimos.exe.config
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\númerosPrimos\bin\Debug\númerosPrimos.exe
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\númerosPrimos\bin\Debug\númerosPrimos.pdb
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\númerosPrimos\obj\Debug\númerosPrimos.exe
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\númerosPrimos\obj\Debug\númerosPrimos.pdb
