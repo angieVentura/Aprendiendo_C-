@@ -1,0 +1,8 @@
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\juegoAhorcado\bin\Debug\juegoAhorcado.exe.config
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\juegoAhorcado\bin\Debug\juegoAhorcado.exe
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\juegoAhorcado\bin\Debug\juegoAhorcado.pdb
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\juegoAhorcado\obj\Debug\juegoAhorcado.csproj.AssemblyReference.cache
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\juegoAhorcado\obj\Debug\juegoAhorcado.csproj.SuggestedBindingRedirects.cache
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\juegoAhorcado\obj\Debug\juegoAhorcado.csproj.CoreCompileInputs.cache
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\juegoAhorcado\obj\Debug\juegoAhorcado.exe
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\juegoAhorcado\obj\Debug\juegoAhorcado.pdb
