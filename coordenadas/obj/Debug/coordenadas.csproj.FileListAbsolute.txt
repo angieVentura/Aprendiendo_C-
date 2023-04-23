@@ -1,0 +1,8 @@
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\coordenadas\bin\Debug\coordenadas.exe.config
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\coordenadas\bin\Debug\coordenadas.exe
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\coordenadas\bin\Debug\coordenadas.pdb
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\coordenadas\obj\Debug\coordenadas.csproj.AssemblyReference.cache
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\coordenadas\obj\Debug\coordenadas.csproj.SuggestedBindingRedirects.cache
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\coordenadas\obj\Debug\coordenadas.csproj.CoreCompileInputs.cache
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\coordenadas\obj\Debug\coordenadas.exe
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\coordenadas\obj\Debug\coordenadas.pdb
