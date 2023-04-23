@@ -1,0 +1,8 @@
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\númeroMayorMenor\bin\Debug\númeroMayorMenor.exe.config
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\númeroMayorMenor\bin\Debug\númeroMayorMenor.exe
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\númeroMayorMenor\bin\Debug\númeroMayorMenor.pdb
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\númeroMayorMenor\obj\Debug\númeroMayorMenor.csproj.AssemblyReference.cache
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\númeroMayorMenor\obj\Debug\númeroMayorMenor.csproj.SuggestedBindingRedirects.cache
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\númeroMayorMenor\obj\Debug\númeroMayorMenor.csproj.CoreCompileInputs.cache
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\númeroMayorMenor\obj\Debug\númeroMayorMenor.exe
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\númeroMayorMenor\obj\Debug\númeroMayorMenor.pdb
