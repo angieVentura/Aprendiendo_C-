@@ -14,9 +14,8 @@ namespace juegoAhorcado
         }
         static void Main(string[] args)
         {
-            Random random= new Random();
+            Random random = new Random();
             string[] palabras = { "script", "cookie", "kernel", "vector", "buffer" };
-            string[] ahorcado = { " O ", "|", "-", "-", "/", "l" };
             List<string> error = new List<string>();
             string palabra = palabras[random.Next(palabras.Length)];
             string adivinada = new string('_', palabra.Length);
@@ -34,7 +33,7 @@ namespace juegoAhorcado
             while (intento > 0 && adivinada.Contains('_'))
             {
                 bool acierto = false;
-                mensaje("".PadLeft(45,' '), 4, 16);
+                mensaje("".PadLeft(45, ' '), 4, 16);
                 mensaje("Ingresa una letra:", 4, 16);
                 Console.SetCursorPosition(23, 16);
                 string letra = Console.ReadLine();
@@ -55,9 +54,30 @@ namespace juegoAhorcado
                 if (!acierto)
                 {
                     intento--;
-                    if (intento >= 0 && intento < ahorcado.Length)
+                    //no me gusta, pero no se como podria cambiarlo
+                    if (intento == 5)
                     {
-                        mensaje(ahorcado[intento], 10, 7 + intento);
+                        mensaje(" O ", 10, 7);
+                    }
+                    else if (intento == 4)
+                    {
+                        mensaje("|", 11, 8);
+                    }
+                    else if (intento == 3)
+                    {
+                        mensaje("-", 10, 8);
+                    }
+                    else if (intento == 2)
+                    {
+                        mensaje("-", 12, 8);
+                    }
+                    else if (intento == 1)
+                    {
+                        mensaje("/", 10, 9);
+                    }
+                    else if (intento == 0)
+                    {
+                        mensaje("l", 12, 9);
                     }
 
                     mensaje("Fallaste ", 4, 18);

@@ -1,0 +1,8 @@
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\listaDeTareas\bin\Debug\listaDeTareas.exe.config
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\listaDeTareas\bin\Debug\listaDeTareas.exe
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\listaDeTareas\bin\Debug\listaDeTareas.pdb
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\listaDeTareas\obj\Debug\listaDeTareas.csproj.AssemblyReference.cache
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\listaDeTareas\obj\Debug\listaDeTareas.csproj.SuggestedBindingRedirects.cache
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\listaDeTareas\obj\Debug\listaDeTareas.csproj.CoreCompileInputs.cache
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\listaDeTareas\obj\Debug\listaDeTareas.exe
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\listaDeTareas\obj\Debug\listaDeTareas.pdb
