@@ -1,0 +1,8 @@
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\nacenArgentina\bin\Debug\nacenArgentina.exe.config
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\nacenArgentina\bin\Debug\nacenArgentina.exe
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\nacenArgentina\bin\Debug\nacenArgentina.pdb
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\nacenArgentina\obj\Debug\nacenArgentina.csproj.AssemblyReference.cache
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\nacenArgentina\obj\Debug\nacenArgentina.csproj.SuggestedBindingRedirects.cache
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\nacenArgentina\obj\Debug\nacenArgentina.csproj.CoreCompileInputs.cache
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\nacenArgentina\obj\Debug\nacenArgentina.exe
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\nacenArgentina\obj\Debug\nacenArgentina.pdb

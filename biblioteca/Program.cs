@@ -17,7 +17,6 @@ namespace biblioteca
     }
     internal class Program
     {
-
         static void Main(string[] args)
         {
             List<Libro> list = new List<Libro>();
@@ -27,9 +26,6 @@ namespace biblioteca
             list.Add(new Libro("El Quijote", false));
             list.Add(new Libro("Cien Años de Soledad", true));
             string[] menu = { "[1]Buscar libro", "[2]Devolver Ejemplar de Libro", "[3]Pedir Libro", "[4]Salir" };
-
-
-
             Console.WriteLine("Biblioteca");
             for (int i = 0; i < menu.Count(); i++)
                 Console.WriteLine($"{menu[i]}");
