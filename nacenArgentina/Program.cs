@@ -24,66 +24,63 @@ namespace nacenArgentina
         static Random ran = new Random();
         static void Main(string[] args)
         {
-            CrearPersona();
-            CrearPersona();
-            CrearPersona();
+            CrearPersona("Argentina");
+            CrearPersona("Argentina");
+            CrearPersona("Argentina");
 
-            // Refrescar la lista cada 10 segundos
             var timer = new System.Threading.Timer(
-                e => MostrarPersonas(),
+                e => MostrarPersonas("Lista de personas","Lista de muertos" ,"Población"),
                 null,
                 TimeSpan.Zero,
-                TimeSpan.FromSeconds(5));
+                TimeSpan.FromSeconds(10));
 
-            // Crear una persona cada 30 segundos
             var timerNacimiento = new System.Threading.Timer(
-                e => CrearPersona(),
-                null,
-                TimeSpan.Zero,
-                TimeSpan.FromSeconds(15));
-
-            // Eliminar una persona cada 60 segundos
-            var timerMuerte = new System.Threading.Timer(
-                e => EliminarPersona(),
+                e => CrearPersona("Argentina"),
                 null,
                 TimeSpan.Zero,
                 TimeSpan.FromSeconds(30));
 
+            var timerMuerte = new System.Threading.Timer(
+                e => EliminarPersona("Argentina"),
+                null,
+                TimeSpan.Zero,
+                TimeSpan.FromSeconds(60));
+
             Console.ReadLine();
         }
 
-        static void CrearPersona()
+        static void CrearPersona( string pais)
         {
             string[] nombres = new string[30] { "Juan", "María", "Pedro", "Laura", "Andrés", "Ana", "Diego", "Carla", "Lucía", "Javier", "Lucas", "Marta", "Luis", "Clara", "Isabel", "Pablo", "Elena", "Sofía", "Gonzalo", "Valentina", "Fernando", "Valeria", "Antonio", "Natalia", "Gabriel", "Sara", "Hugo", "Carmen", "Rafael", "Inés" };
 
             string[] apellidos = new string[30] { "García", "Pérez", "Martínez", "Sánchez", "Gómez", "Álvarez", "Fernández", "González", "Romero", "Ortega", "Rubio", "Molina", "López", "Hernández", "Díaz", "Moreno", "Muñoz", "Alonso", "Castro", "Núñez", "Navarro", "Jiménez", "Ramos", "Gutiérrez", "Torres", "Vázquez", "Serrano", "Reyes", "Ramírez", "Blanco" };
 
-            list.Add(new Personas(nombres[ran.Next(30)], apellidos[ran.Next(30)], "Argentina"));
+            list.Add(new Personas(nombres[ran.Next(30)], apellidos[ran.Next(30)], pais));
         }
 
-        static void EliminarPersona()
+        static void EliminarPersona(string pais)
         {
             if (list.Count > 0)
             {
                 int eliminado = ran.Next(list.Count);
-                listM.Add(new Personas(list[eliminado].name, list[eliminado].surname, "Argentina"));
+                listM.Add(new Personas(list[eliminado].name, list[eliminado].surname, pais));
                 list.RemoveAt(eliminado);
             }
         }
-        static void MostrarPersonas()
+        static void MostrarPersonas(string mensaje1, string mensaje2, string marcador)
         {
             Console.Clear();
-            Console.WriteLine("Lista de personas:");
+            Console.WriteLine($"{mensaje1}:");
             foreach (var persona in list)
             {
-                Console.WriteLine($"{persona.name}, {persona.surname}");
+                Console.WriteLine($"{persona.name} {persona.surname}");
             }
-            Console.WriteLine($"Población: {list.Count}");
+            Console.WriteLine($"\n{marcador}: {list.Count}");
 
             if (listM.Count > 0)
             {
                 Console.SetCursorPosition(20, 0);
-                Console.WriteLine("Lista de Muertes:");
+                Console.WriteLine($"{mensaje2}:");
 
                 for (int i = 0; i < listM.Count; i++)
                 {

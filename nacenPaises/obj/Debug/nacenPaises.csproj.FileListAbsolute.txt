@@ -1,0 +1,8 @@
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\nacenPaises\bin\Debug\nacenPaises.exe.config
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\nacenPaises\bin\Debug\nacenPaises.exe
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\nacenPaises\bin\Debug\nacenPaises.pdb
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\nacenPaises\obj\Debug\nacenPaises.csproj.AssemblyReference.cache
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\nacenPaises\obj\Debug\nacenPaises.csproj.SuggestedBindingRedirects.cache
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\nacenPaises\obj\Debug\nacenPaises.csproj.CoreCompileInputs.cache
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\nacenPaises\obj\Debug\nacenPaises.exe
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\nacenPaises\obj\Debug\nacenPaises.pdb
