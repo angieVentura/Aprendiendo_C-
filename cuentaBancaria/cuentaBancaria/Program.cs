@@ -6,7 +6,6 @@ namespace cuentaBancaria
 {
     internal class Program
     {
-
         class Cuenta
         {
             public string titular;
