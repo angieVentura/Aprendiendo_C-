@@ -6,3 +6,11 @@ C:\xampp\htdocs\Aprendiendo_C-\cuentaBancaria\cuentaBancaria\obj\Debug\cuentaBan
 C:\xampp\htdocs\Aprendiendo_C-\cuentaBancaria\cuentaBancaria\obj\Debug\cuentaBancaria.csproj.CoreCompileInputs.cache
 C:\xampp\htdocs\Aprendiendo_C-\cuentaBancaria\cuentaBancaria\obj\Debug\cuentaBancaria.exe
 C:\xampp\htdocs\Aprendiendo_C-\cuentaBancaria\cuentaBancaria\obj\Debug\cuentaBancaria.pdb
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\cuentaBancaria\cuentaBancaria\bin\Debug\cuentaBancaria.exe.config
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\cuentaBancaria\cuentaBancaria\bin\Debug\cuentaBancaria.exe
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\cuentaBancaria\cuentaBancaria\bin\Debug\cuentaBancaria.pdb
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\cuentaBancaria\cuentaBancaria\obj\Debug\cuentaBancaria.csproj.AssemblyReference.cache
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\cuentaBancaria\cuentaBancaria\obj\Debug\cuentaBancaria.csproj.SuggestedBindingRedirects.cache
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\cuentaBancaria\cuentaBancaria\obj\Debug\cuentaBancaria.csproj.CoreCompileInputs.cache
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\cuentaBancaria\cuentaBancaria\obj\Debug\cuentaBancaria.exe
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\cuentaBancaria\cuentaBancaria\obj\Debug\cuentaBancaria.pdb

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace cuentaBancaria
 {
@@ -17,28 +18,35 @@ namespace cuentaBancaria
                 this.cantidad = cantidad;
             }
 
-            static public string ingresar(double ingreso, List<Cuenta> cuenta, string titular)
+            public Cuenta(string titular)
+            {
+                this.titular = titular;
+                this.cantidad = 0.0;
+            }
+
+            static public string ingresar(double ingreso, Cuenta persona)
             {
                 if (ingreso > 0)
                 {
-                    cuenta.Find(c => c.titular == titular);
-                    cuenta[Convert.ToInt32(titular)].cantidad += ingreso;
-                    return titular;
+                    persona.cantidad += ingreso;
+                    return persona.titular;
                 }
 
                 return null;
             }
 
+            static public string retirar(double gasto, Cuenta persona)
+            {
+                persona.cantidad = persona.cantidad - gasto;
+                if (persona.cantidad - gasto < 0) persona.cantidad = 0.0;
+                return null;
+            }
 
         }
 
-        /*1) Crea una clase llamada Cuenta que tendrá los siguientes atributos: 
-            * titular y cantidad (puede tener decimales).
-            El titular será obligatorio y la cantidad es opcional. Crea dos constructores que cumplan lo anterior.
-Tendrá dos métodos especiales:
-ingresar(double cantidad): se ingresa una cantidad a la cuenta, si la cantidad introducida es negativa, no se hará nada.
-retirar(double cantidad): se retira una cantidad a la cuenta, si restando la cantidad actual a la que nos pasan es negativa, la cantidad de la cuenta pasa a ser 0.
-*/
+        static public string[] menu = { "MENU", "[1]Ingresar monto", "[2]Retirar monto" };
+
+
         static public void mensaje(string mensaje, int x, int y)
         {
             Console.SetCursorPosition(x, y);
@@ -62,32 +70,76 @@ retirar(double cantidad): se retira una cantidad a la cuenta, si restando la can
                 new Cuenta("Luis", 300.25),
                 new Cuenta("Tamara", 300.3),
                 new Cuenta("Tobi", 290.9),
-                new Cuenta("Claudia", 300.5),
+                new Cuenta("Claudia"),
                 new Cuenta("Angie", 777.7)
             };
-
-
+            int op;
+            //Acceso
             string titular = read("Ingrese el nombre del titular de la cuenta", Console.WindowWidth / 3, 3, 5);
-
-            Cuenta encontrado = cuentas.Find(t => t.titular == titular);
+            Cuenta encontrado = cuentas.Find(t => t.titular.ToLower() == titular.ToLower());
 
             while (encontrado == null)
             {
                 mensaje(" ".PadLeft(45, ' '), Console.WindowWidth / 3, 5);
                 titular = read("No se encontro al titular de la cuenta", Console.WindowWidth / 3, 7, 5);
-                encontrado = cuentas.Find(t => t.titular == titular);
-            }
-
-            double ingresoMonetario = Convert.ToDouble(read("Ingrese el monto:", Console.WindowWidth / 3, 3, 5));
-
-            if (ingresoMonetario > 0)
-            {
-                encontrado.cantidad += ingresoMonetario;
+                encontrado = cuentas.Find(t => t.titular.ToLower() == titular.ToLower());
             }
 
             Console.Clear();
+            for (int i = 0; i < menu.Count(); i++)
+                mensaje(menu[i], Console.WindowWidth / 3, 3 + i);
+            bool suceso = int.TryParse(read("Seleccione una opción", Console.WindowWidth / 3, 7, 9), out op);
+            if (!suceso) Environment.Exit(0);
 
-            mensaje("lol", Console.WindowWidth / 3, 5);
+            while (suceso)
+            {
+  
+                switch (op)
+                {
+                    case 1:
+                        //Monto
+                        Console.Clear();
+                        double ingresoMonetario = Convert.ToDouble(read("Ingrese el monto:", Console.WindowWidth / 3, 3, 5));
+                        string operacion = Cuenta.ingresar(ingresoMonetario, encontrado);
+                        mensaje($" Su monto actual es: {encontrado.cantidad} ", Console.WindowWidth / 3, 7);
+                        mensaje($"Toque cualquier letra para volver al menu", Console.WindowWidth / 3, 13);
+                        Console.ReadKey();
+
+                        Console.Clear();
+                        for (int i = 0; i < menu.Count(); i++)
+                            mensaje(menu[i], Console.WindowWidth / 3, 3 + i);
+                       suceso = int.TryParse(read("Seleccione una opción", Console.WindowWidth / 3, 7, 9), out op);
+                        if (!suceso) Environment.Exit(0);
+
+                        break;
+                    case 2:
+                        //Retirar
+                        Console.Clear();
+                        double gastoMonetario = Convert.ToDouble(read("Ingrese el monto a retirar:", Console.WindowWidth / 3, 3, 5));
+                        Cuenta.retirar(gastoMonetario, encontrado);
+                        mensaje($"Su monto actual es: {encontrado.cantidad} ", Console.WindowWidth / 3, 9);
+                        mensaje($"Toque cualquier letra para volver al menu", Console.WindowWidth / 3, 13);
+                        Console.ReadKey();
+                        Console.Clear();
+                        for (int i = 0; i < menu.Count(); i++)
+                            mensaje(menu[i], Console.WindowWidth / 3, 3 + i);
+                        suceso = int.TryParse(read("Seleccione una opción", Console.WindowWidth / 3, 7, 9), out op);
+                        if (!suceso) Environment.Exit(0);
+
+                        break;
+                    default: 
+                        mensaje($"Ingrese una opción valida", Console.WindowWidth / 3, 11);
+                        mensaje($"Toque cualquier letra para volver al menu", Console.WindowWidth / 3, 13);
+                        Console.ReadKey();
+                        Console.Clear();
+                        for (int i = 0; i < menu.Count(); i++)
+                            mensaje(menu[i], Console.WindowWidth / 3, 3 + i);
+                        suceso = int.TryParse(read("Seleccione una opción", Console.WindowWidth / 3, 7, 9), out op);
+                        if (!suceso) Environment.Exit(0);
+
+                        break;
+                }
+            }
 
             Console.ReadKey();
         }
