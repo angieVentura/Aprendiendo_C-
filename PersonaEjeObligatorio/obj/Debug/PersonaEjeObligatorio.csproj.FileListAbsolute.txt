@@ -1,0 +1,8 @@
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\PersonaEjeObligatorio\bin\Debug\PersonaEjeObligatorio.exe.config
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\PersonaEjeObligatorio\bin\Debug\PersonaEjeObligatorio.exe
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\PersonaEjeObligatorio\bin\Debug\PersonaEjeObligatorio.pdb
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\PersonaEjeObligatorio\obj\Debug\PersonaEjeObligatorio.csproj.AssemblyReference.cache
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\PersonaEjeObligatorio\obj\Debug\PersonaEjeObligatorio.csproj.SuggestedBindingRedirects.cache
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\PersonaEjeObligatorio\obj\Debug\PersonaEjeObligatorio.csproj.CoreCompileInputs.cache
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\PersonaEjeObligatorio\obj\Debug\PersonaEjeObligatorio.exe
+C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\PersonaEjeObligatorio\obj\Debug\PersonaEjeObligatorio.pdb
