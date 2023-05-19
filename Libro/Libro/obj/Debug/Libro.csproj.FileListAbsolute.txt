@@ -1,0 +1,8 @@
+C:\Users\Alumno\Desktop\Aprendiendo_C-\Libro\Libro\bin\Debug\Libro.exe.config
+C:\Users\Alumno\Desktop\Aprendiendo_C-\Libro\Libro\bin\Debug\Libro.exe
+C:\Users\Alumno\Desktop\Aprendiendo_C-\Libro\Libro\bin\Debug\Libro.pdb
+C:\Users\Alumno\Desktop\Aprendiendo_C-\Libro\Libro\obj\Debug\Libro.csproj.AssemblyReference.cache
+C:\Users\Alumno\Desktop\Aprendiendo_C-\Libro\Libro\obj\Debug\Libro.csproj.SuggestedBindingRedirects.cache
+C:\Users\Alumno\Desktop\Aprendiendo_C-\Libro\Libro\obj\Debug\Libro.csproj.CoreCompileInputs.cache
+C:\Users\Alumno\Desktop\Aprendiendo_C-\Libro\Libro\obj\Debug\Libro.exe
+C:\Users\Alumno\Desktop\Aprendiendo_C-\Libro\Libro\obj\Debug\Libro.pdb
