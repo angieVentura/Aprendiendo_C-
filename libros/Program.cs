@@ -57,8 +57,7 @@ namespace Libro
 
             Console.WriteLine(
                 libros.Count(l => l.NumPaginas == libroConMasPaginas.NumPaginas) > 1
-                ? $"\nLos libros con más páginas son:" +
-                  $"\n{string.Join("\n", libros.Where(l => l.NumPaginas == libroConMasPaginas.NumPaginas).Select(l => l.Titulo))}"
+                ? $"\nLos libros con más páginas son:\n{string.Join("\n", libros.Where(l => l.NumPaginas == libroConMasPaginas.NumPaginas).Select(l => l.Titulo))}"
                 : $"\nEl libro con más páginas es: {libroConMasPaginas.Titulo}"
             );
             Console.ReadKey();
