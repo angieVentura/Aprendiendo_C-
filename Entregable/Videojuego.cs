@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entregable
 {
-    class Videojuego
+    class Videojuego : Entregable
     {
         private string _titulo = "", _genero = "", _compania = "";
         private bool _entregado = false;

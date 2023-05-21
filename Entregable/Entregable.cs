@@ -8,7 +8,7 @@ namespace Entregable
 {
     interface Entregable
     {
-        void Entragar();
+        void Entregar();
         void Devolver();
         bool IsEntregado();
         int CompareTo(Object a);

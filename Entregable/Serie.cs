@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entregable
 {
-    class Serie
+    class Serie : Entregable
     {
         private string _titulo = "", _genero = "", _creador = "";
         private int _numDeTem = 3;
