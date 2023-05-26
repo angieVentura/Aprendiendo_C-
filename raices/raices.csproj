@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8604F88F-4C0F-478F-9AE9-1EC62ACC0170}</ProjectGuid>
+    <ProjectGuid>{14FEE239-DBE1-4045-9F94-756255F4B753}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>raices</RootNamespace>
     <AssemblyName>raices</AssemblyName>
@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="raices.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
