@@ -1,0 +1,8 @@
+C:\xampp\htdocs\Aprendiendo_C-\apuesta\bin\Debug\apuesta.exe.config
+C:\xampp\htdocs\Aprendiendo_C-\apuesta\bin\Debug\apuesta.exe
+C:\xampp\htdocs\Aprendiendo_C-\apuesta\bin\Debug\apuesta.pdb
+C:\xampp\htdocs\Aprendiendo_C-\apuesta\obj\Debug\apuesta.csproj.AssemblyReference.cache
+C:\xampp\htdocs\Aprendiendo_C-\apuesta\obj\Debug\apuesta.csproj.SuggestedBindingRedirects.cache
+C:\xampp\htdocs\Aprendiendo_C-\apuesta\obj\Debug\apuesta.csproj.CoreCompileInputs.cache
+C:\xampp\htdocs\Aprendiendo_C-\apuesta\obj\Debug\apuesta.exe
+C:\xampp\htdocs\Aprendiendo_C-\apuesta\obj\Debug\apuesta.pdb
