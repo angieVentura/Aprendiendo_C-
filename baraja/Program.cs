@@ -92,7 +92,7 @@ namespace baraja
                 {
                     if (j != 8 && j != 9)
                     {
-                        Carta carta = new Carta(contador, palo, true);
+                        Carta carta = new Carta(j, palo, true);
                         cartas[contador - 1] = carta;
                         contador++;
                     }
