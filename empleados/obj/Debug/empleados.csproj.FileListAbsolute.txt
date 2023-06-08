@@ -1,0 +1,8 @@
+C:\xampp\htdocs\Aprendiendo_C-\empleados\obj\Debug\empleados.csproj.AssemblyReference.cache
+C:\xampp\htdocs\Aprendiendo_C-\empleados\obj\Debug\empleados.csproj.SuggestedBindingRedirects.cache
+C:\xampp\htdocs\Aprendiendo_C-\empleados\obj\Debug\empleados.csproj.CoreCompileInputs.cache
+C:\xampp\htdocs\Aprendiendo_C-\empleados\bin\Debug\empleados.exe.config
+C:\xampp\htdocs\Aprendiendo_C-\empleados\bin\Debug\empleados.exe
+C:\xampp\htdocs\Aprendiendo_C-\empleados\bin\Debug\empleados.pdb
+C:\xampp\htdocs\Aprendiendo_C-\empleados\obj\Debug\empleados.exe
+C:\xampp\htdocs\Aprendiendo_C-\empleados\obj\Debug\empleados.pdb
