@@ -1,0 +1,8 @@
+C:\xampp\htdocs\Aprendiendo_C-\productos\bin\Debug\productos.exe.config
+C:\xampp\htdocs\Aprendiendo_C-\productos\bin\Debug\productos.exe
+C:\xampp\htdocs\Aprendiendo_C-\productos\bin\Debug\productos.pdb
+C:\xampp\htdocs\Aprendiendo_C-\productos\obj\Debug\productos.csproj.AssemblyReference.cache
+C:\xampp\htdocs\Aprendiendo_C-\productos\obj\Debug\productos.csproj.SuggestedBindingRedirects.cache
+C:\xampp\htdocs\Aprendiendo_C-\productos\obj\Debug\productos.csproj.CoreCompileInputs.cache
+C:\xampp\htdocs\Aprendiendo_C-\productos\obj\Debug\productos.exe
+C:\xampp\htdocs\Aprendiendo_C-\productos\obj\Debug\productos.pdb
