@@ -8,11 +8,12 @@ namespace WindowsFormsApp1
     public partial class Form1 : Form
     {
         private List<Image> originalImages = new List<Image>();
+        private Image imagenAct;
         private int zoomPercentage;
         private int cantSum;
         private int cantRes;
         private int imgId;
-        private int rote = 0; 
+        private int rote = 0;
 
 
         public Form1()
@@ -68,7 +69,7 @@ namespace WindowsFormsApp1
                 {
                     PictureBox pictureBox = new PictureBox();
 
-                    pictureBox.Size = new Size(100, 100); 
+                    pictureBox.Size = new Size(100, 100);
                     pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
                     pictureBox.BackColor = Color.FromArgb(100, 100, 100);
                     pictureBox.Image = img;
@@ -98,6 +99,8 @@ namespace WindowsFormsApp1
                 pictureImg.Image = resizedImage;
 
                 imgId = flowLayoutPanel1.Controls.GetChildIndex(pictureBox);
+
+                imagenAct = (Image)originalImages[imgId].Clone();
             }
         }
 
@@ -105,14 +108,49 @@ namespace WindowsFormsApp1
         {
             if (originalImages.Count > 0)
             {
-                int newWidth = (originalImages[imgId].Width * zoomPercentage) / 100;
+                /*int newWidth = (originalImages[imgId].Width * zoomPercentage) / 100;
                 int newHeight = (originalImages[imgId].Height * zoomPercentage) / 100;
-                Image resizedImage = new Bitmap(originalImages[imgId], newWidth, newHeight);
+                Image resizedImage = new Bitmap(originalImages[imgId], newWidth, newHeight);*/
+
+                int newWidth = (imagenAct.Width * zoomPercentage) / 100;
+                int newHeight = (imagenAct.Height * zoomPercentage) / 100;
+                Image resizedImage = new Bitmap(imagenAct, newWidth, newHeight);
 
                 pictureImg.Image = resizedImage;
                 pictureImg.Size = new Size(newWidth, newHeight);
                 //pictureImg.Location = new Point((panel1.Width - newWidth) / 2, (panel1.Height - newHeight) / 2);
                 porcentaje.Text = $"{zoomPercentage}%";
+            }
+        }
+
+        private void rotar_Click(object sender, EventArgs e)
+        {
+            if (pictureImg.Image != null)
+            {
+                imagenAct.RotateFlip(RotateFlipType.Rotate90FlipNone);
+                int newWidth = (imagenAct.Width * zoomPercentage) / 100;
+                int newHeight = (imagenAct.Height * zoomPercentage) / 100;
+                pictureImg.Size = new Size(newWidth, newHeight);
+                pictureImg.Image = new Bitmap(imagenAct, newWidth, newHeight);
+
+
+
+                /*rote++;
+                int newWidth = (imagenAct.Width * zoomPercentage) / 100;
+                int newHeight = (imagenAct.Height * zoomPercentage) / 100;
+
+                if (rote % 2 == 0)
+                    pictureImg.Size = new Size(newWidth, newHeight);
+                else
+                {
+                    pictureImg.Size = new Size(newHeight, newWidth);
+                }
+
+                Image Image = pictureImg.Image;
+                Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
+                pictureImg.Image = Image;
+
+                imagenAct.RotateFlip(RotateFlipType.Rotate90FlipNone);*/
             }
         }
 
@@ -148,29 +186,6 @@ namespace WindowsFormsApp1
                 pictureImg.Image.Dispose();
                 pictureImg.Image = null;
                 porcentaje.Text = string.Empty;
-            }
-        }
-
-        private void rotar_Click(object sender, EventArgs e)
-        {
-            if (pictureImg.Image != null)
-            {
-                rote++;
-                int newWidth = (originalImages[imgId].Width * zoomPercentage) / 100;
-                int newHeight = (originalImages[imgId].Height * zoomPercentage) / 100;
-
-                if (rote % 2 == 0)
-                    pictureImg.Size = new Size(newWidth, newHeight);
-                else
-                {
-                    pictureImg.Size = new Size(newHeight, newWidth);
-                }
-
-                Image Image = pictureImg.Image;
-
-                Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
-
-                pictureImg.Image = Image;
             }
         }
 
