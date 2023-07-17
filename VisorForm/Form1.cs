@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    public partial class Form1 : Form
+    public partial class Form1 : System.Windows.Forms.Form
     {
         private List<Image> originalImages = new List<Image>();
         private List<String> nombreImg = new List<String>();
@@ -21,7 +21,6 @@ namespace WindowsFormsApp1
         {
             
         }
-
 
         private void btnAbrir_Click_2(object sender, EventArgs e)
         {

@@ -70,12 +70,16 @@
             // 
             // btnAbrir
             // 
+            this.btnAbrir.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.btnAbrir.BackColor = System.Drawing.Color.Snow;
+            this.btnAbrir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnAbrir.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnAbrir.Location = new System.Drawing.Point(13, 12);
             this.btnAbrir.Name = "btnAbrir";
             this.btnAbrir.Size = new System.Drawing.Size(75, 23);
             this.btnAbrir.TabIndex = 26;
             this.btnAbrir.Text = "Abrir";
-            this.btnAbrir.UseVisualStyleBackColor = true;
+            this.btnAbrir.UseVisualStyleBackColor = false;
             this.btnAbrir.Click += new System.EventHandler(this.btnAbrir_Click_2);
             // 
             // porcentaje
