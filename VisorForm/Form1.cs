@@ -19,7 +19,9 @@ namespace WindowsFormsApp1
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            
         }
+
 
         private void btnAbrir_Click_2(object sender, EventArgs e)
         {
@@ -90,6 +92,7 @@ namespace WindowsFormsApp1
                 pictureImg.Image = resizedImage;
                 imgId = flowLayoutPanel1.Controls.GetChildIndex(pictureBox);
                 label1.Text = nombreImg[imgId];
+                label1.Location = new Point((panel2.Width - label1.Width) / 2, (panel2.Height - label1.Height) / 2);
                 imagenAct = (Image)originalImages[imgId].Clone();
             }
         }

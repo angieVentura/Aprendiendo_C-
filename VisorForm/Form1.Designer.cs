@@ -40,8 +40,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.reflejarHor = new System.Windows.Forms.Button();
             this.reflejarVert = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureImg)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -141,10 +143,11 @@
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label1.Location = new System.Drawing.Point(335, 17);
+            this.label1.Location = new System.Drawing.Point(199, 5);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(0, 13);
             this.label1.TabIndex = 30;
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // reflejarHor
@@ -153,7 +156,7 @@
             this.reflejarHor.Name = "reflejarHor";
             this.reflejarHor.Size = new System.Drawing.Size(25, 23);
             this.reflejarHor.TabIndex = 31;
-            this.reflejarHor.Text = "button1";
+            this.reflejarHor.Text = "⇇";
             this.reflejarHor.UseVisualStyleBackColor = true;
             this.reflejarHor.Click += new System.EventHandler(this.reflejarHor_Click);
             // 
@@ -163,9 +166,17 @@
             this.reflejarVert.Name = "reflejarVert";
             this.reflejarVert.Size = new System.Drawing.Size(25, 23);
             this.reflejarVert.TabIndex = 32;
-            this.reflejarVert.Text = "button1";
+            this.reflejarVert.Text = "⇈";
             this.reflejarVert.UseVisualStyleBackColor = true;
             this.reflejarVert.Click += new System.EventHandler(this.reflejarVert_Click);
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Location = new System.Drawing.Point(175, 12);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(424, 23);
+            this.panel2.TabIndex = 33;
             // 
             // Form1
             // 
@@ -173,9 +184,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.reflejarVert);
             this.Controls.Add(this.reflejarHor);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.rotar);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.panel1);
@@ -189,6 +200,8 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureImg)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -207,6 +220,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button reflejarHor;
         private System.Windows.Forms.Button reflejarVert;
+        private System.Windows.Forms.Panel panel2;
     }
 }
 
