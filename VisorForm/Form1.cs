@@ -52,6 +52,7 @@ namespace WindowsFormsApp1
         private void CrearPictureBoxEnPanel()
         {
             flowLayoutPanel1.Controls.Clear();
+
             if (originalImages.Count > 0)
             {
                 foreach (Image img in originalImages)
@@ -63,8 +64,11 @@ namespace WindowsFormsApp1
                     pictureBox.BackColor = Color.FromArgb(100, 100, 100);
                     pictureBox.Image = img;
 
-                    flowLayoutPanel1.Controls.Add(pictureBox);
+                    pictureBox.MouseEnter += (sender, e) => { pictureBox.Cursor = Cursors.Hand; };
 
+                    pictureBox.MouseLeave += (sender, e) => { pictureBox.Cursor = Cursors.Default; };
+
+                    flowLayoutPanel1.Controls.Add(pictureBox);
                     pictureBox.Click += PictureBox_Click;
                 }
             }
@@ -154,6 +158,24 @@ namespace WindowsFormsApp1
                 porcentaje.Text = string.Empty;
 
                 if (originalImages.Count > 0) PictureBox_Click(flowLayoutPanel1.Controls[imgId >= originalImages.Count ? originalImages.Count - 1 : imgId], EventArgs.Empty);
+            }
+        }
+
+        private void reflejarHor_Click(object sender, EventArgs e)
+        {
+            if (imagenAct != null)
+            {
+                imagenAct.RotateFlip(RotateFlipType.RotateNoneFlipX);
+                AplicarZoom();
+            }
+        }
+
+        private void reflejarVert_Click(object sender, EventArgs e)
+        {
+            if (imagenAct != null)
+            {
+                imagenAct.RotateFlip(RotateFlipType.RotateNoneFlipY);
+                AplicarZoom();
             }
         }
 
