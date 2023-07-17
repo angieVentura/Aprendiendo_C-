@@ -8,13 +8,9 @@ namespace WindowsFormsApp1
     public partial class Form1 : Form
     {
         private List<Image> originalImages = new List<Image>();
+        private List<String> nombreImg = new List<String>();
         private Image imagenAct;
-        private int zoomPercentage;
-        private int cantSum;
-        private int cantRes;
-        private int imgId;
-        private int rote = 0;
-
+        private int zoomPercentage, cantSum, cantRes, imgId;
 
         public Form1()
         {
@@ -23,7 +19,6 @@ namespace WindowsFormsApp1
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
         }
 
         private void btnAbrir_Click_2(object sender, EventArgs e)
@@ -33,32 +28,26 @@ namespace WindowsFormsApp1
             Img.Multiselect = true;
             if (Img.ShowDialog() == DialogResult.OK)
             {
-
                 foreach (string ruta in Img.FileNames)
                 {
                     Image image = Image.FromFile(ruta);
-
                     Size nuevo = Proporcional(image.Width, image.Height, 554, 348);
-
                     originalImages.Add(new Bitmap(image, nuevo));
+                    nombreImg.Add(ruta.Substring(ruta.LastIndexOf('\\') + 1));
                 }
                 CrearPictureBoxEnPanel();
-
-                porcentaje.Text = $"100%";
-            }
+                PictureBox_Click(flowLayoutPanel1.Controls[0], EventArgs.Empty);
+            }           
         }
+
         private Size Proporcional(int originalWidth, int originalHeight, int maxWidth, int maxHeight)
         {
-            double widthRatio = (double)maxWidth / originalWidth;
-            double heightRatio = (double)maxHeight / originalHeight;
-            double ratio = Math.Min(widthRatio, heightRatio);
-
+            double ratio = Math.Min((double)maxWidth / originalWidth, (double)maxHeight / originalHeight);
             int newWidth = (int)(originalWidth * ratio);
             int newHeight = (int)(originalHeight * ratio);
 
             return new Size(newWidth, newHeight);
         }
-
 
         private void CrearPictureBoxEnPanel()
         {
@@ -83,11 +72,9 @@ namespace WindowsFormsApp1
 
         private void PictureBox_Click(object sender, EventArgs e)
         {
-            // Verificar que el objeto que generó el evento es un PictureBox
             if (sender is PictureBox pictureBox)
             {
                 porcentaje.Text = $"100%";
-                rote = 0;
                 pictureImg.Size = new Size(554, 348);
                 pictureImg.Location = new Point((panel1.Width - pictureImg.Width) / 2, (panel1.Height - pictureImg.Height) / 2);
                 zoomPercentage = 100;
@@ -97,9 +84,8 @@ namespace WindowsFormsApp1
                 int newHeight = pictureBox.Image.Width > pictureBox.Image.Height ? (pictureBox.Image.Height * pictureImg.Width) / pictureBox.Image.Width : pictureImg.Height;
                 Image resizedImage = pictureBox.Image.GetThumbnailImage(newWidth, newHeight, null, IntPtr.Zero);
                 pictureImg.Image = resizedImage;
-
                 imgId = flowLayoutPanel1.Controls.GetChildIndex(pictureBox);
-
+                label1.Text = nombreImg[imgId];
                 imagenAct = (Image)originalImages[imgId].Clone();
             }
         }
@@ -108,17 +94,12 @@ namespace WindowsFormsApp1
         {
             if (originalImages.Count > 0)
             {
-                /*int newWidth = (originalImages[imgId].Width * zoomPercentage) / 100;
-                int newHeight = (originalImages[imgId].Height * zoomPercentage) / 100;
-                Image resizedImage = new Bitmap(originalImages[imgId], newWidth, newHeight);*/
-
                 int newWidth = (imagenAct.Width * zoomPercentage) / 100;
                 int newHeight = (imagenAct.Height * zoomPercentage) / 100;
                 Image resizedImage = new Bitmap(imagenAct, newWidth, newHeight);
 
                 pictureImg.Image = resizedImage;
                 pictureImg.Size = new Size(newWidth, newHeight);
-                //pictureImg.Location = new Point((panel1.Width - newWidth) / 2, (panel1.Height - newHeight) / 2);
                 porcentaje.Text = $"{zoomPercentage}%";
             }
         }
@@ -132,25 +113,6 @@ namespace WindowsFormsApp1
                 int newHeight = (imagenAct.Height * zoomPercentage) / 100;
                 pictureImg.Size = new Size(newWidth, newHeight);
                 pictureImg.Image = new Bitmap(imagenAct, newWidth, newHeight);
-
-
-
-                /*rote++;
-                int newWidth = (imagenAct.Width * zoomPercentage) / 100;
-                int newHeight = (imagenAct.Height * zoomPercentage) / 100;
-
-                if (rote % 2 == 0)
-                    pictureImg.Size = new Size(newWidth, newHeight);
-                else
-                {
-                    pictureImg.Size = new Size(newHeight, newWidth);
-                }
-
-                Image Image = pictureImg.Image;
-                Image.RotateFlip(RotateFlipType.Rotate90FlipNone);
-                pictureImg.Image = Image;
-
-                imagenAct.RotateFlip(RotateFlipType.Rotate90FlipNone);*/
             }
         }
 
@@ -181,11 +143,17 @@ namespace WindowsFormsApp1
         {
             if (pictureImg.Image != null && originalImages.Count > 0)
             {
+
+                label1.Text = "";
                 originalImages.RemoveAt(imgId);
+                nombreImg.RemoveAt(imgId);
+
                 CrearPictureBoxEnPanel();
                 pictureImg.Image.Dispose();
                 pictureImg.Image = null;
                 porcentaje.Text = string.Empty;
+
+                if (originalImages.Count > 0) PictureBox_Click(flowLayoutPanel1.Controls[imgId >= originalImages.Count ? originalImages.Count - 1 : imgId], EventArgs.Empty);
             }
         }
 
@@ -212,5 +180,9 @@ namespace WindowsFormsApp1
 
         }
 
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

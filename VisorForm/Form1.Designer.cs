@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureImg = new System.Windows.Forms.PictureBox();
             this.btnAbrir = new System.Windows.Forms.Button();
             this.porcentaje = new System.Windows.Forms.Label();
             this.Eliminar = new System.Windows.Forms.Button();
@@ -36,7 +37,7 @@
             this.btnMas = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.rotar = new System.Windows.Forms.Button();
-            this.pictureImg = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureImg)).BeginInit();
             this.SuspendLayout();
@@ -51,6 +52,17 @@
             this.panel1.Size = new System.Drawing.Size(631, 409);
             this.panel1.TabIndex = 22;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint_1);
+            // 
+            // pictureImg
+            // 
+            this.pictureImg.BackColor = System.Drawing.Color.Transparent;
+            this.pictureImg.Location = new System.Drawing.Point(34, 29);
+            this.pictureImg.Name = "pictureImg";
+            this.pictureImg.Size = new System.Drawing.Size(554, 348);
+            this.pictureImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureImg.TabIndex = 28;
+            this.pictureImg.TabStop = false;
+            this.pictureImg.Click += new System.EventHandler(this.pictureImg_Click_1);
             // 
             // btnAbrir
             // 
@@ -123,16 +135,15 @@
             this.rotar.UseVisualStyleBackColor = false;
             this.rotar.Click += new System.EventHandler(this.rotar_Click);
             // 
-            // pictureImg
+            // label1
             // 
-            this.pictureImg.BackColor = System.Drawing.Color.Transparent;
-            this.pictureImg.Location = new System.Drawing.Point(34, 29);
-            this.pictureImg.Name = "pictureImg";
-            this.pictureImg.Size = new System.Drawing.Size(554, 348);
-            this.pictureImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureImg.TabIndex = 28;
-            this.pictureImg.TabStop = false;
-            this.pictureImg.Click += new System.EventHandler(this.pictureImg_Click_1);
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label1.Location = new System.Drawing.Point(335, 17);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(0, 13);
+            this.label1.TabIndex = 30;
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // Form1
             // 
@@ -140,6 +151,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.rotar);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.panel1);
@@ -168,6 +180,7 @@
         private System.Windows.Forms.PictureBox pictureImg;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Button rotar;
+        private System.Windows.Forms.Label label1;
     }
 }
 
