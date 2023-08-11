@@ -44,8 +44,58 @@ namespace mp3
 
                     Debug.WriteLine($"Title: {title}, Duration: {duration}");
                 }
+
+                cantidadCanciones.Text = $" Canciones: {playlist.Count}";
+                CrearCancionesEnPanel();
+
             }
         }
+
+        private void CrearCancionesEnPanel()
+        {
+            PlayList.Controls.Clear();
+
+            if (playlist.Count > 0)
+            {
+                foreach (SongInfo song in playlist)
+                {
+                    Panel panel = new Panel();
+                    PictureBox pictureBox = new PictureBox();
+                    Label label = new Label();
+                    Label duracion = new Label();
+
+                    //Para le panel
+                    panel.Size = new Size(193, 40);
+                    panel.BackColor = Color.Red;
+
+                    //Agrego los elemenos al panel
+                    panel.Controls.Add(pictureBox);
+                    panel.Controls.Add(label);
+                    panel.Controls.Add(duracion);
+
+                    //Para la imagen
+                    pictureBox.Size = new Size(35, 35);
+                    pictureBox.BackColor = Color.FromArgb(100, 100, 100);
+
+                    //Para el nombre de la cancion
+                    label.Text = song.Title;
+                    label.Dock = DockStyle.Top;
+
+                    //Para la duracion de la cancion
+                    duracion.Text = song.Duration.ToString();
+                    duracion.Dock = DockStyle.Right;
+
+                    PlayList.Controls.Add(panel);
+                }
+            }
+
+        }
+
+        private void cantidadCanciones_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 
     public class SongInfo
