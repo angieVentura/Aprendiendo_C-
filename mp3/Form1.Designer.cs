@@ -51,17 +51,16 @@
             this.panelSideMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelSideMenu.Location = new System.Drawing.Point(0, 0);
             this.panelSideMenu.Name = "panelSideMenu";
-            this.panelSideMenu.Size = new System.Drawing.Size(211, 461);
+            this.panelSideMenu.Size = new System.Drawing.Size(215, 461);
             this.panelSideMenu.TabIndex = 0;
             // 
             // PlayList
             // 
-            this.PlayList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.PlayList.AutoScroll = true;
+            this.PlayList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PlayList.Location = new System.Drawing.Point(0, 92);
             this.PlayList.Name = "PlayList";
-            this.PlayList.Size = new System.Drawing.Size(211, 369);
+            this.PlayList.Size = new System.Drawing.Size(215, 369);
             this.PlayList.TabIndex = 0;
             // 
             // panelInfo
@@ -73,7 +72,7 @@
             this.panelInfo.Location = new System.Drawing.Point(0, 64);
             this.panelInfo.Name = "panelInfo";
             this.panelInfo.Padding = new System.Windows.Forms.Padding(8, 0, 8, 0);
-            this.panelInfo.Size = new System.Drawing.Size(211, 28);
+            this.panelInfo.Size = new System.Drawing.Size(215, 28);
             this.panelInfo.TabIndex = 2;
             // 
             // AgregarMusica
@@ -83,7 +82,7 @@
             this.AgregarMusica.IconColor = System.Drawing.Color.Black;
             this.AgregarMusica.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.AgregarMusica.IconSize = 24;
-            this.AgregarMusica.Location = new System.Drawing.Point(176, 0);
+            this.AgregarMusica.Location = new System.Drawing.Point(180, 0);
             this.AgregarMusica.Name = "AgregarMusica";
             this.AgregarMusica.Size = new System.Drawing.Size(27, 28);
             this.AgregarMusica.TabIndex = 2;
@@ -108,7 +107,7 @@
             this.panelBuscador.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelBuscador.Location = new System.Drawing.Point(0, 30);
             this.panelBuscador.Name = "panelBuscador";
-            this.panelBuscador.Size = new System.Drawing.Size(211, 34);
+            this.panelBuscador.Size = new System.Drawing.Size(215, 34);
             this.panelBuscador.TabIndex = 1;
             // 
             // panelLogo
@@ -117,25 +116,25 @@
             this.panelLogo.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelLogo.Location = new System.Drawing.Point(0, 0);
             this.panelLogo.Name = "panelLogo";
-            this.panelLogo.Size = new System.Drawing.Size(211, 30);
+            this.panelLogo.Size = new System.Drawing.Size(215, 30);
             this.panelLogo.TabIndex = 1;
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(211, 361);
+            this.panel1.Location = new System.Drawing.Point(215, 361);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(573, 100);
+            this.panel1.Size = new System.Drawing.Size(569, 100);
             this.panel1.TabIndex = 1;
             // 
             // panelFondo
             // 
             this.panelFondo.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panelFondo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelFondo.Location = new System.Drawing.Point(211, 0);
+            this.panelFondo.Location = new System.Drawing.Point(215, 0);
             this.panelFondo.Name = "panelFondo";
-            this.panelFondo.Size = new System.Drawing.Size(573, 361);
+            this.panelFondo.Size = new System.Drawing.Size(569, 361);
             this.panelFondo.TabIndex = 2;
             // 
             // Form1

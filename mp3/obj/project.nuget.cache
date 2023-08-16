@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "5JYsclPWmMBRjrBt/jL0xfOFQZPoB1bLtgdBPDB7lFLqW0gbHAEko43cqAX70wHg3oee1J7wMo/DCHj6b8HZNA==",
+  "dgSpecHash": "IV1uI17/JQDgFY+Qlx4LT4uJUn3GPqEdAvwHLciFHmEHsLkPlf14VCEBROtpiYeDsUI7EIQfXd6Lhuznb2FU5A==",
   "success": true,
-  "projectFilePath": "C:\\xampp\\htdocs\\Aprendiendo_C-\\mp4\\mp3.csproj",
+  "projectFilePath": "C:\\xampp\\htdocs\\Aprendiendo_C-\\mp3\\mp3.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\angie\\.nuget\\packages\\fontawesome.sharp\\6.3.0\\fontawesome.sharp.6.3.0.nupkg.sha512",
     "C:\\Users\\angie\\.nuget\\packages\\taglib-sharp-netstandard2.0\\2.1.0\\taglib-sharp-netstandard2.0.2.1.0.nupkg.sha512"

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\xampp\\htdocs\\Aprendiendo_C-\\mp4\\mp3.csproj": {}
+    "C:\\xampp\\htdocs\\Aprendiendo_C-\\mp3\\mp3.csproj": {}
   },
   "projects": {
-    "C:\\xampp\\htdocs\\Aprendiendo_C-\\mp4\\mp3.csproj": {
+    "C:\\xampp\\htdocs\\Aprendiendo_C-\\mp3\\mp3.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\xampp\\htdocs\\Aprendiendo_C-\\mp4\\mp3.csproj",
+        "projectUniqueName": "C:\\xampp\\htdocs\\Aprendiendo_C-\\mp3\\mp3.csproj",
         "projectName": "mp3",
-        "projectPath": "C:\\xampp\\htdocs\\Aprendiendo_C-\\mp4\\mp3.csproj",
+        "projectPath": "C:\\xampp\\htdocs\\Aprendiendo_C-\\mp3\\mp3.csproj",
         "packagesPath": "C:\\Users\\angie\\.nuget\\packages\\",
-        "outputPath": "C:\\xampp\\htdocs\\Aprendiendo_C-\\mp4\\obj\\",
+        "outputPath": "C:\\xampp\\htdocs\\Aprendiendo_C-\\mp3\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\angie\\AppData\\Roaming\\NuGet\\NuGet.Config",

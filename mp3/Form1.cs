@@ -66,9 +66,10 @@ namespace mp3
                     Label duracion = new Label();
 
                     //Para le panel
-                    panel.Size = new Size(204, 40);
+                    panel.Size = new Size(192, 40);
                     panel.BackColor = Color.Red;
                     panel.Dock = DockStyle.Top;
+                    panel.Padding = new Padding(0, 0, 8, 0);
 
                     //Agrego los elemenos al panel
                     panel.Controls.Add(pictureBox);
@@ -88,8 +89,13 @@ namespace mp3
                     //label.Dock = DockStyle.Top;
 
                     //Para la duracion de la cancion
+                    
                     duracion.Text = song.Duration;
-                    duracion.Location = new Point(145,12);
+                    duracion.TextAlign = ContentAlignment.MiddleRight;
+                    duracion.Text = "78:02:02";
+                    duracion.Size = new Size(50,15);
+                    //duracion.Location = new Point(145,12);
+                    duracion.Dock = DockStyle.Right;
 
                     PlayList.Controls.Add(panel);
                 }
@@ -107,6 +113,7 @@ namespace mp3
             return string.Format(duration.TotalHours >= 1? "{0:D2}:{1:D2}:{2:D2}" : "{0:D2}:{1:D2}", duration.TotalHours >= 1 ? (int)duration.TotalHours : duration.Minutes, duration.Seconds);
 
         }
+
 
         private void Form1_Resize(object? sender, EventArgs e)
         {
