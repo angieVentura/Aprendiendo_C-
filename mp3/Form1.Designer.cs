@@ -28,142 +28,143 @@
         /// </summary>
         private void InitializeComponent()
         {
-            panelSideMenu = new Panel();
-            PlayList = new FlowLayoutPanel();
-            panelInfo = new Panel();
-            cantidadCanciones = new Label();
-            AgregarMusica = new FontAwesome.Sharp.IconButton();
-            panelBuscador = new Panel();
-            panelLogo = new Panel();
-            panel1 = new Panel();
-            panelFondo = new Panel();
-            panelSideMenu.SuspendLayout();
-            panelInfo.SuspendLayout();
-            SuspendLayout();
+            this.panelSideMenu = new System.Windows.Forms.Panel();
+            this.PlayList = new System.Windows.Forms.FlowLayoutPanel();
+            this.panelInfo = new System.Windows.Forms.Panel();
+            this.AgregarMusica = new FontAwesome.Sharp.IconButton();
+            this.cantidadCanciones = new System.Windows.Forms.Label();
+            this.panelBuscador = new System.Windows.Forms.Panel();
+            this.panelLogo = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panelFondo = new System.Windows.Forms.Panel();
+            this.panelSideMenu.SuspendLayout();
+            this.panelInfo.SuspendLayout();
+            this.SuspendLayout();
             // 
             // panelSideMenu
             // 
-            panelSideMenu.BackColor = Color.Transparent;
-            panelSideMenu.Controls.Add(PlayList);
-            panelSideMenu.Controls.Add(panelInfo);
-            panelSideMenu.Controls.Add(panelBuscador);
-            panelSideMenu.Controls.Add(panelLogo);
-            panelSideMenu.Dock = DockStyle.Left;
-            panelSideMenu.Location = new Point(0, 0);
-            panelSideMenu.Name = "panelSideMenu";
-            panelSideMenu.Size = new Size(200, 461);
-            panelSideMenu.TabIndex = 0;
+            this.panelSideMenu.BackColor = System.Drawing.Color.Transparent;
+            this.panelSideMenu.Controls.Add(this.PlayList);
+            this.panelSideMenu.Controls.Add(this.panelInfo);
+            this.panelSideMenu.Controls.Add(this.panelBuscador);
+            this.panelSideMenu.Controls.Add(this.panelLogo);
+            this.panelSideMenu.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panelSideMenu.Location = new System.Drawing.Point(0, 0);
+            this.panelSideMenu.Name = "panelSideMenu";
+            this.panelSideMenu.Size = new System.Drawing.Size(211, 461);
+            this.panelSideMenu.TabIndex = 0;
             // 
             // PlayList
             // 
-            PlayList.CausesValidation = false;
-            PlayList.Dock = DockStyle.Top;
-            PlayList.Location = new Point(0, 91);
-            PlayList.Name = "PlayList";
-            PlayList.Size = new Size(200, 367);
-            PlayList.TabIndex = 1;
+            this.PlayList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.PlayList.AutoScroll = true;
+            this.PlayList.Location = new System.Drawing.Point(0, 92);
+            this.PlayList.Name = "PlayList";
+            this.PlayList.Size = new System.Drawing.Size(211, 369);
+            this.PlayList.TabIndex = 0;
             // 
             // panelInfo
             // 
-            panelInfo.BackColor = SystemColors.ActiveCaptionText;
-            panelInfo.Controls.Add(cantidadCanciones);
-            panelInfo.Controls.Add(AgregarMusica);
-            panelInfo.Dock = DockStyle.Top;
-            panelInfo.Location = new Point(0, 64);
-            panelInfo.Name = "panelInfo";
-            panelInfo.Padding = new Padding(8, 0, 8, 0);
-            panelInfo.Size = new Size(200, 27);
-            panelInfo.TabIndex = 2;
-            // 
-            // cantidadCanciones
-            // 
-            cantidadCanciones.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
-            cantidadCanciones.AutoSize = true;
-            cantidadCanciones.ForeColor = SystemColors.Control;
-            cantidadCanciones.Location = new Point(7, 6);
-            cantidadCanciones.Name = "cantidadCanciones";
-            cantidadCanciones.Size = new Size(0, 15);
-            cantidadCanciones.TabIndex = 1;
-            cantidadCanciones.TextAlign = ContentAlignment.MiddleCenter;
-            cantidadCanciones.Click += cantidadCanciones_Click;
+            this.panelInfo.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.panelInfo.Controls.Add(this.AgregarMusica);
+            this.panelInfo.Controls.Add(this.cantidadCanciones);
+            this.panelInfo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelInfo.Location = new System.Drawing.Point(0, 64);
+            this.panelInfo.Name = "panelInfo";
+            this.panelInfo.Padding = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.panelInfo.Size = new System.Drawing.Size(211, 28);
+            this.panelInfo.TabIndex = 2;
             // 
             // AgregarMusica
             // 
-            AgregarMusica.Dock = DockStyle.Right;
-            AgregarMusica.IconChar = FontAwesome.Sharp.IconChar.PlusSquare;
-            AgregarMusica.IconColor = Color.Black;
-            AgregarMusica.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            AgregarMusica.IconSize = 24;
-            AgregarMusica.Location = new Point(165, 0);
-            AgregarMusica.Name = "AgregarMusica";
-            AgregarMusica.Size = new Size(27, 27);
-            AgregarMusica.TabIndex = 0;
-            AgregarMusica.UseVisualStyleBackColor = true;
-            AgregarMusica.Click += AgregarMusica_Click;
+            this.AgregarMusica.Dock = System.Windows.Forms.DockStyle.Right;
+            this.AgregarMusica.IconChar = FontAwesome.Sharp.IconChar.PlusSquare;
+            this.AgregarMusica.IconColor = System.Drawing.Color.Black;
+            this.AgregarMusica.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.AgregarMusica.IconSize = 24;
+            this.AgregarMusica.Location = new System.Drawing.Point(176, 0);
+            this.AgregarMusica.Name = "AgregarMusica";
+            this.AgregarMusica.Size = new System.Drawing.Size(27, 28);
+            this.AgregarMusica.TabIndex = 2;
+            this.AgregarMusica.UseVisualStyleBackColor = true;
+            this.AgregarMusica.Click += new System.EventHandler(this.AgregarMusica_Click_1);
+            // 
+            // cantidadCanciones
+            // 
+            this.cantidadCanciones.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.cantidadCanciones.AutoSize = true;
+            this.cantidadCanciones.ForeColor = System.Drawing.SystemColors.Control;
+            this.cantidadCanciones.Location = new System.Drawing.Point(7, 6);
+            this.cantidadCanciones.Name = "cantidadCanciones";
+            this.cantidadCanciones.Size = new System.Drawing.Size(0, 15);
+            this.cantidadCanciones.TabIndex = 1;
+            this.cantidadCanciones.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panelBuscador
             // 
-            panelBuscador.BackColor = SystemColors.ControlDark;
-            panelBuscador.Dock = DockStyle.Top;
-            panelBuscador.Location = new Point(0, 30);
-            panelBuscador.Name = "panelBuscador";
-            panelBuscador.Size = new Size(200, 34);
-            panelBuscador.TabIndex = 1;
-            panelBuscador.Paint += panelBuscador_Paint;
+            this.panelBuscador.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.panelBuscador.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelBuscador.Location = new System.Drawing.Point(0, 30);
+            this.panelBuscador.Name = "panelBuscador";
+            this.panelBuscador.Size = new System.Drawing.Size(211, 34);
+            this.panelBuscador.TabIndex = 1;
             // 
             // panelLogo
             // 
-            panelLogo.BackColor = SystemColors.ControlDarkDark;
-            panelLogo.Dock = DockStyle.Top;
-            panelLogo.Location = new Point(0, 0);
-            panelLogo.Name = "panelLogo";
-            panelLogo.Size = new Size(200, 30);
-            panelLogo.TabIndex = 1;
+            this.panelLogo.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.panelLogo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelLogo.Location = new System.Drawing.Point(0, 0);
+            this.panelLogo.Name = "panelLogo";
+            this.panelLogo.Size = new System.Drawing.Size(211, 30);
+            this.panelLogo.TabIndex = 1;
             // 
             // panel1
             // 
-            panel1.BackColor = SystemColors.ActiveCaptionText;
-            panel1.Dock = DockStyle.Bottom;
-            panel1.Location = new Point(200, 361);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(584, 100);
-            panel1.TabIndex = 1;
+            this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(211, 361);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(573, 100);
+            this.panel1.TabIndex = 1;
             // 
             // panelFondo
             // 
-            panelFondo.BackColor = SystemColors.ActiveCaption;
-            panelFondo.Dock = DockStyle.Fill;
-            panelFondo.Location = new Point(200, 0);
-            panelFondo.Name = "panelFondo";
-            panelFondo.Size = new Size(584, 361);
-            panelFondo.TabIndex = 2;
+            this.panelFondo.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panelFondo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelFondo.Location = new System.Drawing.Point(211, 0);
+            this.panelFondo.Name = "panelFondo";
+            this.panelFondo.Size = new System.Drawing.Size(573, 361);
+            this.panelFondo.TabIndex = 2;
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(784, 461);
-            Controls.Add(panelFondo);
-            Controls.Add(panel1);
-            Controls.Add(panelSideMenu);
-            Name = "Form1";
-            Text = "Form1";
-            panelSideMenu.ResumeLayout(false);
-            panelInfo.ResumeLayout(false);
-            panelInfo.PerformLayout();
-            ResumeLayout(false);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(784, 461);
+            this.Controls.Add(this.panelFondo);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panelSideMenu);
+            this.Name = "Form1";
+            this.Text = "Form1";
+            this.panelSideMenu.ResumeLayout(false);
+            this.panelInfo.ResumeLayout(false);
+            this.panelInfo.PerformLayout();
+            this.ResumeLayout(false);
+
         }
 
         #endregion
 
         private Panel panelSideMenu;
-        private FlowLayoutPanel PlayList;
         private Panel panelInfo;
         private Panel panelBuscador;
         private Panel panelLogo;
         private Panel panel1;
         private Panel panelFondo;
-        private FontAwesome.Sharp.IconButton AgregarMusica;
         private Label cantidadCanciones;
+        private FlowLayoutPanel PlayList;
+        private FontAwesome.Sharp.IconButton AgregarMusica;
     }
 }

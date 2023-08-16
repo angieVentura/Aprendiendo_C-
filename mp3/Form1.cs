@@ -15,6 +15,7 @@ namespace mp3
         public Form1()
         {
             InitializeComponent();
+        this.Resize += Form1_Resize;
         }
 
         private void panelBuscador_Paint(object sender, PaintEventArgs e)
@@ -22,7 +23,7 @@ namespace mp3
 
         }
 
-        private void AgregarMusica_Click(object sender, EventArgs e)
+        private void AgregarMusica_Click_1(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "Archivos de audio|*.mp3;*.mp4;*.wav;*.flac;*.ogg";
@@ -34,11 +35,11 @@ namespace mp3
                 {
                     TagLib.File file = TagLib.File.Create(filePath);
 
-                    string title = filePath;
-                    TimeSpan duration = file.Properties.Duration;
+                    string title = Path.GetFileNameWithoutExtension(filePath);
+                    string duration = FormatDuration(file.Properties.Duration);
 
                     byte[]? albumCover = file.Tag.Pictures.Length > 0 ? file.Tag.Pictures[0].Data.Data : null;
-                    Image? coverImage = albumCover != null ? Image.FromStream(new MemoryStream(albumCover)) : null;
+                    Image? coverImage = albumCover != null ? Image.FromStream(new MemoryStream(albumCover)) : (Icon.ExtractAssociatedIcon(filePath)?.ToBitmap() ?? null);
 
                     playlist.Add(new SongInfo { Title = title, Duration = duration, CoverImage = coverImage });
 
@@ -65,8 +66,9 @@ namespace mp3
                     Label duracion = new Label();
 
                     //Para le panel
-                    panel.Size = new Size(193, 40);
+                    panel.Size = new Size(204, 40);
                     panel.BackColor = Color.Red;
+                    panel.Dock = DockStyle.Top;
 
                     //Agrego los elemenos al panel
                     panel.Controls.Add(pictureBox);
@@ -74,21 +76,41 @@ namespace mp3
                     panel.Controls.Add(duracion);
 
                     //Para la imagen
+                    pictureBox.Dock = DockStyle.Left;
                     pictureBox.Size = new Size(35, 35);
-                    pictureBox.BackColor = Color.FromArgb(100, 100, 100);
+                    //pictureBox.BackColor = Color.FromArgb(100, 100, 100);
+                    pictureBox.Image = song.CoverImage;
 
                     //Para el nombre de la cancion
+                    label.Size = new Size(100,20);
                     label.Text = song.Title;
-                    label.Dock = DockStyle.Top;
+                    label.Location = new Point(38,7);
+                    //label.Dock = DockStyle.Top;
 
                     //Para la duracion de la cancion
-                    duracion.Text = song.Duration.ToString();
-                    duracion.Dock = DockStyle.Right;
+                    duracion.Text = song.Duration;
+                    duracion.Location = new Point(145,12);
 
                     PlayList.Controls.Add(panel);
                 }
+
+                //Aca en el caso de que si se active el scroll
             }
 
+          
+
+        }
+
+        private string FormatDuration(TimeSpan duration)
+        {
+
+            return string.Format(duration.TotalHours >= 1? "{0:D2}:{1:D2}:{2:D2}" : "{0:D2}:{1:D2}", duration.TotalHours >= 1 ? (int)duration.TotalHours : duration.Minutes, duration.Seconds);
+
+        }
+
+        private void Form1_Resize(object? sender, EventArgs e)
+        {
+            CrearCancionesEnPanel();
         }
 
         private void cantidadCanciones_Click(object sender, EventArgs e)
@@ -101,7 +123,7 @@ namespace mp3
     public class SongInfo
     {
         public string? Title { get; set; }
-        public TimeSpan Duration { get; set; }
+        public string? Duration { get; set; }
         public Image? CoverImage { get; set; }
     }
 }
