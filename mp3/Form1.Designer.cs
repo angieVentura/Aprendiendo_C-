@@ -37,8 +37,22 @@
             this.panelLogo = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panelFondo = new System.Windows.Forms.Panel();
+            this.tituloCancion = new System.Windows.Forms.Label();
+            this.cover = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.contenedorTitulo = new System.Windows.Forms.PictureBox();
+            this.Play = new FontAwesome.Sharp.IconButton();
             this.panelSideMenu.SuspendLayout();
             this.panelInfo.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.panelFondo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cover)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.contenedorTitulo)).BeginInit();
             this.SuspendLayout();
             // 
             // panelSideMenu
@@ -122,20 +136,102 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.panel1.Controls.Add(this.Play);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(215, 361);
+            this.panel1.Location = new System.Drawing.Point(215, 365);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(569, 100);
+            this.panel1.Size = new System.Drawing.Size(569, 96);
             this.panel1.TabIndex = 1;
             // 
             // panelFondo
             // 
             this.panelFondo.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panelFondo.Controls.Add(this.tituloCancion);
+            this.panelFondo.Controls.Add(this.cover);
+            this.panelFondo.Controls.Add(this.pictureBox3);
+            this.panelFondo.Controls.Add(this.pictureBox4);
+            this.panelFondo.Controls.Add(this.pictureBox2);
+            this.panelFondo.Controls.Add(this.contenedorTitulo);
             this.panelFondo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelFondo.Location = new System.Drawing.Point(215, 0);
             this.panelFondo.Name = "panelFondo";
-            this.panelFondo.Size = new System.Drawing.Size(569, 361);
+            this.panelFondo.Size = new System.Drawing.Size(569, 365);
             this.panelFondo.TabIndex = 2;
+            // 
+            // tituloCancion
+            // 
+            this.tituloCancion.AutoEllipsis = true;
+            this.tituloCancion.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.tituloCancion.ForeColor = System.Drawing.Color.White;
+            this.tituloCancion.Location = new System.Drawing.Point(60, 322);
+            this.tituloCancion.MaximumSize = new System.Drawing.Size(450, 0);
+            this.tituloCancion.Name = "tituloCancion";
+            this.tituloCancion.Size = new System.Drawing.Size(450, 29);
+            this.tituloCancion.TabIndex = 7;
+            this.tituloCancion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // cover
+            // 
+            this.cover.BackColor = System.Drawing.Color.Red;
+            this.cover.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cover.Location = new System.Drawing.Point(144, 30);
+            this.cover.MaximumSize = new System.Drawing.Size(480, 480);
+            this.cover.MinimumSize = new System.Drawing.Size(280, 280);
+            this.cover.Name = "cover";
+            this.cover.Size = new System.Drawing.Size(280, 280);
+            this.cover.TabIndex = 6;
+            this.cover.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pictureBox3.Location = new System.Drawing.Point(0, 30);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(144, 280);
+            this.pictureBox3.TabIndex = 5;
+            this.pictureBox3.TabStop = false;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pictureBox4.Location = new System.Drawing.Point(424, 30);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(145, 280);
+            this.pictureBox4.TabIndex = 3;
+            this.pictureBox4.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pictureBox2.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(569, 30);
+            this.pictureBox2.TabIndex = 1;
+            this.pictureBox2.TabStop = false;
+            // 
+            // contenedorTitulo
+            // 
+            this.contenedorTitulo.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.contenedorTitulo.Location = new System.Drawing.Point(0, 310);
+            this.contenedorTitulo.MaximumSize = new System.Drawing.Size(0, 58);
+            this.contenedorTitulo.MinimumSize = new System.Drawing.Size(569, 10);
+            this.contenedorTitulo.Name = "contenedorTitulo";
+            this.contenedorTitulo.Size = new System.Drawing.Size(569, 55);
+            this.contenedorTitulo.TabIndex = 0;
+            this.contenedorTitulo.TabStop = false;
+            // 
+            // Play
+            // 
+            this.Play.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.Play.IconColor = System.Drawing.Color.Black;
+            this.Play.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.Play.Location = new System.Drawing.Point(236, 32);
+            this.Play.Name = "Play";
+            this.Play.Size = new System.Drawing.Size(75, 23);
+            this.Play.TabIndex = 0;
+            this.Play.Text = "play";
+            this.Play.UseVisualStyleBackColor = true;
+            this.Play.Click += new System.EventHandler(this.Play_Click);
             // 
             // Form1
             // 
@@ -150,6 +246,13 @@
             this.panelSideMenu.ResumeLayout(false);
             this.panelInfo.ResumeLayout(false);
             this.panelInfo.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panelFondo.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.cover)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.contenedorTitulo)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -165,5 +268,12 @@
         private Label cantidadCanciones;
         private FlowLayoutPanel PlayList;
         private FontAwesome.Sharp.IconButton AgregarMusica;
+        private PictureBox pictureBox4;
+        private PictureBox pictureBox2;
+        private PictureBox pictureBox3;
+        private PictureBox cover;
+        private PictureBox contenedorTitulo;
+        private Label tituloCancion;
+        private FontAwesome.Sharp.IconButton Play;
     }
 }
