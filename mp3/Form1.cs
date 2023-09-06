@@ -1,18 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Runtime.InteropServices;
-using TagLib;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
-using System.Runtime.InteropServices.ComTypes;
+using System.Runtime.InteropServices;
+using System.Text;
+using System.Windows.Forms;
 
 namespace mp3
 {
@@ -26,7 +19,6 @@ namespace mp3
         [DllImport("winmm.dll")]
         public static extern int mciGetErrorString(int fwdError, StringBuilder lpszErrorText, int cchErrorText);
 
-
         [DllImport("winmm.dll")]
         public static extern int waveOutGetNumDevs();
 
@@ -35,21 +27,14 @@ namespace mp3
 
         [DllImport("kernel32.dll")]
         public static extern int GetLongPathName(string lpszShortPath, StringBuilder lpszLongPath, int cchBuffer);
-
-        // Constante con la longitud máxima de un nombre de archivo.     
+   
         const int MAX_PATH = 260;
-        // Constante con el formato de archivo a reproducir.
         const string Tipo = "MPEGVIDEO";
-        // Alias asignado al archivo especificado.
         const string sAlias = "ArchivoDeSonido";
-        private string fileName; //Nombre de archivo a reproducir
-
-        //Especificamos el delegado al que se va a asociar el evento.
-        public delegate void ReproductorMessage(string Msg);
-        //Declaramos nuestro evento.
-        public event ReproductorMessage ReproductorEstado;
-
+        private string fileName;
         SongInfo songActual;
+        private bool usuarioMoviendoTrackBar = false;
+        
         public Form1()
         {
             InitializeComponent();
@@ -57,11 +42,6 @@ namespace mp3
         }
 
         private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panelBuscador_Paint(object sender, PaintEventArgs e)
         {
 
         }
@@ -89,11 +69,11 @@ namespace mp3
                     playlist.Add(new SongInfo { Title = title, FilePath = filePath, Duration = duration, CoverImage = coverImage });
 
                     Debug.WriteLine($"Title: {title}, Duration: {duration}");
+
                 }
 
                 cantidadCanciones.Text = $" Canciones: {playlist.Count}";
                 CrearCancionesEnPanel();
-
             }
         }
 
@@ -157,8 +137,6 @@ namespace mp3
                 //Aca en el caso de que si se active el scroll
             }
 
-
-
         }
 
         private void panel_Click(object sender, EventArgs e)
@@ -167,28 +145,24 @@ namespace mp3
             {
                 if (panel.Tag is SongInfo song)
                 {
-                    string title = song.Title;
-                    string duration = song.Duration;
                     Image imagen = song.CoverImage;
 
                     Size nuevo = Proporcional(imagen.Width, imagen.Height, 300, 300);
                     cover.Image = new Bitmap(imagen, nuevo);
                     tituloCancion.MaximumSize = new Size(450, int.MaxValue);
                     tituloCancion.AutoEllipsis = true;
-                    tituloCancion.Text = title;
+                    tituloCancion.Text = song.Title;
                     tituloCancion.Location = new Point((contenedorTitulo.Width - tituloCancion.Width) / 2, (contenedorTitulo.Height - tituloCancion.Height) / 2);
 
                     songActual = song;
                     fileName = songActual.FilePath;
                     Cerrar();
                     Reproducir();
-
-                    trackBarTiempo.Maximum = duracionCancion(songActual);
+                    trackBarTiempo.Maximum = DuracionCancion(songActual);
+                    duracionTotal.Text = song.Duration;
                 }
             }
         }
-
-
 
         private string NombreCorto(string NombreLargo)
         {
@@ -371,8 +345,6 @@ namespace mp3
                 return "";
         }
 
-
-
         public long CalcularTamaño()
         {
             StringBuilder sbBuffer = new StringBuilder(MAX_PATH);
@@ -409,7 +381,6 @@ namespace mp3
                 return "";
         }
 
-
         private Size Proporcional(int originalWidth, int originalHeight, int maxWidth, int maxHeight)
         {
             double ratio = Math.Min((double)maxWidth / originalWidth, (double)maxHeight / originalHeight);
@@ -419,8 +390,6 @@ namespace mp3
             return new Size(newWidth, newHeight);
         }
 
-
-
         private string FormatDuration(TimeSpan duration)
         {
 
@@ -428,28 +397,12 @@ namespace mp3
 
         }
 
-
         private void Form1_Resize(object sender, EventArgs e)
         {
             CrearCancionesEnPanel();
         }
 
-        private void cantidadCanciones_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void contenedorTitulo_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cover_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private int duracionCancion(SongInfo song)
+        private int DuracionCancion(SongInfo song)
         {
 
             try
@@ -475,32 +428,69 @@ namespace mp3
             return 0;
         }
 
+        private string FormatearTiempo(int segundos)
+        {
+
+            int minutos = segundos / 60;
+            segundos %= 60;
+
+            string tiempoFormateado = $"{minutos:D2}:{segundos:D2}";
+
+            return tiempoFormateado;
+        }
+
         private void timerActualizarTiempo_Tick(object sender, EventArgs e)
         {
 
-            tiempoCancion.Text = Posicion();
+            if (!usuarioMoviendoTrackBar)
+            {
+                long tiempoReproduccion = CalcularPosicion();
+                trackBarTiempo.Value = (int)tiempoReproduccion;
+            }
 
-            long tiempoReproduccion = CalcularPosicion();
-            trackBarTiempo.Value = (int)tiempoReproduccion;
+            reproductorEstado.Text = $"{trackBarTiempo.Value}";
         }
 
         private void ce_TrackBar1_ValueChanged()
         {
-
+            tiempoCancion.Text = FormatearTiempo(trackBarTiempo.Value);
         }
 
-        private void trackBarTiempo_Scroll(object sender, EventArgs e)
+        private void trackBarTiempo_MouseUp(object sender, MouseEventArgs e)
         {
-  
+            Reposicionar(trackBarTiempo.Value);
+            ReproducirDesde(trackBarTiempo.Value);
+            usuarioMoviendoTrackBar = false;
+            trackBarTiempo.Capture = false;
+        }
 
-            int tiempoSeleccionado = trackBarTiempo.Value;
+        private void trackBarTiempo_MouseDown(object sender, MouseEventArgs e)
+        {
+            usuarioMoviendoTrackBar = true;
+            trackBarTiempo.Capture = true;
+        }
 
+        private void trackBarTiempo_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                int mouseX = e.X - trackBarTiempo.Left;
+                int trackBarWidth = trackBarTiempo.Width;
 
-            Reposicionar(tiempoSeleccionado);
-            ReproducirDesde(tiempoSeleccionado);
+                double ratio = (double)mouseX / trackBarWidth;
+                int newPosition = (int)(ratio * (trackBarTiempo.Maximum - trackBarTiempo.Minimum)) + trackBarTiempo.Minimum;
+
+                int mousePreciso = (int)Math.Round((double)(17 * trackBarTiempo.Maximum) / 100);
+
+                if (newPosition >= trackBarTiempo.Minimum - mousePreciso && newPosition <= trackBarTiempo.Maximum + mousePreciso)
+                {
+                    trackBarTiempo.Value = newPosition + mousePreciso;
+                }
+            }
 
         }
-    }//Fuera de form
+    }
+    //Fuera de form
     public class SongInfo
     {
         public string Title { get; set; }
