@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panelSideMenu = new System.Windows.Forms.Panel();
             this.PlayListFlow = new System.Windows.Forms.FlowLayoutPanel();
             this.panelInfo = new System.Windows.Forms.Panel();
@@ -42,10 +43,12 @@
             this.contenedorTitulo = new System.Windows.Forms.Panel();
             this.tituloCancion = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.tiempoCancion = new System.Windows.Forms.Label();
+            this.trackBarTiempo = new Ce_TrackBar();
             this.reproductorEstado = new System.Windows.Forms.TextBox();
             this.Play = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.ce_TrackBar1 = new Ce_TrackBar();
+            this.timerActualizarTiempo = new System.Windows.Forms.Timer(this.components);
             this.panelSideMenu.SuspendLayout();
             this.panelInfo.SuspendLayout();
             this.panelFondo.SuspendLayout();
@@ -190,7 +193,8 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.panel3.Controls.Add(this.ce_TrackBar1);
+            this.panel3.Controls.Add(this.tiempoCancion);
+            this.panel3.Controls.Add(this.trackBarTiempo);
             this.panel3.Controls.Add(this.reproductorEstado);
             this.panel3.Controls.Add(this.Play);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -198,6 +202,33 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(585, 96);
             this.panel3.TabIndex = 1;
+            // 
+            // tiempoCancion
+            // 
+            this.tiempoCancion.AutoSize = true;
+            this.tiempoCancion.Location = new System.Drawing.Point(24, 19);
+            this.tiempoCancion.Name = "tiempoCancion";
+            this.tiempoCancion.Size = new System.Drawing.Size(42, 13);
+            this.tiempoCancion.TabIndex = 3;
+            this.tiempoCancion.Text = "Tiempo";
+            // 
+            // trackBarTiempo
+            // 
+            this.trackBarTiempo.BallColor = System.Drawing.Color.MidnightBlue;
+            this.trackBarTiempo.JumpToMouse = true;
+            this.trackBarTiempo.Location = new System.Drawing.Point(74, 19);
+            this.trackBarTiempo.Maximum = 100;
+            this.trackBarTiempo.Minimum = 0;
+            this.trackBarTiempo.MinimumSize = new System.Drawing.Size(47, 22);
+            this.trackBarTiempo.Name = "trackBarTiempo";
+            this.trackBarTiempo.Size = new System.Drawing.Size(445, 22);
+            this.trackBarTiempo.SlideColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(62)))), ((int)(((byte)(254)))));
+            this.trackBarTiempo.TabIndex = 2;
+            this.trackBarTiempo.Text = "ce_TrackBar1";
+            this.trackBarTiempo.Value = 0;
+            this.trackBarTiempo.ValueDivison = Ce_TrackBar.ValueDivisor.By1;
+            this.trackBarTiempo.ValueToSet = 0F;
+            this.trackBarTiempo.ValueChanged += new Ce_TrackBar.ValueChangedEventHandler(this.ce_TrackBar1_ValueChanged);
             // 
             // reproductorEstado
             // 
@@ -224,22 +255,11 @@
             this.panel2.Size = new System.Drawing.Size(585, 46);
             this.panel2.TabIndex = 0;
             // 
-            // ce_TrackBar1
+            // timerActualizarTiempo
             // 
-            this.ce_TrackBar1.BallColor = System.Drawing.Color.MidnightBlue;
-            this.ce_TrackBar1.JumpToMouse = true;
-            this.ce_TrackBar1.Location = new System.Drawing.Point(54, 19);
-            this.ce_TrackBar1.Maximum = 100;
-            this.ce_TrackBar1.Minimum = 0;
-            this.ce_TrackBar1.MinimumSize = new System.Drawing.Size(47, 22);
-            this.ce_TrackBar1.Name = "ce_TrackBar1";
-            this.ce_TrackBar1.Size = new System.Drawing.Size(476, 22);
-            this.ce_TrackBar1.SlideColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(62)))), ((int)(((byte)(254)))));
-            this.ce_TrackBar1.TabIndex = 2;
-            this.ce_TrackBar1.Text = "ce_TrackBar1";
-            this.ce_TrackBar1.Value = 0;
-            this.ce_TrackBar1.ValueDivison = Ce_TrackBar.ValueDivisor.By1;
-            this.ce_TrackBar1.ValueToSet = 0F;
+            this.timerActualizarTiempo.Enabled = true;
+            this.timerActualizarTiempo.Interval = 1000;
+            this.timerActualizarTiempo.Tick += new System.EventHandler(this.timerActualizarTiempo_Tick);
             // 
             // Form1
             // 
@@ -282,7 +302,9 @@
         private System.Windows.Forms.Button Play;
         private System.Windows.Forms.Label cantidadCanciones;
         private System.Windows.Forms.PictureBox cover;
-        private Ce_TrackBar ce_TrackBar1;
+        private Ce_TrackBar trackBarTiempo;
+        private System.Windows.Forms.Label tiempoCancion;
+        private System.Windows.Forms.Timer timerActualizarTiempo;
     }
 }
 

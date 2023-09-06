@@ -182,9 +182,13 @@ namespace mp3
                     fileName = songActual.FilePath;
                     Cerrar();
                     Reproducir();
+
+                    trackBarTiempo.Maximum = duracionCancion(songActual);
                 }
             }
         }
+
+
 
         private string NombreCorto(string NombreLargo)
         {
@@ -367,6 +371,8 @@ namespace mp3
                 return "";
         }
 
+
+
         public long CalcularTamaño()
         {
             StringBuilder sbBuffer = new StringBuilder(MAX_PATH);
@@ -443,6 +449,57 @@ namespace mp3
 
         }
 
+        private int duracionCancion(SongInfo song)
+        {
+
+            try
+            {
+                string[] partes = song.Duration.Split(':');
+
+                if (partes.Length == 2)
+                {
+
+                    int minutos = int.Parse(partes[0]);
+                    int segundos = int.Parse(partes[1]);
+
+                    int duracionSegundos = (minutos * 60) + segundos;
+
+                    return duracionSegundos;
+                }
+            }
+            catch (Exception ex)
+            {
+                reproductorEstado.Text = "Error al obtener la duración en segundos: " + ex.Message;
+            }
+
+            return 0;
+        }
+
+        private void timerActualizarTiempo_Tick(object sender, EventArgs e)
+        {
+
+            tiempoCancion.Text = Posicion();
+
+            long tiempoReproduccion = CalcularPosicion();
+            trackBarTiempo.Value = (int)tiempoReproduccion;
+        }
+
+        private void ce_TrackBar1_ValueChanged()
+        {
+
+        }
+
+        private void trackBarTiempo_Scroll(object sender, EventArgs e)
+        {
+  
+
+            int tiempoSeleccionado = trackBarTiempo.Value;
+
+
+            Reposicionar(tiempoSeleccionado);
+            ReproducirDesde(tiempoSeleccionado);
+
+        }
     }//Fuera de form
     public class SongInfo
     {
