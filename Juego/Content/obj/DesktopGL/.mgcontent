@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SourceFileCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Profile>Reach</Profile>
+  <Platform>DesktopGL</Platform>
+  <Config />
+  <SourceFiles>
+    <File>C:/Users/angie/OneDrive/Escritorio/Aprendiendo_C-/Juego/Content/Basic Tiles Only.png</File>
+    <File>C:/Users/angie/OneDrive/Escritorio/Aprendiendo_C-/Juego/Content/City Ground Tileset.png</File>
+    <File>C:/Users/angie/OneDrive/Escritorio/Aprendiendo_C-/Juego/Content/Fireflies pot v2.gif</File>
+    <File>C:/Users/angie/OneDrive/Escritorio/Aprendiendo_C-/Juego/Content/Fireflies pot.gif</File>
+    <File>C:/Users/angie/OneDrive/Escritorio/Aprendiendo_C-/Juego/Content/House (Inside) Tileset.png</File>
+    <File>C:/Users/angie/OneDrive/Escritorio/Aprendiendo_C-/Juego/Content/House (Outside And Inside) Tileset.png</File>
+    <File>C:/Users/angie/OneDrive/Escritorio/Aprendiendo_C-/Juego/Content/House (Outside) Tileset.png</File>
+    <File>C:/Users/angie/OneDrive/Escritorio/Aprendiendo_C-/Juego/Content/Terrain Tileset.png</File>
+    <File>C:/Users/angie/OneDrive/Escritorio/Aprendiendo_C-/Juego/Content/Vegetation Tileset 1.png</File>
+    <File>C:/Users/angie/OneDrive/Escritorio/Aprendiendo_C-/Juego/Content/Vegetation Tileset 2.png</File>
+  </SourceFiles>
+  <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+  </DestFiles>
+</SourceFileCollection>
