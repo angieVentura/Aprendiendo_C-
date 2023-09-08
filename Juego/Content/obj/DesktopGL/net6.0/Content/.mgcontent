@@ -4,18 +4,38 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/angie/OneDrive/Escritorio/Aprendiendo_C-/Juego/Content/Basic Tiles Only.png</File>
-    <File>C:/Users/angie/OneDrive/Escritorio/Aprendiendo_C-/Juego/Content/City Ground Tileset.png</File>
-    <File>C:/Users/angie/OneDrive/Escritorio/Aprendiendo_C-/Juego/Content/Fireflies pot v2.gif</File>
-    <File>C:/Users/angie/OneDrive/Escritorio/Aprendiendo_C-/Juego/Content/Fireflies pot.gif</File>
-    <File>C:/Users/angie/OneDrive/Escritorio/Aprendiendo_C-/Juego/Content/House (Inside) Tileset.png</File>
-    <File>C:/Users/angie/OneDrive/Escritorio/Aprendiendo_C-/Juego/Content/House (Outside And Inside) Tileset.png</File>
-    <File>C:/Users/angie/OneDrive/Escritorio/Aprendiendo_C-/Juego/Content/House (Outside) Tileset.png</File>
-    <File>C:/Users/angie/OneDrive/Escritorio/Aprendiendo_C-/Juego/Content/Terrain Tileset.png</File>
-    <File>C:/Users/angie/OneDrive/Escritorio/Aprendiendo_C-/Juego/Content/Vegetation Tileset 1.png</File>
-    <File>C:/Users/angie/OneDrive/Escritorio/Aprendiendo_C-/Juego/Content/Vegetation Tileset 2.png</File>
+    <File>C:/Users/Alumno/Desktop/Aprendiendo_C-/Juego/Content/Basic Tiles Only.png</File>
+    <File>C:/Users/Alumno/Desktop/Aprendiendo_C-/Juego/Content/City Ground Tileset.png</File>
+    <File>C:/Users/Alumno/Desktop/Aprendiendo_C-/Juego/Content/cloud_lonely.png</File>
+    <File>C:/Users/Alumno/Desktop/Aprendiendo_C-/Juego/Content/clouds_bg.png</File>
+    <File>C:/Users/Alumno/Desktop/Aprendiendo_C-/Juego/Content/clouds_mg_1_lightened.png</File>
+    <File>C:/Users/Alumno/Desktop/Aprendiendo_C-/Juego/Content/clouds_mg_1.png</File>
+    <File>C:/Users/Alumno/Desktop/Aprendiendo_C-/Juego/Content/clouds_mg_2.png</File>
+    <File>C:/Users/Alumno/Desktop/Aprendiendo_C-/Juego/Content/clouds_mg_3.png</File>
+    <File>C:/Users/Alumno/Desktop/Aprendiendo_C-/Juego/Content/Fireflies pot v2.gif</File>
+    <File>C:/Users/Alumno/Desktop/Aprendiendo_C-/Juego/Content/Fireflies pot.gif</File>
+    <File>C:/Users/Alumno/Desktop/Aprendiendo_C-/Juego/Content/glacial_mountains_lightened.png</File>
+    <File>C:/Users/Alumno/Desktop/Aprendiendo_C-/Juego/Content/glacial_mountains.png</File>
+    <File>C:/Users/Alumno/Desktop/Aprendiendo_C-/Juego/Content/House (Inside) Tileset.png</File>
+    <File>C:/Users/Alumno/Desktop/Aprendiendo_C-/Juego/Content/House (Outside And Inside) Tileset.png</File>
+    <File>C:/Users/Alumno/Desktop/Aprendiendo_C-/Juego/Content/House (Outside) Tileset.png</File>
+    <File>C:/Users/Alumno/Desktop/Aprendiendo_C-/Juego/Content/sky_lightened.png</File>
+    <File>C:/Users/Alumno/Desktop/Aprendiendo_C-/Juego/Content/sky.png</File>
+    <File>C:/Users/Alumno/Desktop/Aprendiendo_C-/Juego/Content/Terrain Tileset.png</File>
+    <File>C:/Users/Alumno/Desktop/Aprendiendo_C-/Juego/Content/Vegetation Tileset 1.png</File>
+    <File>C:/Users/Alumno/Desktop/Aprendiendo_C-/Juego/Content/Vegetation Tileset 2.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
