@@ -78,3 +78,19 @@ C:\Users\Alumno\Desktop\Aprendiendo_C-\Juego\obj\Debug\net6.0\refint\Juego.dll
 C:\Users\Alumno\Desktop\Aprendiendo_C-\Juego\obj\Debug\net6.0\Juego.pdb
 C:\Users\Alumno\Desktop\Aprendiendo_C-\Juego\obj\Debug\net6.0\Juego.genruntimeconfig.cache
 C:\Users\Alumno\Desktop\Aprendiendo_C-\Juego\obj\Debug\net6.0\ref\Juego.dll
+C:\Users\Alumno\Desktop\Aprendiendo_C-\Juego\bin\Debug\net6.0\Content\Belly_Sliding (16 x 16).xnb
+C:\Users\Alumno\Desktop\Aprendiendo_C-\Juego\bin\Debug\net6.0\Content\Blink (16 x 16).xnb
+C:\Users\Alumno\Desktop\Aprendiendo_C-\Juego\bin\Debug\net6.0\Content\Ducking (16 x 16).xnb
+C:\Users\Alumno\Desktop\Aprendiendo_C-\Juego\bin\Debug\net6.0\Content\Falling (16 x 16).xnb
+C:\Users\Alumno\Desktop\Aprendiendo_C-\Juego\bin\Debug\net6.0\Content\Hurt (16 x 16).xnb
+C:\Users\Alumno\Desktop\Aprendiendo_C-\Juego\bin\Debug\net6.0\Content\Idle (16 x 16).xnb
+C:\Users\Alumno\Desktop\Aprendiendo_C-\Juego\bin\Debug\net6.0\Content\Jump (16 x 16).xnb
+C:\Users\Alumno\Desktop\Aprendiendo_C-\Juego\bin\Debug\net6.0\Content\Looking_Off (16 x 16).xnb
+C:\Users\Alumno\Desktop\Aprendiendo_C-\Juego\bin\Debug\net6.0\Content\Looking_Up (16 x 16).xnb
+C:\Users\Alumno\Desktop\Aprendiendo_C-\Juego\bin\Debug\net6.0\Content\Lying_On_Ground (16 x 16).xnb
+C:\Users\Alumno\Desktop\Aprendiendo_C-\Juego\bin\Debug\net6.0\Content\Sitting (16 x 16).xnb
+C:\Users\Alumno\Desktop\Aprendiendo_C-\Juego\bin\Debug\net6.0\Content\Standing (16 x 16).xnb
+C:\Users\Alumno\Desktop\Aprendiendo_C-\Juego\bin\Debug\net6.0\Content\Surprised (16 x 16).xnb
+C:\Users\Alumno\Desktop\Aprendiendo_C-\Juego\bin\Debug\net6.0\Content\Swimming (16 x 16).xnb
+C:\Users\Alumno\Desktop\Aprendiendo_C-\Juego\bin\Debug\net6.0\Content\Victory_Dance (16 x 16).xnb
+C:\Users\Alumno\Desktop\Aprendiendo_C-\Juego\bin\Debug\net6.0\Content\Waddling (16 x 16).xnb

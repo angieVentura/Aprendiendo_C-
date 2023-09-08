@@ -8,9 +8,15 @@ namespace Juego
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
-        Texture2D piso, fondoC1, fondoC2, fondoC3, fondoC4;
+        Texture2D piso, fondoC1, fondoC2, fondoC3, fondoC4, pinguinoSprites;
         int[,] escenario;
-        
+        float timer;
+        int threshold;
+        Rectangle[] pinguino;
+        byte previousAnimationIndex;
+        byte currentAnimationIndex;
+
+
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -43,7 +49,21 @@ namespace Juego
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
+            timer = 0;
 
+            threshold = 250;
+
+            pinguino = new Rectangle[6];
+
+            pinguino[0] = new Rectangle(0, 0, 16, 16);
+            pinguino[1] = new Rectangle(16, 0, 16, 16);
+            pinguino[2] = new Rectangle(32, 0, 16, 16);
+            pinguino[3] = new Rectangle(48, 0, 16, 16);
+            pinguino[4] = new Rectangle(64, 0, 16, 16);
+            pinguino[5] = new Rectangle(80, 0, 16, 16);
+
+            previousAnimationIndex = 2;
+            currentAnimationIndex = 1;
             // TODO: use this.Content to load your game content here
 
             piso = Content.Load<Texture2D>("Terrain Tileset");
@@ -51,6 +71,8 @@ namespace Juego
             fondoC2 = Content.Load<Texture2D>("glacial_mountains");
             fondoC3 = Content.Load<Texture2D>("clouds_mg_2");
             fondoC4 = Content.Load<Texture2D>("clouds_mg_1");
+            pinguinoSprites = Content.Load<Texture2D>("Waddling (16 x 16)");
+       
         }
 
         protected override void Update(GameTime gameTime)
@@ -59,6 +81,39 @@ namespace Juego
                 Exit();
 
             // TODO: Add your update logic here
+
+            // Check if the timer has exceeded the threshold.
+            if (timer > threshold)
+            {
+                // If Alex is in the middle sprite of the animation.
+                if (currentAnimationIndex == 1)
+                {
+                    // If the previous animation was the left-side sprite, then the next animation should be the right-side sprite.
+                    if (previousAnimationIndex == 0)
+                    {
+                        currentAnimationIndex = 2;
+                    }
+                    else
+                    // If not, then the next animation should be the left-side sprite.
+                    {
+                        currentAnimationIndex = 0;
+                    }
+                    // Track the animation.
+                    previousAnimationIndex = currentAnimationIndex;
+                }
+                // If Alex was not in the middle sprite of the animation, he should return to the middle sprite.
+                else
+                {
+                    currentAnimationIndex = 1;
+                }
+                // Reset the timer.
+                timer = 0;
+            }
+            // If the timer has not reached the threshold, then add the milliseconds that have past since the last Update() to the timer.
+            else
+            {
+                timer += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
+            }
 
             base.Update(gameTime);
         }
@@ -93,6 +148,8 @@ namespace Juego
                     }
                 }
             }
+
+            _spriteBatch.Draw(pinguinoSprites, new Vector2(100,100), pinguino[currentAnimationIndex], Color.White);
 
             _spriteBatch.End(); 
 
