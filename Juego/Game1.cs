@@ -8,7 +8,7 @@ namespace Juego
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
-        Texture2D piso, fondoC1, fondoC2, fondoC3, fondoC4, pinguinoSprites;
+        Texture2D piso, fondoC1, fondoC2, fondoC3, fondoC4, pinguinoSprites, pinguinoPrueba;
         int[,] escenario;
         float timer;
         int threshold;
@@ -53,14 +53,7 @@ namespace Juego
 
             threshold = 250;
 
-            pinguino = new Rectangle[6];
 
-            pinguino[0] = new Rectangle(0, 0, 16, 16);
-            pinguino[1] = new Rectangle(16, 0, 16, 16);
-            pinguino[2] = new Rectangle(32, 0, 16, 16);
-            pinguino[3] = new Rectangle(48, 0, 16, 16);
-            pinguino[4] = new Rectangle(64, 0, 16, 16);
-            pinguino[5] = new Rectangle(80, 0, 16, 16);
 
             previousAnimationIndex = 2;
             currentAnimationIndex = 1;
@@ -71,7 +64,8 @@ namespace Juego
             fondoC2 = Content.Load<Texture2D>("glacial_mountains");
             fondoC3 = Content.Load<Texture2D>("clouds_mg_2");
             fondoC4 = Content.Load<Texture2D>("clouds_mg_1");
-            pinguinoSprites = Content.Load<Texture2D>("Waddling (16 x 16)");
+          //  pinguinoSprites = Content.Load<Texture2D>("pinguinoCaminando-sheet");
+            pinguinoPrueba = Content.Load<Texture2D>("pinguinoCaminando1");
        
         }
 
@@ -124,12 +118,14 @@ namespace Juego
             Vector2 escalaPiso = new Vector2(2.0f, 2.0f);
 
             Vector2 escalaFondos = new Vector2(2.11f, 2.11f);
-            
+
+            Vector2 escalaPinguinos = new Vector2(2.5f, 2.5f);
  
+
 
             _spriteBatch.Begin();
             Rectangle fondoRec = new Rectangle(0, 0, 380, 225);
-            _spriteBatch.Draw(fondoC1, new Vector2( 0, 0), fondoRec, Color.White, 0f, Vector2.Zero, escalaFondos, SpriteEffects.None, 0f);
+            _spriteBatch.Draw(fondoC1, new Vector2(0, 0), fondoRec, Color.White, 0f, Vector2.Zero, escalaFondos, SpriteEffects.None, 0f);
             _spriteBatch.Draw(fondoC2, new Vector2(0, 0), fondoRec, Color.White, 0f, Vector2.Zero, escalaFondos, SpriteEffects.None, 0f);
             _spriteBatch.Draw(fondoC3, new Vector2(0, 0), fondoRec, Color.White, 0f, Vector2.Zero, escalaFondos, SpriteEffects.None, 0f);
             _spriteBatch.Draw(fondoC4, new Vector2(0, 0), fondoRec, Color.White, 0f, Vector2.Zero, escalaFondos, SpriteEffects.None, 0f);
@@ -149,8 +145,18 @@ namespace Juego
                 }
             }
 
-            _spriteBatch.Draw(pinguinoSprites, new Vector2(100,100), pinguino[currentAnimationIndex], Color.White);
+            //Rectangle pinguinoRec = new Rectangle(20, 208, 16, 16);
+          /*  Rectangle[] pinguino = new Rectangle[6];
 
+            pinguino[0] = new Rectangle(0, 0, 16, 16);
+            pinguino[1] = new Rectangle(16, 0, 16, 16);
+            pinguino[2] = new Rectangle(32, 0, 16, 16);
+            pinguino[3] = new Rectangle(48, 0, 16, 16);
+            pinguino[4] = new Rectangle(64, 0, 16, 16);
+            pinguino[5] = new Rectangle(80, 0, 16, 16);
+
+            _spriteBatch.Draw(pinguinoSprites, new Vector2(10,395), pinguino[currentAnimationIndex], Color.White, 0f, Vector2.Zero, escalaPinguinos, SpriteEffects.None, 0f);
+            _spriteBatch.Draw(pinguinoPrueba, new Vector2(0, 0), new Rectangle(0, 0, 32, 32), Color.White, 0f, Vector2.Zero, new Vector2(2.5f, 2.5f), SpriteEffects.None, 0f);*/
             _spriteBatch.End(); 
 
             base.Draw(gameTime);

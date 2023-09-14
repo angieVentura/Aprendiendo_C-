@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/xampp/htdocs/Aprendiendo_C-/Juego/Content/Falling (16 x 16).png</SourceFile>
-  <SourceTime>2023-09-14T14:10:44.7625218-03:00</SourceTime>
-  <DestFile>C:/xampp/htdocs/Aprendiendo_C-/Juego/Content/bin/DesktopGL/Content/Falling (16 x 16).xnb</DestFile>
-  <DestTime>2023-09-14T14:16:16.2469318-03:00</DestTime>
+  <SourceFile>C:/xampp/htdocs/Aprendiendo_C-/Juego/Content/pinguinoCaminando-sheet.png</SourceFile>
+  <SourceTime>2023-09-14T16:13:16.9907849-03:00</SourceTime>
+  <DestFile>C:/xampp/htdocs/Aprendiendo_C-/Juego/Content/bin/DesktopGL/Content/pinguinoCaminando-sheet.xnb</DestFile>
+  <DestTime>2023-09-14T16:23:32.4942786-03:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2022-07-26T08:44:56-03:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
