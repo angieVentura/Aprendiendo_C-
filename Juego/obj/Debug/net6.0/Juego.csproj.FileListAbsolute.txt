@@ -186,3 +186,7 @@ C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\Juego\bin\Debug\net6.0\Content
 C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\Juego\bin\Debug\net6.0\Content\pinguinoCaminando-export.xnb
 C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\Juego\bin\Debug\net6.0\Content\Fondo.xnb
 C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\Juego\bin\Debug\net6.0\Content\pinguino\pinguino.xnb
+C:\Users\Alumno\Desktop\Aprendiendo_C-\Juego\bin\Debug\net6.0\Content\pinguinoCaminando-sheet.xnb
+C:\Users\Alumno\Desktop\Aprendiendo_C-\Juego\bin\Debug\net6.0\Content\Fondo.xnb
+C:\Users\Alumno\Desktop\Aprendiendo_C-\Juego\bin\Debug\net6.0\Content\pinguinoCaminando-export.xnb
+C:\Users\Alumno\Desktop\Aprendiendo_C-\Juego\bin\Debug\net6.0\Content\pinguino\pinguino.xnb

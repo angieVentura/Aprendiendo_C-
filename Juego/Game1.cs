@@ -15,8 +15,10 @@ namespace Juego
         private float frameTime;
         private float timer;
         private int row;
+        private bool move,right,up;
+        private Vector2 movimiento;
 
-        public Animation(Texture2D texture, int frameWidth, int frameHeight, int frameCount, float frameTime, int row)
+        public Animation(Texture2D texture, int frameWidth, int frameHeight, int frameCount, float frameTime, int row, bool move, bool right, bool up, Vector2 movimiento)
         {
             this.texture = texture;
             this.frameWidth = frameWidth;
@@ -25,7 +27,10 @@ namespace Juego
             this.frameTime = frameTime;
             this.timer = 0;
             this.currentFrame = 0;
-            this.y = row;
+            this.row = row;
+            this.move = move;
+            this.movimiento = movimiento;
+            
         }
 
         public void Update(GameTime gameTime)
@@ -41,8 +46,9 @@ namespace Juego
 
         public void Draw(SpriteBatch spriteBatch, Vector2 position, Color color, float scale)
         {
+         
             Rectangle sourceRectangle = new Rectangle(currentFrame * frameWidth, row * frameHeight, frameWidth, frameHeight);
-            spriteBatch.Draw(texture, position, sourceRectangle, color, 0f, Vector2.Zero, scale, SpriteEffects.None, 0f);
+            spriteBatch.Draw(texture, position , sourceRectangle, color, 0f, Vector2.Zero, scale, SpriteEffects.None, 0f);
         }
     }
 
@@ -52,22 +58,28 @@ namespace Juego
         private SpriteBatch _spriteBatch;
         Texture2D piso, fondoC1, fondoC2, fondoC3, fondoC4, pinguinoSprites, pinguinoPrueba, FondoP;
         int[,] escenario;
-        Animation pinguinoAnimation;
+        Vector2 posFotograma = new Vector2(5, 400);
 
         public enum PinguinoAnimation
         {
             Caminar,
             Saltar,
-            OtraAnimacion
+            Wait
         }
 
         PinguinoAnimation currentPinguinoAnimation;
         Animation currentAnimation;
         Animation caminarAnimation;
+        Animation waitAnimation;
+        bool desEnX;
+        bool desEnY;
+        SpriteEffects flipHorizontal = SpriteEffects.FlipHorizontally;
 
         public Game1()
         {
+            //pantalla de 800 x 600
             _graphics = new GraphicsDeviceManager(this);
+
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
 
@@ -103,10 +115,10 @@ namespace Juego
             pinguinoSprites = Content.Load<Texture2D>("pinguino/pinguino");
             pinguinoPrueba = Content.Load<Texture2D>("pinguino/pinguino");
             FondoP = Content.Load<Texture2D>("Fondo");
-            //pinguinoAnimation = new Animation(pinguinoSprites, 144, 155, 6, 100);
-            caminarAnimation = new Animation(pinguinoSprites,144, 155, 6, 100,0);
-            currentPinguinoAnimation = PinguinoAnimation.Caminar;
-            currentAnimation = caminarAnimation;
+            caminarAnimation = new Animation(pinguinoSprites,144, 144, 6, 100, 0, true, desEnX, desEnY, new Vector2(5, 0));
+            waitAnimation = new Animation(pinguinoSprites, 144, 144, 4, 1000, 3, false, false, false, new Vector2(0,0));
+            currentPinguinoAnimation = PinguinoAnimation.Wait;
+            //currentAnimation = waitAnimation;
 
         }
 
@@ -115,16 +127,22 @@ namespace Juego
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            //pinguinoAnimation.Update(gameTime);
-
             if (Keyboard.GetState().IsKeyDown(Keys.Right))
             {
                 currentPinguinoAnimation = PinguinoAnimation.Caminar;
+                
                 currentAnimation = caminarAnimation;
+                posFotograma.X += 1;
+            }
+            else if (Keyboard.GetState().IsKeyDown(Keys.Left))
+            {
+                currentPinguinoAnimation = PinguinoAnimation.Caminar;
+
             }
             else
             {
-
+                currentPinguinoAnimation = PinguinoAnimation.Wait;
+                currentAnimation = waitAnimation;
             }
 
             currentAnimation.Update(gameTime);
@@ -162,7 +180,7 @@ namespace Juego
             }
 
             //Personajes
-            currentAnimation.Draw(_spriteBatch, new Vector2(10, 404), Color.White, 0.37f);
+            currentAnimation.Draw(_spriteBatch, posFotograma, null, Color.White, 0.37f);
 
 
             _spriteBatch.End(); 
