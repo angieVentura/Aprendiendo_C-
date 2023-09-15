@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\xampp\\htdocs\\Aprendiendo_C-\\Juego\\Juego.csproj": {}
+    "C:\\Users\\angie\\OneDrive\\Escritorio\\Aprendiendo_C-\\Juego\\Juego.csproj": {}
   },
   "projects": {
-    "C:\\xampp\\htdocs\\Aprendiendo_C-\\Juego\\Juego.csproj": {
+    "C:\\Users\\angie\\OneDrive\\Escritorio\\Aprendiendo_C-\\Juego\\Juego.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\xampp\\htdocs\\Aprendiendo_C-\\Juego\\Juego.csproj",
+        "projectUniqueName": "C:\\Users\\angie\\OneDrive\\Escritorio\\Aprendiendo_C-\\Juego\\Juego.csproj",
         "projectName": "Juego",
-        "projectPath": "C:\\xampp\\htdocs\\Aprendiendo_C-\\Juego\\Juego.csproj",
-        "packagesPath": "C:\\Users\\Alumno\\.nuget\\packages\\",
-        "outputPath": "C:\\xampp\\htdocs\\Aprendiendo_C-\\Juego\\obj\\",
+        "projectPath": "C:\\Users\\angie\\OneDrive\\Escritorio\\Aprendiendo_C-\\Juego\\Juego.csproj",
+        "packagesPath": "C:\\Users\\angie\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\angie\\OneDrive\\Escritorio\\Aprendiendo_C-\\Juego\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Alumno\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\angie\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,7 +22,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -70,7 +65,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     }
