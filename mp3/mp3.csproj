@@ -89,5 +89,11 @@
   <ItemGroup>
     <None Include="Resources\DefaultImage.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Diseño sin título %2856%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Diseño sin título %2855%29.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

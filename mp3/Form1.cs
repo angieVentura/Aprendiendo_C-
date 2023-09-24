@@ -27,7 +27,8 @@ namespace mp3
 
         [DllImport("kernel32.dll")]
         public static extern int GetLongPathName(string lpszShortPath, StringBuilder lpszLongPath, int cchBuffer);
-   
+
+
         const int MAX_PATH = 260;
         const string Tipo = "MPEGVIDEO";
         const string sAlias = "ArchivoDeSonido";
@@ -76,12 +77,34 @@ namespace mp3
                 CrearCancionesEnPanel();
             }
         }
+        private Color botonBackColor;
+        private ImageLayout botonBackgroundImageLayout;
+        private FlatStyle botonFlatStyle;
+        private void Play_Config(System.Drawing.Image img)
+        {
+            // Guarda las configuraciones originales
+            botonBackColor = Play.BackColor;
+            botonBackgroundImageLayout = Play.BackgroundImageLayout;
+            botonFlatStyle = Play.FlatStyle;
+
+            // Aplica las nuevas configuraciones
+            Play.Image = new Bitmap(img, new Size(39, 39));
+            Play.BackgroundImageLayout = ImageLayout.Center;
+            Play.FlatStyle = FlatStyle.Flat;
+        }
 
         private void Play_Click_1(object sender, EventArgs e)
         {
             if (songActual != null)
             {
-                if (EstadoPausado()) { Continuar(); } else { Pausar(); }
+                if (EstadoPausado()) {
+                    Continuar();
+                    Play_Config(Properties.Resources.Diseño_sin_título__56_);
+                } else { 
+                    Pausar();
+
+                    Play_Config(Properties.Resources.Diseño_sin_título__55_);
+                }
             }
         }
 
@@ -100,9 +123,10 @@ namespace mp3
                     Label label = new Label();
                     Label duracion = new Label();
 
-                    //Para le panel
-                    panel.Size = new Size(192, 40);
-                    panel.BackColor = Color.Red;
+                    //Para el panel
+                    panel.Size = new Size(236, 45);
+                    panel.BackColor = Color.FromArgb(09,21,52);
+                    //panel.BackColor = Color.Red;
                     panel.Dock = DockStyle.Top;
                     panel.Padding = new Padding(0, 0, 8, 0);
                     panel.Tag = song;
@@ -113,25 +137,33 @@ namespace mp3
                     panel.Controls.Add(duracion);
 
                     //Para la imagen
-                    pictureBox.Dock = DockStyle.Left;
+                    //pictureBox.Dock = DockStyle.Left;
+                    pictureBox.Location = new Point(9,5);
                     pictureBox.Size = new Size(35, 35);
                     pictureBox.Image = new Bitmap(song.CoverImage, nuevo);
+                    pictureBox.Tag = song;
 
                     //Para el nombre de la cancion
-                    label.Size = new Size(100, 20);
+                    label.Size = new Size(130, 20);
                     label.Text = song.Title;
-                    label.Location = new Point(38, 7);
+                    label.Tag = song;
+                    label.Location = new Point(49,7);
+                    label.ForeColor = Color.White;
 
                     //Para la duracion de la cancion
-
                     duracion.Text = song.Duration;
                     duracion.TextAlign = ContentAlignment.MiddleRight;
-                    //duracion.Text = "78:02:02";
                     duracion.Size = new Size(50, 15);
-                    duracion.Dock = DockStyle.Right;
+                    //duracion.Dock = DockStyle.Right;
+                    duracion.Location = new Point(164,16);
+                    duracion.Tag = song;
+                    duracion.ForeColor = Color.White;
 
                     PlayListFlow.Controls.Add(panel);
                     panel.Click += panel_Click;
+                    pictureBox.Click += panel_Click;
+                    label.Click += panel_Click;
+                    duracion.Click += panel_Click;
                 }
 
                 //Aca en el caso de que si se active el scroll
@@ -141,9 +173,10 @@ namespace mp3
 
         private void panel_Click(object sender, EventArgs e)
         {
-            if (sender is Panel panel)
+            reproductorEstado.Text = "Se dio click";
+            if (sender is Control control)
             {
-                if (panel.Tag is SongInfo song)
+                if (control.Tag is SongInfo song)
                 {
                     Image imagen = song.CoverImage;
 
@@ -153,13 +186,13 @@ namespace mp3
                     tituloCancion.AutoEllipsis = true;
                     tituloCancion.Text = song.Title;
                     tituloCancion.Location = new Point((contenedorTitulo.Width - tituloCancion.Width) / 2, (contenedorTitulo.Height - tituloCancion.Height) / 2);
-
                     songActual = song;
                     fileName = songActual.FilePath;
                     Cerrar();
                     Reproducir();
                     trackBarTiempo.Maximum = DuracionCancion(songActual);
                     duracionTotal.Text = song.Duration;
+                    Play_Config(Properties.Resources.Diseño_sin_título__56_);
                 }
             }
         }
@@ -489,6 +522,28 @@ namespace mp3
             }
 
         }
+
+        private void volumen_ValueChanged()
+        {
+            int Volumen = volumen.Value; // Obtén el valor del control de volumen
+
+            // Asegúrate de que el valor esté dentro del rango de 0 a 1000
+            Volumen = Math.Max(0, Math.Min(Volumen, 1000));
+
+            // Construye el comando MCI para establecer el volumen
+            string command = $"setaudio {sAlias} volume to {Volumen}";
+
+            // Llama a mciSendString para ajustar el volumen
+            int result = mciSendString(command, null, 0, 0);
+
+            if (result != 0)
+            {
+                // Maneja cualquier error que pueda ocurrir al ajustar el volumen
+                string errorMessage = MciMensajesDeError(result);
+                MessageBox.Show($"Error al ajustar el volumen: {errorMessage}");
+            }
+        }
+
     }
     //Fuera de form
     public class SongInfo
