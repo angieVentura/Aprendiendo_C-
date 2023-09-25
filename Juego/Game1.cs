@@ -93,7 +93,6 @@ namespace Juego
 
         public Game1()
         {
-            //pantalla de 800 x 600
             _graphics = new GraphicsDeviceManager(this);
 
             this._graphics.PreferredBackBufferWidth = 800;
@@ -119,7 +118,6 @@ namespace Juego
             caminarAnimation = new Animation(pinguinoSprites, 144, 144, 6, 100, 0, false, 0);
             waitAnimation = new Animation(pinguinoSprites, 144, 144, 4, 1000, 3, false, 0);
             caminarAnimationL = new Animation(pinguinoSprites, 144, 144, 6, 100, 0, true, 0);
-            //new Rectangle(20, 208, 16, 16)
             pisoHielo = new Animation(piso, 16, 16, 1, 1, 16, false, 16);
             for (int i = 0; i < 25; i++)
             {
@@ -150,15 +148,14 @@ namespace Juego
                 currentAnimation = caminarAnimationL;
                 posFotograma.X -= 1;
             }
+            else if (Keyboard.GetState().IsKeyDown(Keys.Up) && jugadorEnElSuelo)
+            {
+                velocidadPinguino.Y = -10.0f; // Valocidad con la que sube, luego quiero ajustarla
+            }
             else
             {
                 currentPinguinoAnimation = PinguinoAnimation.Wait;
                 currentAnimation = waitAnimation;
-            }
-
-            if (Keyboard.GetState().IsKeyDown(Keys.Up) && jugadorEnElSuelo)
-            {
-                velocidadPinguino.Y = -10.0f; // Valocidad con la que sube, luego quiero ajustarla
             }
 
             velocidadPinguino.Y += gravedad;
@@ -198,6 +195,7 @@ namespace Juego
             _spriteBatch.Draw(fondoC3, new Vector2(0, 124), fondoRec, Color.White, 0f, Vector2.Zero, escalaFondos, SpriteEffects.None, 0f);
             _spriteBatch.Draw(fondoC4, new Vector2(0, 124), fondoRec, Color.White, 0f, Vector2.Zero, escalaFondos, SpriteEffects.None, 0f);
 
+            //Elemento de la matriz 
             foreach (var elemento in elementos)
             {
                 elemento.Animacion.Draw(_spriteBatch, elemento.Posicion, Color.White, 2.0f);
