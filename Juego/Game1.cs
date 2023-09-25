@@ -109,14 +109,15 @@ namespace Juego
                 currentAnimation = caminarAnimationL;
                 posFotograma.X -= 1;
             }
-            else if (Keyboard.GetState().IsKeyDown(Keys.Up) && jugadorEnElSuelo)
-            {
-                velocidadPinguino.Y = -10.0f; // Valocidad con la que sube, luego quiero ajustarla
-            }
             else
             {
                 currentPinguinoAnimation = PinguinoAnimation.Wait;
                 currentAnimation = waitAnimation;
+            }
+
+            if (Keyboard.GetState().IsKeyDown(Keys.Up) && jugadorEnElSuelo)
+            {
+                velocidadPinguino.Y = -10.0f; // Valocidad con la que sube, luego quiero ajustarla
             }
 
             velocidadPinguino.Y += gravedad;
