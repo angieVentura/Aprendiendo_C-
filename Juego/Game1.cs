@@ -5,16 +5,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 
+
 namespace Juego
 {
     public class Animation
     {
         private Texture2D texture;
-        private int frameWidth,frameHeight, frameCount, currentFrame, row;
+        private int frameWidth, frameHeight, frameCount, currentFrame, row, x;
         private float frameTime, timer;
         private bool left;
 
-        public Animation(Texture2D texture, int frameWidth, int frameHeight, int frameCount, float frameTime, int row, bool left)
+        public Animation(Texture2D texture, int frameWidth, int frameHeight, int frameCount, float frameTime, int row, bool left, int x)
         {
             this.texture = texture;
             this.frameWidth = frameWidth;
@@ -25,7 +26,7 @@ namespace Juego
             this.currentFrame = 0;
             this.row = row;
             this.left = left;
-            
+            this.x = x;
         }
 
         public void Update(GameTime gameTime)
@@ -41,9 +42,9 @@ namespace Juego
 
         public void Draw(SpriteBatch spriteBatch, Vector2 position, Color color, float scale)
         {
-         
-            Rectangle sourceRectangle = new Rectangle(currentFrame * frameWidth, row * frameHeight, frameWidth, frameHeight);
-            spriteBatch.Draw(texture, position , sourceRectangle, color, 0f, Vector2.Zero, scale, left ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0f);
+
+            Rectangle sourceRectangle = new Rectangle(x + (currentFrame * frameWidth), row * frameHeight, frameWidth, frameHeight);
+            spriteBatch.Draw(texture, position, sourceRectangle, color, 0f, Vector2.Zero, scale, left ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0f);
         }
     }
 
@@ -52,12 +53,14 @@ namespace Juego
         public string Tipo { get; set; }
         public Vector2 Posicion { get; set; }
         public Vector2 Tamano { get; set; }
+        public Animation Animacion { get; set; }
 
-        public Elemento(string tipo, Vector2 posicion, Vector2 tamano)
+        public Elemento(string tipo, Vector2 posicion, Vector2 tamano, Animation animacion)
         {
             Tipo = tipo;
             Posicion = posicion;
             Tamano = tamano;
+            Animacion = animacion;
         }
     }
 
@@ -68,8 +71,12 @@ namespace Juego
         private SpriteBatch _spriteBatch;
         Texture2D piso, fondoC1, fondoC2, fondoC3, fondoC4, pinguinoSprites, pinguinoPrueba, FondoP;
         List<Elemento> elementos = new List<Elemento>();
-        Vector2 posFotograma = new Vector2(5, 400);
-
+        Vector2 posFotograma = new Vector2(5, 516);
+        int cantPiso = 0;
+        Vector2 velocidadPinguino = Vector2.Zero;
+        float gravedad = 0.5f;
+        int sueloY = 516;
+        bool jugadorEnElSuelo = true;
         public enum PinguinoAnimation
         {
             Caminar,
@@ -82,6 +89,7 @@ namespace Juego
         Animation caminarAnimation;
         Animation waitAnimation;
         Animation caminarAnimationL;
+        Animation pisoHielo;
 
         public Game1()
         {
@@ -90,24 +98,9 @@ namespace Juego
 
             this._graphics.PreferredBackBufferWidth = 800;
             this._graphics.PreferredBackBufferHeight = 600;
-
             Content.RootDirectory = "Content";
-
-            _graphics.IsFullScreen= true;
-
+            _graphics.IsFullScreen = true;
             IsMouseVisible = true;
-
-
-        }
-
-        protected override void Initialize()
-        {
-            base.Initialize();
-
-            for (int i = 0)
-            {
-
-            }
 
         }
 
@@ -123,9 +116,15 @@ namespace Juego
             pinguinoSprites = Content.Load<Texture2D>("pinguino/pinguino");
             pinguinoPrueba = Content.Load<Texture2D>("pinguino/pinguino");
             FondoP = Content.Load<Texture2D>("Fondo");
-            caminarAnimation = new Animation(pinguinoSprites,144, 144, 6, 100, 0, false);
-            waitAnimation = new Animation(pinguinoSprites, 144, 144, 4, 1000, 3, false);
-            caminarAnimationL = new Animation(pinguinoSprites, 144, 144, 6, 100, 0, true);
+            caminarAnimation = new Animation(pinguinoSprites, 144, 144, 6, 100, 0, false, 0);
+            waitAnimation = new Animation(pinguinoSprites, 144, 144, 4, 1000, 3, false, 0);
+            caminarAnimationL = new Animation(pinguinoSprites, 144, 144, 6, 100, 0, true, 0);
+            //new Rectangle(20, 208, 16, 16)
+            pisoHielo = new Animation(piso, 16, 16, 1, 1, 16, false, 16);
+            for (int i = 0; i < 25; i++)
+            {
+                elementos.Add(new Elemento("Plataforma", new Vector2(i * 32, 568), new Vector2(100, 20), pisoHielo));
+            }
 
         }
 
@@ -133,6 +132,11 @@ namespace Juego
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
+
+            foreach (var elemento in elementos)
+            {
+                elemento.Animacion.Update(gameTime);
+            }
 
             if (Keyboard.GetState().IsKeyDown(Keys.Right))
             {
@@ -152,8 +156,26 @@ namespace Juego
                 currentAnimation = waitAnimation;
             }
 
-            currentAnimation.Update(gameTime);
+            if (Keyboard.GetState().IsKeyDown(Keys.Up) && jugadorEnElSuelo)
+            {
+                velocidadPinguino.Y = -10.0f; // Valocidad con la que sube, luego quiero ajustarla
+            }
 
+            velocidadPinguino.Y += gravedad;
+            posFotograma.Y += velocidadPinguino.Y;
+
+            // Verificar si el lokito esta en el suelo
+            if (posFotograma.Y >= sueloY)
+            {
+                posFotograma.Y = sueloY; // Para que el lokito no se vaya a la estratosfera
+                velocidadPinguino.Y = 0.0f; // No velocidad vertical 
+                jugadorEnElSuelo = true;
+            }
+            else
+            {
+                jugadorEnElSuelo = false;
+            }
+            currentAnimation.Update(gameTime);
             base.Update(gameTime);
         }
 
@@ -172,23 +194,21 @@ namespace Juego
             //Fondo
             Rectangle fondoRec = new Rectangle(0, 0, 380, 225);
             _spriteBatch.Draw(fondoC1, new Vector2(0, 0), fondoRec, Color.White, 0f, Vector2.Zero, escalaFondos, SpriteEffects.None, 0f);
-            _spriteBatch.Draw(fondoC2, new Vector2(0, 0), fondoRec, Color.White, 0f, Vector2.Zero, escalaFondos, SpriteEffects.None, 0f);
-            _spriteBatch.Draw(fondoC3, new Vector2(0, 0), fondoRec, Color.White, 0f, Vector2.Zero, escalaFondos, SpriteEffects.None, 0f);
-            _spriteBatch.Draw(fondoC4, new Vector2(0, 0), fondoRec, Color.White, 0f, Vector2.Zero, escalaFondos, SpriteEffects.None, 0f);
+            _spriteBatch.Draw(fondoC2, new Vector2(0, 124), fondoRec, Color.White, 0f, Vector2.Zero, escalaFondos, SpriteEffects.None, 0f);
+            _spriteBatch.Draw(fondoC3, new Vector2(0, 124), fondoRec, Color.White, 0f, Vector2.Zero, escalaFondos, SpriteEffects.None, 0f);
+            _spriteBatch.Draw(fondoC4, new Vector2(0, 124), fondoRec, Color.White, 0f, Vector2.Zero, escalaFondos, SpriteEffects.None, 0f);
 
-            /*var positionsToDraw = from i in Enumerable.Range(0, 10) from j in Enumerable.Range(0, 25) where escenario[i, j] == 1 select new Vector2(j * 32, i * 50);
-
-            foreach (var position in positionsToDraw)
+            foreach (var elemento in elementos)
             {
-                Rectangle pisoNieve = new Rectangle(20, 208, 16, 16);
-                _spriteBatch.Draw(piso, position, pisoNieve, Color.White, 0f, Vector2.Zero, escalaPiso, SpriteEffects.None, 0f);
-            }*/
+                elemento.Animacion.Draw(_spriteBatch, elemento.Posicion, Color.White, 2.0f);
+            }
 
             //Personajes
-            currentAnimation.Draw(_spriteBatch, posFotograma,  Color.White, 0.37f );
-            _spriteBatch.End(); 
+            currentAnimation.Draw(_spriteBatch, posFotograma, Color.White, 0.37f);
+            _spriteBatch.End();
 
             base.Draw(gameTime);
         }
+
     }
 }
