@@ -1,0 +1,11 @@
+C:\Users\Alumno\Desktop\prueba06.10.23\prueba06.10.23\bin\Debug\prueba06.10.23.exe.config
+C:\Users\Alumno\Desktop\prueba06.10.23\prueba06.10.23\bin\Debug\prueba06.10.23.exe
+C:\Users\Alumno\Desktop\prueba06.10.23\prueba06.10.23\bin\Debug\prueba06.10.23.pdb
+C:\Users\Alumno\Desktop\prueba06.10.23\prueba06.10.23\obj\Debug\prueba06.10.23.csproj.AssemblyReference.cache
+C:\Users\Alumno\Desktop\prueba06.10.23\prueba06.10.23\obj\Debug\prueba06.10.23.csproj.SuggestedBindingRedirects.cache
+C:\Users\Alumno\Desktop\prueba06.10.23\prueba06.10.23\obj\Debug\prueba06._10._23.Form1.resources
+C:\Users\Alumno\Desktop\prueba06.10.23\prueba06.10.23\obj\Debug\prueba06._10._23.Properties.Resources.resources
+C:\Users\Alumno\Desktop\prueba06.10.23\prueba06.10.23\obj\Debug\prueba06.10.23.csproj.GenerateResource.cache
+C:\Users\Alumno\Desktop\prueba06.10.23\prueba06.10.23\obj\Debug\prueba06.10.23.csproj.CoreCompileInputs.cache
+C:\Users\Alumno\Desktop\prueba06.10.23\prueba06.10.23\obj\Debug\prueba06.10.23.exe
+C:\Users\Alumno\Desktop\prueba06.10.23\prueba06.10.23\obj\Debug\prueba06.10.23.pdb
