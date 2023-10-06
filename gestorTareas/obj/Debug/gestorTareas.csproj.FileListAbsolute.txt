@@ -1,0 +1,11 @@
+C:\Users\angie\OneDrive\Escritorio\gestorTareas\bin\Debug\gestorTareas.exe.config
+C:\Users\angie\OneDrive\Escritorio\gestorTareas\bin\Debug\gestorTareas.exe
+C:\Users\angie\OneDrive\Escritorio\gestorTareas\bin\Debug\gestorTareas.pdb
+C:\Users\angie\OneDrive\Escritorio\gestorTareas\obj\Debug\gestorTareas.csproj.AssemblyReference.cache
+C:\Users\angie\OneDrive\Escritorio\gestorTareas\obj\Debug\gestorTareas.csproj.SuggestedBindingRedirects.cache
+C:\Users\angie\OneDrive\Escritorio\gestorTareas\obj\Debug\gestorTareas.Form1.resources
+C:\Users\angie\OneDrive\Escritorio\gestorTareas\obj\Debug\gestorTareas.Properties.Resources.resources
+C:\Users\angie\OneDrive\Escritorio\gestorTareas\obj\Debug\gestorTareas.csproj.GenerateResource.cache
+C:\Users\angie\OneDrive\Escritorio\gestorTareas\obj\Debug\gestorTareas.csproj.CoreCompileInputs.cache
+C:\Users\angie\OneDrive\Escritorio\gestorTareas\obj\Debug\gestorTareas.exe
+C:\Users\angie\OneDrive\Escritorio\gestorTareas\obj\Debug\gestorTareas.pdb

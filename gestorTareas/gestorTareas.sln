@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gestorTareas", "gestorTareas.csproj", "{BB848952-15C9-4ACE-BCE5-1607A16BFA3D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BB848952-15C9-4ACE-BCE5-1607A16BFA3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB848952-15C9-4ACE-BCE5-1607A16BFA3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB848952-15C9-4ACE-BCE5-1607A16BFA3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB848952-15C9-4ACE-BCE5-1607A16BFA3D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FBE361E5-9CBC-4F0A-99B6-71BC409EC156}
+	EndGlobalSection
+EndGlobal
