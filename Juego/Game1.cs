@@ -16,11 +16,11 @@ namespace Juego
         private SpriteBatch _spriteBatch;
         Texture2D piso, fondoC1, fondoC2, fondoC3, fondoC4, pinguinoSprites, pinguinoPrueba, FondoP;
         List<Elemento> elementos = new List<Elemento>();
-        Vector2 posFotograma = new Vector2(5, 516);
+        Vector2 posFotograma = new Vector2(5, 528);
         int cantPiso = 0;
         Vector2 velocidadPinguino = Vector2.Zero;
         float gravedad = 0.5f;
-        int sueloY = 516;
+        int sueloY = 528;
         bool jugadorEnElSuelo = true;
         bool activarSalto = false;
         bool left = false;
@@ -62,8 +62,8 @@ namespace Juego
             this._graphics.PreferredBackBufferWidth = 800;
             this._graphics.PreferredBackBufferHeight = 600;
             Content.RootDirectory = "Content";
-            _graphics.IsFullScreen = true;
-            IsMouseVisible = true;
+            _graphics.IsFullScreen = false;
+            IsMouseVisible = false;
         }
 
         protected override void LoadContent()
@@ -92,12 +92,11 @@ namespace Juego
             bendL = new Animation(pinguinoSprites, 144, 144, 1, 1000, 8, true, 1);
             //Escena
             pisoHielo = new Animation(piso, 16, 16, 1, 1, 16, false, 1);
-            for (int i = 0; i < 25; i++)
+            for (int i = 0; i < 20; i++)
             {
-                elementos.Add(new Elemento("Plataforma", new Vector2(i * 32, 568), pisoHielo.frameHeight, pisoHielo.frameWidth, pisoHielo));
+                elementos.Add(new Elemento("Plataforma", new Vector2((i+5) * 32, 568), pisoHielo.frameHeight, pisoHielo.frameWidth, pisoHielo));
             }
-            elementos.Add(new Elemento("Plataforma", new Vector2(10*32, 536), pisoHielo.frameHeight, pisoHielo.frameWidth, pisoHielo));
-            elementos.Add(new Elemento("Plataforma", new Vector2(11*32, 536), pisoHielo.frameHeight, pisoHielo.frameWidth, pisoHielo));
+            elementos.Add(new Elemento("Plataforma", new Vector2(10 * 32, 536), pisoHielo.frameHeight, pisoHielo.frameWidth, pisoHielo));
         }
 
         protected override void Update(GameTime gameTime)
@@ -110,17 +109,22 @@ namespace Juego
                 elemento.Animacion.Update(gameTime);
             }
 
-            Rectangle pinguinoRect = new Rectangle((int)posFotograma.X, (int)posFotograma.Y, caminarAnimation.frameWidth, caminarAnimation.frameHeight);
+            Rectangle pinguinoRect = new Rectangle((int)posFotograma.X, (int)posFotograma.Y, 54, 54);
 
             // Verifica colisiones con las plataformas
             foreach (var plataforma in elementos.Where(e => e.Tipo == "Plataforma"))
             {
+                
                 Rectangle plataformaRect = new Rectangle((int)plataforma.Posicion.X, (int)plataforma.Posicion.Y, (int)plataforma.Width, (int)plataforma.Height);
 
                 if (IsColliding(pinguinoRect, plataformaRect))
                 {
-                    posFotograma.Y = plataformaRect.Y - caminarAnimation.frameHeight ;
+                    float posX = plataformaRect.X;
+                    posFotograma.Y = plataformaRect.Y - 54;
                     float posLol = posFotograma.Y;
+                    float posPlatRect = plataformaRect.Y;
+                    float AnimaPing = caminarAnimation.frameHeight;
+
                     jugadorEnElSuelo = true;
                     velocidadPinguino.Y = 0;
                     break;
@@ -215,10 +219,8 @@ namespace Juego
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
             //Escena
-            Vector2 escalaPiso = new Vector2(2.0f, 2.0f);
             Vector2 escalaFondos = new Vector2(2.11f, 2.11f);
             //Personajes
-            Vector2 escalaPinguinos = new Vector2(0.3f, 0.3f);
             //Debug
             Color backgroundColor = Color.Red;
 
