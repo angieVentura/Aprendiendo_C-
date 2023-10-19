@@ -1,10 +1,11 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
-
+using System.Threading;
 
 namespace Juego
 {
@@ -21,19 +22,38 @@ namespace Juego
         float gravedad = 0.5f;
         int sueloY = 516;
         bool jugadorEnElSuelo = true;
+        bool activarSalto = false;
+        bool left = false;
         public enum PinguinoAnimation
         {
             Caminar,
-            Saltar,
+            Jump,
+            VerticalJump,
+            Bend,
             Wait
         }
+
+        public enum Elementos
+        {
+            Plataforma,
+            Decoracion
+        }
+
+        bool estaAgachado = false;
 
         PinguinoAnimation currentPinguinoAnimation;
         Animation currentAnimation;
         Animation caminarAnimation;
-        Animation waitAnimation;
         Animation caminarAnimationL;
+        Animation waitAnimation;
+        Animation waitAnimationL;
         Animation pisoHielo;
+        Animation jump;
+        Animation jumpL;
+        Animation bend;
+        Animation bendL;
+        Animation verticalJump;
+        Animation verticalJumpL;
 
         public Game1()
         {
@@ -44,7 +64,6 @@ namespace Juego
             Content.RootDirectory = "Content";
             _graphics.IsFullScreen = true;
             IsMouseVisible = true;
-
         }
 
         protected override void LoadContent()
@@ -56,18 +75,29 @@ namespace Juego
             fondoC2 = Content.Load<Texture2D>("glacial_mountains");
             fondoC3 = Content.Load<Texture2D>("clouds_mg_2");
             fondoC4 = Content.Load<Texture2D>("clouds_mg_1");
-            pinguinoSprites = Content.Load<Texture2D>("pinguino/pinguino");
+            pinguinoSprites = Content.Load<Texture2D>("pinguino/pinguino" );
             pinguinoPrueba = Content.Load<Texture2D>("pinguino/pinguino");
             FondoP = Content.Load<Texture2D>("Fondo");
+
+            //Pinguino1
             caminarAnimation = new Animation(pinguinoSprites, 144, 144, 6, 100, 0, false, 0);
-            waitAnimation = new Animation(pinguinoSprites, 144, 144, 4, 1000, 3, false, 0);
             caminarAnimationL = new Animation(pinguinoSprites, 144, 144, 6, 100, 0, true, 0);
-            pisoHielo = new Animation(piso, 16, 16, 1, 1, 16, false, 16);
+            waitAnimation = new Animation(pinguinoSprites, 144, 144, 8, 450, 6, false, 0);
+            waitAnimationL = new Animation(pinguinoSprites, 144, 144, 8, 450, 6, true, 0);
+            jump = new Animation(pinguinoSprites, 144, 144, 8, 100, 8, false, 2);
+            jumpL = new Animation(pinguinoSprites, 144, 144, 8, 100, 8, true, 2);
+            verticalJump = new Animation(pinguinoSprites, 144, 144, 5, 150, 2, false, 1);
+            verticalJumpL = new Animation(pinguinoSprites, 144, 144, 5, 150, 2, true, 1);
+            bend = new Animation(pinguinoSprites, 144, 144, 1, 1000, 8, false, 1);
+            bendL = new Animation(pinguinoSprites, 144, 144, 1, 1000, 8, true, 1);
+            //Escena
+            pisoHielo = new Animation(piso, 16, 16, 1, 1, 16, false, 1);
             for (int i = 0; i < 25; i++)
             {
-                elementos.Add(new Elemento("Plataforma", new Vector2(i * 32, 568), new Vector2(100, 20), pisoHielo));
+                elementos.Add(new Elemento("Plataforma", new Vector2(i * 32, 568), pisoHielo.frameHeight, pisoHielo.frameWidth, pisoHielo));
             }
-
+            elementos.Add(new Elemento("Plataforma", new Vector2(10*32, 536), pisoHielo.frameHeight, pisoHielo.frameWidth, pisoHielo));
+            elementos.Add(new Elemento("Plataforma", new Vector2(11*32, 536), pisoHielo.frameHeight, pisoHielo.frameWidth, pisoHielo));
         }
 
         protected override void Update(GameTime gameTime)
@@ -80,27 +110,86 @@ namespace Juego
                 elemento.Animacion.Update(gameTime);
             }
 
-            if (Keyboard.GetState().IsKeyDown(Keys.Right))
+            Rectangle pinguinoRect = new Rectangle((int)posFotograma.X, (int)posFotograma.Y, caminarAnimation.frameWidth, caminarAnimation.frameHeight);
+
+            // Verifica colisiones con las plataformas
+            foreach (var plataforma in elementos.Where(e => e.Tipo == "Plataforma"))
             {
+                Rectangle plataformaRect = new Rectangle((int)plataforma.Posicion.X, (int)plataforma.Posicion.Y, (int)plataforma.Width, (int)plataforma.Height);
+
+                if (IsColliding(pinguinoRect, plataformaRect))
+                {
+                    posFotograma.Y = plataformaRect.Y - caminarAnimation.frameHeight ;
+                    float posLol = posFotograma.Y;
+                    jugadorEnElSuelo = true;
+                    velocidadPinguino.Y = 0;
+                    break;
+                }
+            }
+
+            if (Keyboard.GetState().IsKeyDown(Keys.Up) && activarSalto && Keyboard.GetState().IsKeyDown(Keys.Right) && jugadorEnElSuelo)
+            {
+                currentPinguinoAnimation = PinguinoAnimation.VerticalJump;
+                currentAnimation = verticalJump;
+                velocidadPinguino.Y = -10.0f;
+                posFotograma.X += 1;
+                activarSalto = false;
+            }
+            else if (Keyboard.GetState().IsKeyDown(Keys.Up) && activarSalto && Keyboard.GetState().IsKeyDown(Keys.Left) && jugadorEnElSuelo)
+            {
+                currentPinguinoAnimation = PinguinoAnimation.VerticalJump;
+                currentAnimation = verticalJumpL;
+                velocidadPinguino.Y = -10.0f;
+                posFotograma.X += 1;
+                activarSalto = false;
+            }
+            else if (Keyboard.GetState().IsKeyDown(Keys.Right))
+            {
+                left = false; 
                 currentPinguinoAnimation = PinguinoAnimation.Caminar;
                 currentAnimation = caminarAnimation;
                 posFotograma.X += 1;
+
+                if (Keyboard.GetState().IsKeyDown(Keys.Up) && jugadorEnElSuelo)
+                {
+                    currentPinguinoAnimation = PinguinoAnimation.VerticalJump;
+                    currentAnimation = verticalJump;
+                    velocidadPinguino.Y = -10.0f;
+                }
+
             }
-            else if (Keyboard.GetState().IsKeyDown(Keys.Left))
+            else if (Keyboard.GetState().IsKeyDown(Keys.Left) )
             {
+                left = true; 
                 currentPinguinoAnimation = PinguinoAnimation.Caminar;
                 currentAnimation = caminarAnimationL;
                 posFotograma.X -= 1;
+
+                if (Keyboard.GetState().IsKeyDown(Keys.Up) && jugadorEnElSuelo)
+                {
+                    currentPinguinoAnimation = PinguinoAnimation.VerticalJump;
+                    currentAnimation = verticalJumpL;
+                    velocidadPinguino.Y = -10.0f;
+                }
+
             }
-            else
+            else if (Keyboard.GetState().IsKeyDown(Keys.Up) && jugadorEnElSuelo)
+            {
+                currentPinguinoAnimation = PinguinoAnimation.Bend;
+                currentAnimation = !left? bend : bendL;
+                activarSalto = true;
+            } 
+            else if (Keyboard.GetState().IsKeyUp(Keys.Up) && activarSalto && jugadorEnElSuelo)
+            {
+                currentPinguinoAnimation = PinguinoAnimation.VerticalJump;
+                currentAnimation = !left ? verticalJump : verticalJumpL;
+                velocidadPinguino.Y = -10.0f;
+                activarSalto= false;
+            }
+            else if(!activarSalto && jugadorEnElSuelo)
             {
                 currentPinguinoAnimation = PinguinoAnimation.Wait;
-                currentAnimation = waitAnimation;
-            }
-
-            if (Keyboard.GetState().IsKeyDown(Keys.Up) && jugadorEnElSuelo)
-            {
-                velocidadPinguino.Y = -10.0f; // Valocidad con la que sube, luego quiero ajustarla
+                currentAnimation = !left? waitAnimation : waitAnimationL;              
             }
 
             velocidadPinguino.Y += gravedad;
@@ -117,6 +206,7 @@ namespace Juego
             {
                 jugadorEnElSuelo = false;
             }
+
             currentAnimation.Update(gameTime);
             base.Update(gameTime);
         }
@@ -153,5 +243,10 @@ namespace Juego
             base.Draw(gameTime);
         }
 
+
+        private bool IsColliding(Rectangle pinguinoRect, Rectangle plataformaRect)
+        {
+            return pinguinoRect.Intersects(plataformaRect);
+        }
     }
 }

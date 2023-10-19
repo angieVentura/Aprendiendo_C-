@@ -11,14 +11,16 @@ namespace Juego
     {
         public string Tipo { get; set; }
         public Vector2 Posicion { get; set; }
-        public Vector2 Tamano { get; set; }
+        public float Height { get; set; }
+        public float Width { get; set; }
         public Animation Animacion { get; set; }
 
-        public Elemento(string tipo, Vector2 posicion, Vector2 tamano, Animation animacion)
+        public Elemento(string tipo, Vector2 posicion, float height, float width, Animation animacion)
         {
             Tipo = tipo;
             Posicion = posicion;
-            Tamano = tamano;
+            Height = height; 
+            Width = width;
             Animacion = animacion;
         }
     }

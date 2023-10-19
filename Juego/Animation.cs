@@ -10,12 +10,12 @@ namespace Juego
 {
     public class Animation
     {
-        private Texture2D texture;
-        private int frameWidth, frameHeight, frameCount, currentFrame, row, x;
-        private float frameTime, timer;
-        private bool left;
+        public Texture2D texture;
+        public int frameWidth, frameHeight, frameCount, currentFrame, row, column;
+        public float frameTime, timer;
+        public bool left;
 
-        public Animation(Texture2D texture, int frameWidth, int frameHeight, int frameCount, float frameTime, int row, bool left, int x)
+        public Animation(Texture2D texture, int frameWidth, int frameHeight, int frameCount, float frameTime, int row, bool left, int column)
         {
             this.texture = texture;
             this.frameWidth = frameWidth;
@@ -26,7 +26,7 @@ namespace Juego
             this.currentFrame = 0;
             this.row = row;
             this.left = left;
-            this.x = x;
+            this.column = column;
         }
 
         public void Update(GameTime gameTime)
@@ -43,7 +43,7 @@ namespace Juego
         public void Draw(SpriteBatch spriteBatch, Vector2 position, Color color, float scale)
         {
 
-            Rectangle sourceRectangle = new Rectangle(x + (currentFrame * frameWidth), row * frameHeight, frameWidth, frameHeight);
+            Rectangle sourceRectangle = new Rectangle(( column + currentFrame) * frameWidth, row * frameHeight, frameWidth, frameHeight);
             spriteBatch.Draw(texture, position, sourceRectangle, color, 0f, Vector2.Zero, scale, left ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0f);
         }
     }
