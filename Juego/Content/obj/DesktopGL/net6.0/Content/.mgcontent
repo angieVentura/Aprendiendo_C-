@@ -4,6 +4,7 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
+    <File>C:/Users/Alumno/Desktop/Aprendiendo_C-/Juego/Content/arial.spritefont</File>
     <File>C:/Users/Alumno/Desktop/Aprendiendo_C-/Juego/Content/Basic Tiles Only.png</File>
     <File>C:/Users/Alumno/Desktop/Aprendiendo_C-/Juego/Content/Belly_Sliding (16 x 16).png</File>
     <File>C:/Users/Alumno/Desktop/Aprendiendo_C-/Juego/Content/Blink (16 x 16).png</File>
@@ -45,6 +46,7 @@
     <File>C:/Users/Alumno/Desktop/Aprendiendo_C-/Juego/Content/Waddling (16 x 16).png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

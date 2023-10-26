@@ -16,7 +16,10 @@ namespace Juego
         private SpriteBatch _spriteBatch;
         Texture2D piso, fondoC1, fondoC2, fondoC3, fondoC4, pinguinoSprites, pinguinoPrueba, FondoP;
         List<Elemento> elementos = new List<Elemento>();
-        Vector2 posFotograma = new Vector2(5, 528);
+        static Vector2 posFotograma = new Vector2(5, 528);
+
+        string pinPos = "";
+
         int cantPiso = 0;
         Vector2 velocidadPinguino = Vector2.Zero;
         float gravedad = 0.5f;
@@ -39,8 +42,6 @@ namespace Juego
             Decoracion
         }
 
-        bool estaAgachado = false;
-
         PinguinoAnimation currentPinguinoAnimation;
         Animation currentAnimation;
         Animation caminarAnimation;
@@ -54,6 +55,13 @@ namespace Juego
         Animation bendL;
         Animation verticalJump;
         Animation verticalJumpL;
+        Animation pisoLateralIzqSinNieve;
+        Animation pisoLateralDerSinNieve;
+        Animation pisoEsqSupIzqNieve;
+        Animation pisoEsqSupDerNieve;
+        Animation pisoMedio;
+        Animation pisoBordeSupHielo;
+        SpriteFont pinguinoPos;
 
         public Game1()
         {
@@ -63,7 +71,7 @@ namespace Juego
             this._graphics.PreferredBackBufferHeight = 600;
             Content.RootDirectory = "Content";
             _graphics.IsFullScreen = false;
-            IsMouseVisible = false;
+            IsMouseVisible = true;
         }
 
         protected override void LoadContent()
@@ -90,19 +98,42 @@ namespace Juego
             verticalJumpL = new Animation(pinguinoSprites, 144, 144, 5, 150, 2, true, 1);
             bend = new Animation(pinguinoSprites, 144, 144, 1, 1000, 8, false, 1);
             bendL = new Animation(pinguinoSprites, 144, 144, 1, 1000, 8, true, 1);
-            //Escena
+            //Escena--------------------------------------------------------------------------------------------------------------------------------
+            //Piso por defecto
             pisoHielo = new Animation(piso, 16, 16, 1, 1, 16, false, 1);
-            for (int i = 0; i < 20; i++)
+            //Bloques de nieve
+            pisoLateralIzqSinNieve = new Animation(piso, 16, 16, 1, 1, 14, false, 0);
+            pisoLateralDerSinNieve = new Animation(piso, 16, 16, 1, 1, 14, false, 2);
+            pisoEsqSupIzqNieve = new Animation(piso, 16, 16, 1, 1, 13, false, 0);
+            pisoEsqSupDerNieve = new Animation(piso, 16, 16, 1, 1, 13, false, 2);
+            pisoMedio = new Animation(piso, 16, 16, 1, 1 ,14, false, 1);
+            pisoBordeSupHielo = new Animation(piso, 16, 16, 1, 1, 13, false, 1);
+
+            //Carga de elementos Piso por defecto y Bloques de piso
+            for (int i = 0; i < 25; i++)
             {
-                elementos.Add(new Elemento("Plataforma", new Vector2((i+5) * 32, 568), pisoHielo.frameHeight, pisoHielo.frameWidth, pisoHielo));
+                elementos.Add(new Elemento("Plataforma", new Vector2(i * 32, 568), pisoHielo.frameHeight, pisoHielo.frameWidth, pisoHielo));
             }
-            elementos.Add(new Elemento("Plataforma", new Vector2(10 * 32, 536), pisoHielo.frameHeight, pisoHielo.frameWidth, pisoHielo));
+            
+            //Esto es un bloque tipo |-|
+            elementos.Add(new Elemento("Plataforma", new Vector2(16 * 32, 536), pisoHielo.frameHeight, pisoHielo.frameWidth, pisoLateralIzqSinNieve));           
+            elementos.Add(new Elemento("Plataforma", new Vector2(18 * 32, 536), pisoHielo.frameHeight, pisoHielo.frameWidth, pisoLateralDerSinNieve));           
+            elementos.Add(new Elemento("Plataforma", new Vector2(16 * 32, 536 - 32), pisoHielo.frameHeight, pisoHielo.frameWidth, pisoEsqSupIzqNieve));
+            elementos.Add(new Elemento("Plataforma", new Vector2(18 * 32, 536 - 32), pisoHielo.frameHeight, pisoHielo.frameWidth, pisoEsqSupDerNieve));
+            elementos.Add(new Elemento("Plataforma", new Vector2(17 * 32, 536), pisoHielo.frameHeight, pisoHielo.frameWidth, pisoMedio));
+            elementos.Add(new Elemento("Plataforma", new Vector2(17 * 32, 536 - 32), pisoHielo.frameHeight, pisoHielo.frameWidth, pisoBordeSupHielo));
+
+
+
+            pinguinoPos = Content.Load<SpriteFont>("arial");
         }
 
         protected override void Update(GameTime gameTime)
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
+
+            pinPos = $"PinguinoX: {posFotograma.X} PinguinoY: {posFotograma.Y}";
 
             foreach (var elemento in elementos)
             {
@@ -240,7 +271,10 @@ namespace Juego
 
             //Personajes
             currentAnimation.Draw(_spriteBatch, posFotograma, Color.White, 0.37f);
+            _spriteBatch.DrawString(pinguinoPos, pinPos, new Vector2(10, 10), Color.White);
             _spriteBatch.End();
+
+            
 
             base.Draw(gameTime);
         }

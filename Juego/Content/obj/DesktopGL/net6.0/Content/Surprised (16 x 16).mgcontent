@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <SourceFile>C:/Users/Alumno/Desktop/Aprendiendo_C-/Juego/Content/Surprised (16 x 16).png</SourceFile>
-  <SourceTime>2023-10-19T14:04:13.2740676-03:00</SourceTime>
+  <SourceTime>2023-10-26T14:15:20.7408323-03:00</SourceTime>
   <DestFile>C:/Users/Alumno/Desktop/Aprendiendo_C-/Juego/Content/bin/DesktopGL/Content/Surprised (16 x 16).xnb</DestFile>
-  <DestTime>2023-10-19T14:09:53.2057203-03:00</DestTime>
+  <DestTime>2023-10-26T14:33:34.367733-03:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2022-07-26T08:44:56-03:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
