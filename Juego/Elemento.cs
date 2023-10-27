@@ -9,13 +9,13 @@ namespace Juego
 {
     public class Elemento
     {
-        public string Tipo { get; set; }
+        public Elementos Tipo { get; set; }
         public Vector2 Posicion { get; set; }
         public float Height { get; set; }
         public float Width { get; set; }
         public Animation Animacion { get; set; }
 
-        public Elemento(string tipo, Vector2 posicion, float height, float width, Animation animacion)
+        public Elemento(Elementos tipo, Vector2 posicion, float height, float width, Animation animacion)
         {
             Tipo = tipo;
             Posicion = posicion;

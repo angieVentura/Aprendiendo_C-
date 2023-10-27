@@ -9,6 +9,13 @@ using System.Threading;
 
 namespace Juego
 {
+    public enum Elementos
+    {
+        Plataforma,
+        Decoracion,
+        PlataformaX,
+
+    }
     public class Game1 : Game
     {
         private GraphicsDeviceManager _graphics;
@@ -18,7 +25,8 @@ namespace Juego
         List<Elemento> elementos = new List<Elemento>();
         static Vector2 posFotograma = new Vector2(5, 528);
 
-        string pinPos = "";
+        string pinPos, pinRect, pinVelo = "";
+   
 
         int cantPiso = 0;
         Vector2 velocidadPinguino = Vector2.Zero;
@@ -36,11 +44,7 @@ namespace Juego
             Wait
         }
 
-        public enum Elementos
-        {
-            Plataforma,
-            Decoracion
-        }
+
 
         PinguinoAnimation currentPinguinoAnimation;
         Animation currentAnimation;
@@ -61,7 +65,11 @@ namespace Juego
         Animation pisoEsqSupDerNieve;
         Animation pisoMedio;
         Animation pisoBordeSupHielo;
+
         SpriteFont pinguinoPos;
+        SpriteFont plataFormaRect;
+        SpriteFont gravedadPinguino;
+        SpriteFont sueloPos;
 
         public Game1()
         {
@@ -112,20 +120,23 @@ namespace Juego
             //Carga de elementos Piso por defecto y Bloques de piso
             for (int i = 0; i < 25; i++)
             {
-                elementos.Add(new Elemento("Plataforma", new Vector2(i * 32, 568), pisoHielo.frameHeight, pisoHielo.frameWidth, pisoHielo));
+                elementos.Add(new Elemento(Elementos.Plataforma, new Vector2(i * 32, 568), pisoHielo.frameHeight, pisoHielo.frameWidth, pisoHielo));
             }
             
             //Esto es un bloque tipo |-|
-            elementos.Add(new Elemento("Plataforma", new Vector2(16 * 32, 536), pisoHielo.frameHeight, pisoHielo.frameWidth, pisoLateralIzqSinNieve));           
-            elementos.Add(new Elemento("Plataforma", new Vector2(18 * 32, 536), pisoHielo.frameHeight, pisoHielo.frameWidth, pisoLateralDerSinNieve));           
-            elementos.Add(new Elemento("Plataforma", new Vector2(16 * 32, 536 - 32), pisoHielo.frameHeight, pisoHielo.frameWidth, pisoEsqSupIzqNieve));
-            elementos.Add(new Elemento("Plataforma", new Vector2(18 * 32, 536 - 32), pisoHielo.frameHeight, pisoHielo.frameWidth, pisoEsqSupDerNieve));
-            elementos.Add(new Elemento("Plataforma", new Vector2(17 * 32, 536), pisoHielo.frameHeight, pisoHielo.frameWidth, pisoMedio));
-            elementos.Add(new Elemento("Plataforma", new Vector2(17 * 32, 536 - 32), pisoHielo.frameHeight, pisoHielo.frameWidth, pisoBordeSupHielo));
+            elementos.Add(new Elemento(Elementos.PlataformaX, new Vector2(16 * 32, 536), pisoHielo.frameHeight, pisoHielo.frameWidth, pisoLateralIzqSinNieve));           
+            elementos.Add(new Elemento(Elementos.PlataformaX, new Vector2(18 * 32, 536), pisoHielo.frameHeight, pisoHielo.frameWidth, pisoLateralDerSinNieve));           
+            elementos.Add(new Elemento(Elementos.Plataforma, new Vector2(16 * 32, 536 - 32), pisoHielo.frameHeight, pisoHielo.frameWidth, pisoEsqSupIzqNieve));
+            elementos.Add(new Elemento(Elementos.Plataforma, new Vector2(18 * 32, 536 - 32), pisoHielo.frameHeight, pisoHielo.frameWidth, pisoEsqSupDerNieve));
+            elementos.Add(new Elemento(Elementos.PlataformaX, new Vector2(17 * 32, 536), pisoHielo.frameHeight, pisoHielo.frameWidth, pisoMedio));
+            elementos.Add(new Elemento(Elementos.Plataforma, new Vector2(17 * 32, 536 - 32), pisoHielo.frameHeight, pisoHielo.frameWidth, pisoBordeSupHielo));
 
 
 
             pinguinoPos = Content.Load<SpriteFont>("arial");
+            plataFormaRect = Content.Load<SpriteFont>("arial");
+            gravedadPinguino = Content.Load<SpriteFont>("arial");
+            sueloPos = Content.Load<SpriteFont>("arial");
         }
 
         protected override void Update(GameTime gameTime)
@@ -134,6 +145,7 @@ namespace Juego
                 Exit();
 
             pinPos = $"PinguinoX: {posFotograma.X} PinguinoY: {posFotograma.Y}";
+            
 
             foreach (var elemento in elementos)
             {
@@ -143,22 +155,19 @@ namespace Juego
             Rectangle pinguinoRect = new Rectangle((int)posFotograma.X, (int)posFotograma.Y, 54, 54);
 
             // Verifica colisiones con las plataformas
-            foreach (var plataforma in elementos.Where(e => e.Tipo == "Plataforma"))
+            foreach (var plataforma in elementos.Where(e => e.Tipo == Elementos.Plataforma))
             {
                 
-                Rectangle plataformaRect = new Rectangle((int)plataforma.Posicion.X, (int)plataforma.Posicion.Y, (int)plataforma.Width, (int)plataforma.Height);
-
+                Rectangle plataformaRect = new Rectangle((int)plataforma.Posicion.X + 8, (int)plataforma.Posicion.Y, (int)plataforma.Width, (int)plataforma.Height);
+                pinRect = $"plataformaX: {plataformaRect.X} plataformaY: {plataformaRect.Y} plataformaWidth: {plataformaRect.Width} plataformaHeight:{plataformaRect.Height}";
                 if (IsColliding(pinguinoRect, plataformaRect))
                 {
-                    float posX = plataformaRect.X;
-                    posFotograma.Y = plataformaRect.Y - 54;
-                    float posLol = posFotograma.Y;
-                    float posPlatRect = plataformaRect.Y;
-                    float AnimaPing = caminarAnimation.frameHeight;
-
-                    jugadorEnElSuelo = true;
-                    velocidadPinguino.Y = 0;
-                    break;
+                   
+                        posFotograma.Y = plataformaRect.Y - 53;
+                        jugadorEnElSuelo = true;
+                        velocidadPinguino.Y = 0;
+                        break;
+                    
                 }
             }
 
@@ -167,7 +176,7 @@ namespace Juego
                 currentPinguinoAnimation = PinguinoAnimation.VerticalJump;
                 currentAnimation = verticalJump;
                 velocidadPinguino.Y = -10.0f;
-                posFotograma.X += 1;
+                posFotograma.X += 2;
                 activarSalto = false;
             }
             else if (Keyboard.GetState().IsKeyDown(Keys.Up) && activarSalto && Keyboard.GetState().IsKeyDown(Keys.Left) && jugadorEnElSuelo)
@@ -175,7 +184,7 @@ namespace Juego
                 currentPinguinoAnimation = PinguinoAnimation.VerticalJump;
                 currentAnimation = verticalJumpL;
                 velocidadPinguino.Y = -10.0f;
-                posFotograma.X += 1;
+                posFotograma.X += 2;
                 activarSalto = false;
             }
             else if (Keyboard.GetState().IsKeyDown(Keys.Right))
@@ -183,7 +192,7 @@ namespace Juego
                 left = false; 
                 currentPinguinoAnimation = PinguinoAnimation.Caminar;
                 currentAnimation = caminarAnimation;
-                posFotograma.X += 1;
+                posFotograma.X += 2;
 
                 if (Keyboard.GetState().IsKeyDown(Keys.Up) && jugadorEnElSuelo)
                 {
@@ -198,7 +207,7 @@ namespace Juego
                 left = true; 
                 currentPinguinoAnimation = PinguinoAnimation.Caminar;
                 currentAnimation = caminarAnimationL;
-                posFotograma.X -= 1;
+                posFotograma.X -= 2;
 
                 if (Keyboard.GetState().IsKeyDown(Keys.Up) && jugadorEnElSuelo)
                 {
@@ -221,11 +230,13 @@ namespace Juego
                 velocidadPinguino.Y = -10.0f;
                 activarSalto= false;
             }
-            else if(!activarSalto && jugadorEnElSuelo)
+            else if(!activarSalto )
             {
                 currentPinguinoAnimation = PinguinoAnimation.Wait;
                 currentAnimation = !left? waitAnimation : waitAnimationL;              
             }
+
+            pinVelo = $"velocidadPin: {velocidadPinguino.X} Esta en el suelo: {jugadorEnElSuelo}";
 
             velocidadPinguino.Y += gravedad;
             posFotograma.Y += velocidadPinguino.Y;
@@ -241,6 +252,8 @@ namespace Juego
             {
                 jugadorEnElSuelo = false;
             }
+
+
 
             currentAnimation.Update(gameTime);
             base.Update(gameTime);
@@ -272,6 +285,7 @@ namespace Juego
             //Personajes
             currentAnimation.Draw(_spriteBatch, posFotograma, Color.White, 0.37f);
             _spriteBatch.DrawString(pinguinoPos, pinPos, new Vector2(10, 10), Color.White);
+            _spriteBatch.DrawString(plataFormaRect, pinRect, new Vector2(10, 30), Color.White);
             _spriteBatch.End();
 
             
