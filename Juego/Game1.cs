@@ -7,34 +7,34 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading;
 
+
 namespace Juego
 {
     public enum Elementos
     {
         Plataforma,
         Decoracion,
-        PlataformaX,
-
+        Muro,
     }
+
     public class Game1 : Game
     {
         private GraphicsDeviceManager _graphics;
 
         private SpriteBatch _spriteBatch;
-        Texture2D piso, fondoC1, fondoC2, fondoC3, fondoC4, pinguinoSprites, pinguinoPrueba, FondoP;
+        Texture2D piso, fondoC1, fondoC2, fondoC3, fondoC4, pinguinoSprites, decoracion;
         List<Elemento> elementos = new List<Elemento>();
-        static Vector2 posFotograma = new Vector2(5, 528);
+        static Vector2 posFotograma = new Vector2(5, 435);
 
-        string pinPos, pinRect, pinVelo = "";
-   
+        string pinPos, pinRect, pinVelo, colEnXB, colEnYB = "";
 
         int cantPiso = 0;
         Vector2 velocidadPinguino = Vector2.Zero;
         float gravedad = 0.5f;
-        int sueloY = 528;
+        int sueloY = 535;
         bool jugadorEnElSuelo = true;
-        bool activarSalto = false;
-        bool left = false;
+        bool activarSalto, left, bajando, muroColIzq, muroColDer = false;
+
         public enum PinguinoAnimation
         {
             Caminar,
@@ -44,32 +44,17 @@ namespace Juego
             Wait
         }
 
-
-
         PinguinoAnimation currentPinguinoAnimation;
-        Animation currentAnimation;
-        Animation caminarAnimation;
-        Animation caminarAnimationL;
-        Animation waitAnimation;
-        Animation waitAnimationL;
-        Animation pisoHielo;
-        Animation jump;
-        Animation jumpL;
-        Animation bend;
-        Animation bendL;
-        Animation verticalJump;
-        Animation verticalJumpL;
-        Animation pisoLateralIzqSinNieve;
-        Animation pisoLateralDerSinNieve;
-        Animation pisoEsqSupIzqNieve;
-        Animation pisoEsqSupDerNieve;
-        Animation pisoMedio;
-        Animation pisoBordeSupHielo;
+        Animation currentAnimation, caminarAnimation, caminarAnimationL, waitAnimation, waitAnimationL, pisoHielo, jump, jumpL, bend, bendL, verticalJump, verticalJumpL, pisoLateralIzqSinNieve, pisoLateralDerSinNieve, pisoEsqSupIzqNieve, pisoEsqSupDerNieve, pisoMedio, pisoBordeSupHielo, plataformaPiedra;
 
         SpriteFont pinguinoPos;
         SpriteFont plataFormaRect;
         SpriteFont gravedadPinguino;
         SpriteFont sueloPos;
+        SpriteFont colEnX;
+        SpriteFont colEnY;
+
+        Matrix viewMatrix;
 
         public Game1()
         {
@@ -80,6 +65,8 @@ namespace Juego
             Content.RootDirectory = "Content";
             _graphics.IsFullScreen = false;
             IsMouseVisible = true;
+
+
         }
 
         protected override void LoadContent()
@@ -91,9 +78,8 @@ namespace Juego
             fondoC2 = Content.Load<Texture2D>("glacial_mountains");
             fondoC3 = Content.Load<Texture2D>("clouds_mg_2");
             fondoC4 = Content.Load<Texture2D>("clouds_mg_1");
-            pinguinoSprites = Content.Load<Texture2D>("pinguino/pinguino" );
-            pinguinoPrueba = Content.Load<Texture2D>("pinguino/pinguino");
-            FondoP = Content.Load<Texture2D>("Fondo");
+            pinguinoSprites = Content.Load<Texture2D>("pinguino/pinguino");
+            decoracion = Content.Load<Texture2D>("decoracion");
 
             //Pinguino1
             caminarAnimation = new Animation(pinguinoSprites, 144, 144, 6, 100, 0, false, 0);
@@ -106,6 +92,7 @@ namespace Juego
             verticalJumpL = new Animation(pinguinoSprites, 144, 144, 5, 150, 2, true, 1);
             bend = new Animation(pinguinoSprites, 144, 144, 1, 1000, 8, false, 1);
             bendL = new Animation(pinguinoSprites, 144, 144, 1, 1000, 8, true, 1);
+
             //Escena--------------------------------------------------------------------------------------------------------------------------------
             //Piso por defecto
             pisoHielo = new Animation(piso, 16, 16, 1, 1, 16, false, 1);
@@ -114,22 +101,34 @@ namespace Juego
             pisoLateralDerSinNieve = new Animation(piso, 16, 16, 1, 1, 14, false, 2);
             pisoEsqSupIzqNieve = new Animation(piso, 16, 16, 1, 1, 13, false, 0);
             pisoEsqSupDerNieve = new Animation(piso, 16, 16, 1, 1, 13, false, 2);
-            pisoMedio = new Animation(piso, 16, 16, 1, 1 ,14, false, 1);
+            pisoMedio = new Animation(piso, 16, 16, 1, 1, 14, false, 1);
             pisoBordeSupHielo = new Animation(piso, 16, 16, 1, 1, 13, false, 1);
+            plataformaPiedra = new Animation(decoracion, 42 + 20, 8, 1, 1000, 0, false, 0);
 
             //Carga de elementos Piso por defecto y Bloques de piso
             for (int i = 0; i < 25; i++)
             {
-                elementos.Add(new Elemento(Elementos.Plataforma, new Vector2(i * 32, 568), pisoHielo.frameHeight, pisoHielo.frameWidth, pisoHielo));
+                elementos.Add(new Elemento(Elementos.Plataforma, new Vector2(i * 32, 568 - 16 * 5), pisoHielo.frameHeight, pisoHielo.frameWidth, pisoBordeSupHielo));
+                elementos.Add(new Elemento(Elementos.Decoracion, new Vector2(i * 32, 568 - 16 * 3), pisoHielo.frameHeight, pisoHielo.frameWidth, pisoMedio));
+                elementos.Add(new Elemento(Elementos.Decoracion, new Vector2(i * 32, 568 - 16), pisoHielo.frameHeight, pisoHielo.frameWidth, pisoMedio));
+                elementos.Add(new Elemento(Elementos.Decoracion, new Vector2(i * 32, 568), pisoHielo.frameHeight, pisoHielo.frameWidth, pisoMedio));
             }
-            
+
+            for (int i = 0; i < 25; i++)
+            {
+                elementos.Add(new Elemento(Elementos.Plataforma, new Vector2(25 * 32 + i * 32, 568), pisoHielo.frameHeight, pisoHielo.frameWidth, pisoBordeSupHielo));
+            }
+
             //Esto es un bloque tipo |-|
-            elementos.Add(new Elemento(Elementos.PlataformaX, new Vector2(16 * 32, 536), pisoHielo.frameHeight, pisoHielo.frameWidth, pisoLateralIzqSinNieve));           
-            elementos.Add(new Elemento(Elementos.PlataformaX, new Vector2(18 * 32, 536), pisoHielo.frameHeight, pisoHielo.frameWidth, pisoLateralDerSinNieve));           
-            elementos.Add(new Elemento(Elementos.Plataforma, new Vector2(16 * 32, 536 - 32), pisoHielo.frameHeight, pisoHielo.frameWidth, pisoEsqSupIzqNieve));
-            elementos.Add(new Elemento(Elementos.Plataforma, new Vector2(18 * 32, 536 - 32), pisoHielo.frameHeight, pisoHielo.frameWidth, pisoEsqSupDerNieve));
-            elementos.Add(new Elemento(Elementos.PlataformaX, new Vector2(17 * 32, 536), pisoHielo.frameHeight, pisoHielo.frameWidth, pisoMedio));
-            elementos.Add(new Elemento(Elementos.Plataforma, new Vector2(17 * 32, 536 - 32), pisoHielo.frameHeight, pisoHielo.frameWidth, pisoBordeSupHielo));
+            elementos.Add(new Elemento(Elementos.Muro, new Vector2(16 * 32, 536 - 16 * 5), pisoHielo.frameHeight, pisoHielo.frameWidth, pisoLateralIzqSinNieve));
+            elementos.Add(new Elemento(Elementos.Plataforma, new Vector2(16 * 32, 536 - 16 * 7), pisoHielo.frameHeight, pisoHielo.frameWidth, pisoEsqSupIzqNieve));
+            elementos.Add(new Elemento(Elementos.Muro, new Vector2(18 * 32, 536 - 16 * 5), pisoHielo.frameHeight, pisoHielo.frameWidth, pisoLateralDerSinNieve));
+            elementos.Add(new Elemento(Elementos.Plataforma, new Vector2(18 * 32, 536 - 16 * 7), pisoHielo.frameHeight, pisoHielo.frameWidth, pisoEsqSupDerNieve));
+            elementos.Add(new Elemento(Elementos.Decoracion, new Vector2(17 * 32, 536 - 16 * 5), pisoHielo.frameHeight, pisoHielo.frameWidth, pisoMedio));
+            elementos.Add(new Elemento(Elementos.Plataforma, new Vector2(17 * 32, 536 - 16 * 7), pisoHielo.frameHeight, pisoHielo.frameWidth, pisoBordeSupHielo));
+
+            //Plataforma
+            elementos.Add(new Elemento(Elementos.Plataforma, new Vector2(12 * 32, 536 - 16 * 11), plataformaPiedra.frameHeight, plataformaPiedra.frameWidth, plataformaPiedra));
 
 
 
@@ -137,6 +136,11 @@ namespace Juego
             plataFormaRect = Content.Load<SpriteFont>("arial");
             gravedadPinguino = Content.Load<SpriteFont>("arial");
             sueloPos = Content.Load<SpriteFont>("arial");
+            colEnX = Content.Load<SpriteFont>("arial");
+            colEnY = Content.Load<SpriteFont>("arial");
+
+            muroColDer = false;
+            muroColIzq = false;
         }
 
         protected override void Update(GameTime gameTime)
@@ -144,8 +148,16 @@ namespace Juego
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
+            colEnXB = $"NO col en X";
+
             pinPos = $"PinguinoX: {posFotograma.X} PinguinoY: {posFotograma.Y}";
-            
+
+            muroColDer = false;
+            muroColIzq = false;
+
+            // Calcula la matriz de vista para que la cámara siga al personaje
+            viewMatrix = Matrix.CreateTranslation(new Vector3(-posFotograma.X + GraphicsDevice.Viewport.Width / 2, -posFotograma.Y + 136 + GraphicsDevice.Viewport.Height / 2, 0));
+
 
             foreach (var elemento in elementos)
             {
@@ -154,24 +166,58 @@ namespace Juego
 
             Rectangle pinguinoRect = new Rectangle((int)posFotograma.X, (int)posFotograma.Y, 54, 54);
 
-            // Verifica colisiones con las plataformas
-            foreach (var plataforma in elementos.Where(e => e.Tipo == Elementos.Plataforma))
+            // Detectar colisiones con muros y ajustar la posición en el eje x si es necesario
+            foreach (var muro in elementos.Where(e => e.Tipo == Elementos.Muro))
             {
-                
-                Rectangle plataformaRect = new Rectangle((int)plataforma.Posicion.X + 8, (int)plataforma.Posicion.Y, (int)plataforma.Width, (int)plataforma.Height);
-                pinRect = $"plataformaX: {plataformaRect.X} plataformaY: {plataformaRect.Y} plataformaWidth: {plataformaRect.Width} plataformaHeight:{plataformaRect.Height}";
-                if (IsColliding(pinguinoRect, plataformaRect))
+                Rectangle muroRect = new Rectangle((int)muro.Posicion.X + 3, (int)muro.Posicion.Y, (int)muro.Width + 12, (int)muro.Height);
+
+                if (IsColliding(pinguinoRect, muroRect))
                 {
-                   
-                        posFotograma.Y = plataformaRect.Y - 53;
-                        jugadorEnElSuelo = true;
-                        velocidadPinguino.Y = 0;
-                        break;
-                    
+                    colEnXB = $"Col en X";
+
+                    if (pinguinoRect.X > muroRect.X)
+                    {
+                        muroColIzq = true;
+                    }
+                    else
+                    {
+                        muroColDer = true;
+                    }
                 }
             }
 
-            if (Keyboard.GetState().IsKeyDown(Keys.Up) && activarSalto && Keyboard.GetState().IsKeyDown(Keys.Right) && jugadorEnElSuelo)
+            // Verifica colisiones con las plataformas
+            foreach (var plataforma in elementos.Where(e => e.Tipo == Elementos.Plataforma))
+            {
+
+                Rectangle plataformaRect = new Rectangle((int)plataforma.Posicion.X + 10, (int)plataforma.Posicion.Y, (int)plataforma.Width, (int)plataforma.Height);
+                float puntoBajoPin = (int)posFotograma.Y + 40;
+                pinRect = $"plataformaX: {plataformaRect.X} plataformaY: {plataformaRect.Y} plataformaWidth: {plataformaRect.Width} plataformaHeight:{plataformaRect.Height} puntoBajo: {puntoBajoPin}";
+
+
+                if (IsColliding(pinguinoRect, plataformaRect))
+                {
+                    colEnYB = "Col en Y";
+
+                   if (velocidadPinguino.Y > 0)
+                    {
+
+                        colEnYB += "\n Bajando";
+
+                        if (puntoBajoPin <= plataformaRect.Y)
+                        {
+                            
+                            colEnYB += "\n Paso Y";
+                            posFotograma.Y = plataformaRect.Y - 53;
+                            jugadorEnElSuelo = true;
+                            velocidadPinguino.Y = 0;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            if (Keyboard.GetState().IsKeyDown(Keys.Up) && activarSalto && Keyboard.GetState().IsKeyDown(Keys.Right) && jugadorEnElSuelo && posFotograma.X > -100)
             {
                 currentPinguinoAnimation = PinguinoAnimation.VerticalJump;
                 currentAnimation = verticalJump;
@@ -187,9 +233,9 @@ namespace Juego
                 posFotograma.X += 2;
                 activarSalto = false;
             }
-            else if (Keyboard.GetState().IsKeyDown(Keys.Right))
+            else if (Keyboard.GetState().IsKeyDown(Keys.Right) && !muroColDer)
             {
-                left = false; 
+                left = false;
                 currentPinguinoAnimation = PinguinoAnimation.Caminar;
                 currentAnimation = caminarAnimation;
                 posFotograma.X += 2;
@@ -202,9 +248,9 @@ namespace Juego
                 }
 
             }
-            else if (Keyboard.GetState().IsKeyDown(Keys.Left) )
+            else if (Keyboard.GetState().IsKeyDown(Keys.Left) && !muroColIzq)
             {
-                left = true; 
+                left = true;
                 currentPinguinoAnimation = PinguinoAnimation.Caminar;
                 currentAnimation = caminarAnimationL;
                 posFotograma.X -= 2;
@@ -220,23 +266,23 @@ namespace Juego
             else if (Keyboard.GetState().IsKeyDown(Keys.Up) && jugadorEnElSuelo)
             {
                 currentPinguinoAnimation = PinguinoAnimation.Bend;
-                currentAnimation = !left? bend : bendL;
+                currentAnimation = !left ? bend : bendL;
                 activarSalto = true;
-            } 
+            }
             else if (Keyboard.GetState().IsKeyUp(Keys.Up) && activarSalto && jugadorEnElSuelo)
             {
                 currentPinguinoAnimation = PinguinoAnimation.VerticalJump;
                 currentAnimation = !left ? verticalJump : verticalJumpL;
                 velocidadPinguino.Y = -10.0f;
-                activarSalto= false;
+                activarSalto = false;
             }
-            else if(!activarSalto )
+            else if (!activarSalto)
             {
                 currentPinguinoAnimation = PinguinoAnimation.Wait;
-                currentAnimation = !left? waitAnimation : waitAnimationL;              
+                currentAnimation = !left ? waitAnimation : waitAnimationL;
             }
 
-            pinVelo = $"velocidadPin: {velocidadPinguino.X} Esta en el suelo: {jugadorEnElSuelo}";
+            pinVelo = $"velocidadPin: {velocidadPinguino.Y} \n Esta en el suelo: {jugadorEnElSuelo} \n Activar salto: {activarSalto}";
 
             velocidadPinguino.Y += gravedad;
             posFotograma.Y += velocidadPinguino.Y;
@@ -253,8 +299,6 @@ namespace Juego
                 jugadorEnElSuelo = false;
             }
 
-
-
             currentAnimation.Update(gameTime);
             base.Update(gameTime);
         }
@@ -264,17 +308,18 @@ namespace Juego
             GraphicsDevice.Clear(Color.CornflowerBlue);
             //Escena
             Vector2 escalaFondos = new Vector2(2.11f, 2.11f);
+            Vector2 escalaFondoMontaña = new Vector2(5f, 5f);
             //Personajes
             //Debug
             Color backgroundColor = Color.Red;
 
-            _spriteBatch.Begin();
+            _spriteBatch.Begin(transformMatrix: viewMatrix);
             //Fondo
             Rectangle fondoRec = new Rectangle(0, 0, 380, 225);
-            _spriteBatch.Draw(fondoC1, new Vector2(0, 0), fondoRec, Color.White, 0f, Vector2.Zero, escalaFondos, SpriteEffects.None, 0f);
-            _spriteBatch.Draw(fondoC2, new Vector2(0, 124), fondoRec, Color.White, 0f, Vector2.Zero, escalaFondos, SpriteEffects.None, 0f);
-            _spriteBatch.Draw(fondoC3, new Vector2(0, 124), fondoRec, Color.White, 0f, Vector2.Zero, escalaFondos, SpriteEffects.None, 0f);
-            _spriteBatch.Draw(fondoC4, new Vector2(0, 124), fondoRec, Color.White, 0f, Vector2.Zero, escalaFondos, SpriteEffects.None, 0f);
+            _spriteBatch.Draw(fondoC1, new Vector2(0, -500), fondoRec, Color.White, 0f, Vector2.Zero, escalaFondoMontaña, SpriteEffects.None, 0f);
+            _spriteBatch.Draw(fondoC2, new Vector2(0, 124 - 500), fondoRec, Color.White, 0f, Vector2.Zero, escalaFondoMontaña, SpriteEffects.None, 0f);
+            _spriteBatch.Draw(fondoC3, new Vector2(0, 124 - 500), fondoRec, Color.White, 0f, Vector2.Zero, escalaFondoMontaña, SpriteEffects.None, 0f);
+            _spriteBatch.Draw(fondoC4, new Vector2(0, 124 - 500), fondoRec, Color.White, 0f, Vector2.Zero, escalaFondoMontaña, SpriteEffects.None, 0f);
 
             //Elemento de la matriz 
             foreach (var elemento in elementos)
@@ -284,11 +329,14 @@ namespace Juego
 
             //Personajes
             currentAnimation.Draw(_spriteBatch, posFotograma, Color.White, 0.37f);
-            _spriteBatch.DrawString(pinguinoPos, pinPos, new Vector2(10, 10), Color.White);
-            _spriteBatch.DrawString(plataFormaRect, pinRect, new Vector2(10, 30), Color.White);
+            _spriteBatch.DrawString(pinguinoPos, pinPos, new Vector2(10 + posFotograma.X / 4, posFotograma.Y - 120), Color.White);
+            _spriteBatch.DrawString(plataFormaRect, pinRect, new Vector2(10 + posFotograma.X / 4, posFotograma.Y - 100), Color.White);
+            _spriteBatch.DrawString(sueloPos, pinVelo, new Vector2(10 + posFotograma.X / 4, posFotograma.Y - 80), Color.White);
+            _spriteBatch.DrawString(colEnX, colEnXB, new Vector2(70 + posFotograma.X / 2, posFotograma.Y - 60), Color.White);
+            _spriteBatch.DrawString(colEnY, colEnYB, new Vector2(70 + posFotograma.X, posFotograma.Y - 20), Color.White);
             _spriteBatch.End();
 
-            
+
 
             base.Draw(gameTime);
         }
