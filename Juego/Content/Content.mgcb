@@ -452,6 +452,18 @@
 /processorParam:TextureFormat=Color
 /build:Terrain Tileset.png
 
+#begin TIERRA.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:TIERRA.png
+
 #begin Vegetation Tileset 1.png
 /importer:TextureImporter
 /processor:TextureProcessor

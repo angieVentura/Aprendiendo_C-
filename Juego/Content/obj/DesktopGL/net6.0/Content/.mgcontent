@@ -41,12 +41,14 @@
     <File>C:/Users/angie/OneDrive/Escritorio/Aprendiendo_C-/Juego/Content/Surprised (16 x 16).png</File>
     <File>C:/Users/angie/OneDrive/Escritorio/Aprendiendo_C-/Juego/Content/Swimming (16 x 16).png</File>
     <File>C:/Users/angie/OneDrive/Escritorio/Aprendiendo_C-/Juego/Content/Terrain Tileset.png</File>
+    <File>C:/Users/angie/OneDrive/Escritorio/Aprendiendo_C-/Juego/Content/TIERRA.png</File>
     <File>C:/Users/angie/OneDrive/Escritorio/Aprendiendo_C-/Juego/Content/Vegetation Tileset 1.png</File>
     <File>C:/Users/angie/OneDrive/Escritorio/Aprendiendo_C-/Juego/Content/Vegetation Tileset 2.png</File>
     <File>C:/Users/angie/OneDrive/Escritorio/Aprendiendo_C-/Juego/Content/Victory_Dance (16 x 16).png</File>
     <File>C:/Users/angie/OneDrive/Escritorio/Aprendiendo_C-/Juego/Content/Waddling (16 x 16).png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
