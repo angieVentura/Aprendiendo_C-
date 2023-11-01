@@ -33,6 +33,8 @@
     <File>C:/Users/angie/OneDrive/Escritorio/Aprendiendo_C-/Juego/Content/Looking_Up (16 x 16).png</File>
     <File>C:/Users/angie/OneDrive/Escritorio/Aprendiendo_C-/Juego/Content/Lying_On_Ground (16 x 16).png</File>
     <File>C:/Users/angie/OneDrive/Escritorio/Aprendiendo_C-/Juego/Content/pinguino/pinguino.png</File>
+    <File>C:/Users/angie/OneDrive/Escritorio/Aprendiendo_C-/Juego/Content/pinguino200-export.png</File>
+    <File>C:/Users/angie/OneDrive/Escritorio/Aprendiendo_C-/Juego/Content/pinguino200.png</File>
     <File>C:/Users/angie/OneDrive/Escritorio/Aprendiendo_C-/Juego/Content/pinguinoCaminando-export.png</File>
     <File>C:/Users/angie/OneDrive/Escritorio/Aprendiendo_C-/Juego/Content/Sitting (16 x 16).png</File>
     <File>C:/Users/angie/OneDrive/Escritorio/Aprendiendo_C-/Juego/Content/sky_lightened.png</File>
@@ -48,6 +50,8 @@
     <File>C:/Users/angie/OneDrive/Escritorio/Aprendiendo_C-/Juego/Content/Waddling (16 x 16).png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
