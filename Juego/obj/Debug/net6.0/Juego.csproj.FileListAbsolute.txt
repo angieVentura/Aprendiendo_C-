@@ -196,3 +196,7 @@ C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\Juego\bin\Debug\net6.0\Content
 C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\Juego\bin\Debug\net6.0\Content\TIERRA.xnb
 C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\Juego\bin\Debug\net6.0\Content\pinguino200-export.xnb
 C:\Users\angie\OneDrive\Escritorio\Aprendiendo_C-\Juego\bin\Debug\net6.0\Content\pinguino200.xnb
+C:\Users\Alumno\Desktop\Aprendiendo_C-\Juego\bin\Debug\net6.0\Content\decoracion.xnb
+C:\Users\Alumno\Desktop\Aprendiendo_C-\Juego\bin\Debug\net6.0\Content\pinguino200-export.xnb
+C:\Users\Alumno\Desktop\Aprendiendo_C-\Juego\bin\Debug\net6.0\Content\pinguino200.xnb
+C:\Users\Alumno\Desktop\Aprendiendo_C-\Juego\bin\Debug\net6.0\Content\TIERRA.xnb
