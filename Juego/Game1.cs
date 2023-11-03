@@ -72,6 +72,15 @@ namespace Juego
 
         }
 
+        public int C(int cordenada)
+        {
+            return 32 * cordenada;
+        }
+        public int Cy(int cordenada)
+        {
+            return 32 * cordenada;
+        }
+
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
@@ -105,8 +114,7 @@ namespace Juego
             pisoEsqSupIzqNieve = new Animation(piso, 16, 16, 1, 1, 13, false, 0);
             pisoEsqSupDerNieve = new Animation(piso, 16, 16, 1, 1, 13, false, 2);
             pisoMedio = new Animation(piso, 16, 16, 1, 1, 14, false, 1);
-            pisoBordeSupHielo = new Animation(piso, 16, 16, 1, 1, 13, false, 1
-                  );
+            pisoBordeSupHielo = new Animation(piso, 16, 16, 1, 1, 13, false, 1);
 
             plataformaPiedra = new Animation(decoracion, 42 + 20, 8, 1, 1000, 0, false, 0);
 
@@ -121,44 +129,47 @@ namespace Juego
             //Carga de elementos Piso por defecto y Bloques de piso
             for (int i = 0; i < 25; i++)
             {
-                elementos.Add(new Elemento(Elementos.Plataforma, new Vector2(i * 32, 568 - 16 * 5), pisoHielo.frameHeight, pisoHielo.frameWidth, pisoBordeSupHielo));
-                elementos.Add(new Elemento(Elementos.Decoracion, new Vector2(i * 32, 568 - 16 * 3), pisoHielo.frameHeight, pisoHielo.frameWidth, pisoMedio));
-                elementos.Add(new Elemento(Elementos.Decoracion, new Vector2(i * 32, 568 - 16), pisoHielo.frameHeight, pisoHielo.frameWidth, pisoMedio));
-                elementos.Add(new Elemento(Elementos.Decoracion, new Vector2(i * 32, 568), pisoHielo.frameHeight, pisoHielo.frameWidth, pisoMedio));
+                elementos.Add(new Elemento(Elementos.Plataforma, new Vector2(i * C(1), Cy(15)), pisoHielo.frameHeight, pisoHielo.frameWidth, pisoBordeSupHielo));
+                elementos.Add(new Elemento(Elementos.Decoracion, new Vector2(i * C(1), Cy(16)), pisoHielo.frameHeight, pisoHielo.frameWidth, pisoMedio));
+                elementos.Add(new Elemento(Elementos.Decoracion, new Vector2(i * C(1), Cy(17)), pisoHielo.frameHeight, pisoHielo.frameWidth, pisoMedio));
+                elementos.Add(new Elemento(Elementos.Decoracion, new Vector2(i * C(1), Cy(18)), pisoHielo.frameHeight, pisoHielo.frameWidth, pisoMedio)); 
+                elementos.Add(new Elemento(Elementos.Decoracion, new Vector2(i * C(1), Cy(19)), pisoHielo.frameHeight, pisoHielo.frameWidth, pisoMedio));
+                elementos.Add(new Elemento(Elementos.Decoracion, new Vector2(i * C(1), Cy(20)), pisoHielo.frameHeight, pisoHielo.frameWidth, pisoMedio));
+                elementos.Add(new Elemento(Elementos.Decoracion, new Vector2(i * C(1), Cy(21)), pisoHielo.frameHeight, pisoHielo.frameWidth, pisoMedio));
             }
 
             for (int i = 0; i < 25; i++)
             {
-                elementos.Add(new Elemento(Elementos.Plataforma, new Vector2(25 * 32 + i * 32, 568), pisoHielo.frameHeight, pisoHielo.frameWidth, pisoBordeSupHielo));
+                elementos.Add(new Elemento(Elementos.Plataforma, new Vector2(C(25 + i), Cy(18)), pisoHielo.frameHeight, pisoHielo.frameWidth, pisoBordeSupHielo));
 
             }
 
             //Hieloo
-            elementos.Add(new Elemento(Elementos.PlataformaInclinadaIzq, new Vector2(25 * 32 + 3 * 32, 568 - 16 * 2), pisoHielo.frameHeight, pisoHielo.frameWidth, hieloEsqIzq));
-            elementos.Add(new Elemento(Elementos.PlataformaInclinadaIzq, new Vector2(25 * 32 + 4 * 32, 568 - 16 * 4), pisoHielo.frameHeight, pisoHielo.frameWidth, hieloEsqIzq));
+            elementos.Add(new Elemento(Elementos.PlataformaInclinadaIzq, new Vector2(C(28), Cy(17)), pisoHielo.frameHeight, pisoHielo.frameWidth, hieloEsqIzq));
+            elementos.Add(new Elemento(Elementos.PlataformaInclinadaIzq, new Vector2(C(29), Cy(16)), pisoHielo.frameHeight, pisoHielo.frameWidth, hieloEsqIzq));
 
-            elementos.Add(new Elemento(Elementos.PlataformaInclinadaDer, new Vector2(25 * 32 + 7 * 32, 568 - 16 * 4), pisoHielo.frameHeight, pisoHielo.frameWidth, hieloEsqDer));
-            elementos.Add(new Elemento(Elementos.PlataformaInclinadaDer, new Vector2(25 * 32 + 8 * 32, 568 - 16 * 2), pisoHielo.frameHeight, pisoHielo.frameWidth, hieloEsqDer));
+            elementos.Add(new Elemento(Elementos.PlataformaInclinadaDer, new Vector2(C(32), Cy(16)), pisoHielo.frameHeight, pisoHielo.frameWidth, hieloEsqDer));
+            elementos.Add(new Elemento(Elementos.PlataformaInclinadaDer, new Vector2(C(33), Cy(17)), pisoHielo.frameHeight, pisoHielo.frameWidth, hieloEsqDer));
 
-            elementos.Add(new Elemento(Elementos.Decoracion, new Vector2(25 * 32 + 4 * 32, 568 - 16 * 2), pisoHielo.frameHeight, pisoHielo.frameWidth, hieloMedioIzq));
-            elementos.Add(new Elemento(Elementos.Decoracion, new Vector2(25 * 32 + 7 * 32, 568 - 16 * 2), pisoHielo.frameHeight, pisoHielo.frameWidth, hieloMedioDer));
+            elementos.Add(new Elemento(Elementos.Decoracion, new Vector2(C(29), Cy(17)), pisoHielo.frameHeight, pisoHielo.frameWidth, hieloMedioIzq));
+            elementos.Add(new Elemento(Elementos.Decoracion, new Vector2(C(32), Cy(17)), pisoHielo.frameHeight, pisoHielo.frameWidth, hieloMedioDer));
 
-            elementos.Add(new Elemento(Elementos.Plataforma, new Vector2(25 * 32 + 5 * 32, 568 - 16 * 4), pisoHielo.frameHeight, pisoHielo.frameWidth, hieloBordeSup));
-            elementos.Add(new Elemento(Elementos.Decoracion, new Vector2(25 * 32 + 5 * 32, 568 - 16 * 2), pisoHielo.frameHeight, pisoHielo.frameWidth, hieloMedio)); 
-            elementos.Add(new Elemento(Elementos.Plataforma, new Vector2(25 * 32 + 6 * 32, 568 - 16 * 4), pisoHielo.frameHeight, pisoHielo.frameWidth, hieloBordeSup));
-            elementos.Add(new Elemento(Elementos.Decoracion, new Vector2(25 * 32 + 6 * 32, 568 - 16 * 2), pisoHielo.frameHeight, pisoHielo.frameWidth, hieloMedio));
+            elementos.Add(new Elemento(Elementos.Plataforma, new Vector2(C(30), Cy(16)), pisoHielo.frameHeight, pisoHielo.frameWidth, hieloBordeSup));
+            elementos.Add(new Elemento(Elementos.Decoracion, new Vector2(C(30), Cy(17)), pisoHielo.frameHeight, pisoHielo.frameWidth, hieloMedio)); 
+            elementos.Add(new Elemento(Elementos.Plataforma, new Vector2(C(31), Cy(16)), pisoHielo.frameHeight, pisoHielo.frameWidth, hieloBordeSup));
+            elementos.Add(new Elemento(Elementos.Decoracion, new Vector2(C(31), Cy(17)), pisoHielo.frameHeight, pisoHielo.frameWidth, hieloMedio));
 
             //Esto es un bloque tipo |-|
-            elementos.Add(new Elemento(Elementos.Muro, new Vector2(16 * 32, 536 - 16 * 5), pisoHielo.frameHeight, pisoHielo.frameWidth, pisoLateralIzqSinNieve));
-            elementos.Add(new Elemento(Elementos.Plataforma, new Vector2(16 * 32, 536 - 16 * 7), pisoHielo.frameHeight, pisoHielo.frameWidth, pisoEsqSupIzqNieve));
-            elementos.Add(new Elemento(Elementos.Muro, new Vector2(18 * 32, 536 - 16 * 5), pisoHielo.frameHeight, pisoHielo.frameWidth, pisoLateralDerSinNieve));
-            elementos.Add(new Elemento(Elementos.Plataforma, new Vector2(18 * 32, 536 - 16 * 7), pisoHielo.frameHeight, pisoHielo.frameWidth, pisoEsqSupDerNieve));
-            elementos.Add(new Elemento(Elementos.Decoracion, new Vector2(17 * 32, 536 - 16 * 5), pisoHielo.frameHeight, pisoHielo.frameWidth, pisoMedio));
-            elementos.Add(new Elemento(Elementos.Plataforma, new Vector2(17 * 32, 536 - 16 * 7), pisoHielo.frameHeight, pisoHielo.frameWidth, pisoBordeSupHielo));
+            elementos.Add(new Elemento(Elementos.Muro, new Vector2(C(7), Cy(14)), pisoHielo.frameHeight, pisoHielo.frameWidth, pisoLateralIzqSinNieve));
+            elementos.Add(new Elemento(Elementos.Plataforma, new Vector2(C(7), Cy(13)), pisoHielo.frameHeight, pisoHielo.frameWidth, pisoEsqSupIzqNieve));
+            elementos.Add(new Elemento(Elementos.Decoracion, new Vector2(C(8), Cy(14)), pisoHielo.frameHeight, pisoHielo.frameWidth, pisoMedio));
+            elementos.Add(new Elemento(Elementos.Plataforma, new Vector2(C(8), Cy(13)), pisoHielo.frameHeight, pisoHielo.frameWidth, pisoBordeSupHielo));
+            elementos.Add(new Elemento(Elementos.Muro, new Vector2(C(9), Cy(14)), pisoHielo.frameHeight, pisoHielo.frameWidth, pisoLateralDerSinNieve));
+            elementos.Add(new Elemento(Elementos.Plataforma, new Vector2(C(9), Cy(13)), pisoHielo.frameHeight, pisoHielo.frameWidth, pisoEsqSupDerNieve));
+
 
             //Plataforma
-            elementos.Add(new Elemento(Elementos.Plataforma, new Vector2(12 * 32, 536 - 16 * 11), plataformaPiedra.frameHeight, plataformaPiedra.frameWidth, plataformaPiedra));
-
+            elementos.Add(new Elemento(Elementos.Plataforma, new Vector2(C(12), Cy(11)), plataformaPiedra.frameHeight, plataformaPiedra.frameWidth, plataformaPiedra));
 
 
             pinguinoPos = Content.Load<SpriteFont>("arial");
@@ -184,7 +195,6 @@ namespace Juego
             muroColDer = false;
             muroColIzq = false;
 
-            // Calcula la matriz de vista para que la cámara siga al personaje
             viewMatrix = Matrix.CreateTranslation(new Vector3(-posFotograma.X + GraphicsDevice.Viewport.Width / 2, -posFotograma.Y + 136 + GraphicsDevice.Viewport.Height / 2, 0));
 
 
@@ -195,7 +205,6 @@ namespace Juego
 
             Rectangle pinguinoRect = new Rectangle((int)posFotograma.X, (int)posFotograma.Y, 54, 54);
 
-            // Detectar colisiones con muros y ajustar la posición en el eje x si es necesario
             foreach (var muro in elementos.Where(e => e.Tipo == Elementos.Muro ))
             {
                 Rectangle muroRect = new Rectangle((int)muro.Posicion.X + 3, (int)muro.Posicion.Y, (int)muro.Width + 12, (int)muro.Height);
@@ -215,7 +224,6 @@ namespace Juego
                 }
             }
 
-            // Verifica colisiones con las plataformas
             foreach (var plataforma in elementos.Where(e => e.Tipo == Elementos.Plataforma))
             {
 
