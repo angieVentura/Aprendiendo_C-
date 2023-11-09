@@ -27,6 +27,7 @@ namespace Juego
         public Animation currentAnimation;
         public string message, salioRampa = "";
         public List<Keys> keys;
+        public Jugador compa;
 
 
         public Jugador(Vector2 posicion, List<Elemento> elementos, List<Animationes> animationes, Vector2 velocidadPinguino, float gravedad, int sueloY, bool jugadorEnElSuelo, bool activarSalto, bool left, bool muroColIzq, bool muroColDer, bool hielo, bool platHielo, bool salto, bool hieloRight, List<Keys> keys)
