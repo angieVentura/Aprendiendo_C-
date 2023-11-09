@@ -66,19 +66,9 @@ namespace Juego
             Wait
         }
 
-        Animation currentAnimation, caminarAnimation, caminarAnimationL, waitAnimation, waitAnimationL, pisoHielo, jump, jumpL, bend, bendL, verticalJump, verticalJumpL, pisoLateralIzqSinNieve, pisoLateralDerSinNieve, pisoEsqSupIzqNieve, pisoEsqSupDerNieve, hieloMedio, hieloMedioIzq, hieloMedioDer, pisoMedio, hieloEsqIzq, hieloBordeSup, hieloEsqDer, pisoBordeSupHielo, plataformaPiedra, fallingLeft, fallingRight, EsqLateralIzqHieloNieve;
-
-        SpriteFont pinguinoPos;
-        SpriteFont plataFormaRect;
-        SpriteFont gravedadPinguino;
-        SpriteFont sueloPos;
         SpriteFont colEnX;
-        SpriteFont colEnY;
-
         Matrix viewMatrix;
-
         Jugador pinguino1, pinguino2;
-
 
         List<Keys> keysPinguino1 = new List<Keys>
         {
@@ -92,9 +82,7 @@ namespace Juego
             Keys.A,           
             Keys.W,
             Keys.D
-
         };
-
 
         List<Animationes> animaciones;
 
@@ -107,7 +95,6 @@ namespace Juego
             Content.RootDirectory = "Content";
             _graphics.IsFullScreen = false;
             IsMouseVisible = true;
-
         }
 
         public int C(int cordenada)
@@ -220,7 +207,6 @@ namespace Juego
             //Plataforma
             elementos.Add(new Elemento(Elementos.Plataforma, new Vector2(C(12), Cy(11)), SIZE_TILE, SIZE_TILE, animaciones.FirstOrDefault(a => a.nombre == "plataformaPiedra").GetAnimation));
 
-
             pinguinoPos = Content.Load<SpriteFont>("arial");
             plataFormaRect = Content.Load<SpriteFont>("arial");
             gravedadPinguino = Content.Load<SpriteFont>("arial");
@@ -280,15 +266,10 @@ namespace Juego
             }
 
             //Personajes
-            //currentAnimation.Draw(_spriteBatch, posFotograma, Color.White, 1.1f);
             pinguino1.Draw(_spriteBatch);
             pinguino2.Draw(_spriteBatch);
 
-            //_spriteBatch.DrawString(pinguinoPos, pinPos, new Vector2(posFotograma.X - 200, posFotograma.Y - 120), Color.White);
-            //_spriteBatch.DrawString(plataFormaRect, pinRect, new Vector2(posFotograma.X - 350, posFotograma.Y - 100), Color.White);
-            //_spriteBatch.DrawString(sueloPos, pinVelo, new Vector2(posFotograma.X, posFotograma.Y - 80), Color.White);
             _spriteBatch.DrawString(colEnX, colEnXB, new Vector2(pinguino1.posFotograma.X, posFotograma.Y - 60), Color.White);
-            //_spriteBatch.DrawString(colEnY, colEnYB, new Vector2(posFotograma.X + 50, posFotograma.Y - 200), Color.White);
             _spriteBatch.End();
 
             base.Draw(gameTime);
