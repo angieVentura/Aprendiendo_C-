@@ -23,7 +23,7 @@ namespace Juego
         public Vector2 velocidadPinguino;
         public float gravedad;
         public float sueloY;
-        public float maxDer, maxIzq = 0;
+        public float maxDer, maxIzq, posMedia = 0;
         public bool jugadorEnElSuelo;
         public bool entro, activarSalto, left, muroColIzq, muroColDer, hielo, platHielo, salto, hieloRight, desactivarV;
         public bool topeLeft, topeRight = false;
@@ -32,7 +32,7 @@ namespace Juego
         public List<Keys> keys;
         public Vector2 posCompa;
         private const float maxDist = 100;
-        public float posMedia, disMitadPin1X, disMitadPin2X;
+        public float  disMitadPin1X, disMitadPin2X;
         KeyboardState tecladoAnterior;
         Keys ultimaTeclaPresionada;
 
@@ -57,9 +57,8 @@ namespace Juego
             this.hieloRight = hieloRight;
             this.keys = keys;
             this.posCompa = compa;
+     
         }
-
-
 
         public void Update(GameTime gameTime, KeyboardState keyboardState)
         {
@@ -73,7 +72,6 @@ namespace Juego
             muroColDer = false;
             muroColIzq = false;
             pinguinoRect = new Rectangle((int)posFotograma.X, (int)posFotograma.Y, 54, 54);
-            //gravedad = 0.3f;
             disMitadPin1X = posFotograma.X;
             disMitadPin2X = posCompa.X;
 
@@ -85,18 +83,15 @@ namespace Juego
 
             posMedia = distMediaX == 0 ? 0 : (posFotograma.X > posCompa.X ? disMitadPin1X - (distMediaX / 2) : disMitadPin1X + (distMediaX / 2));
 
-            maxIzq = disMitadPin2X - 50;
-            maxDer = disMitadPin2X + 50;
+            maxIzq = disMitadPin2X - 100;
+            maxDer = disMitadPin2X + 100;
 
-            //message = $"yo: {disMitadPin1X}\nEl: {disMitadPin2X}\n{distMediaX}\n{distMediaX / 2}\nMaxDer:{maxDer}\nMaxIzq:{maxIzq}\n{posMedia}\nLeft: {topeLeft}\nRigth: {topeRight}";
-            message = $"";
+            message = $"pinX{posFotograma.X}\nmaxIsz{maxIzq}\nmaxDer{maxDer}";
             KeyboardState tecladoActual = Keyboard.GetState();
             tecladoAnterior = tecladoActual;
             tecladoActual = Keyboard.GetState();
 
             if (tecladoActual.GetPressedKeys().Length > 0) ultimaTeclaPresionada = tecladoActual.GetPressedKeys()[0];
-
-
 
             foreach (var muro in elementos.Where(e => e.Tipo == Elementos.Muro))
             {
@@ -104,7 +99,6 @@ namespace Juego
 
                 if (IsColliding(pinguinoRect, muroRect))
                 {
-                    //colEnXB = $"Col en X| pinDer:{pinguinoRect.Right}| mureLeft:{muroRect.Left}";
 
                     if (pinguinoRect.X > muroRect.X)
                     {
@@ -123,13 +117,9 @@ namespace Juego
 
                 Rectangle plataformaRect = new Rectangle((int)plataforma.Posicion.X + 10, (int)plataforma.Posicion.Y, (int)plataforma.Width, (int)plataforma.Height);
                 float puntoBajoPin = (int)posFotograma.Y + 40;
-                int interFin = plataformaRect.X + 32;
-                int interIni = plataformaRect.X;
-                int pinguinoEnX = pinguinoRect.Right;
-                int posPinXrespectoPlatX = pinguinoEnX - interIni + 1;
 
-                int noTomaRect = 32 - (posPinXrespectoPlatX >= 32 ? 32 : posPinXrespectoPlatX);
-                int topTriParaX = plataformaRect.Y  + noTomaRect;
+                int topTriParaX = plataformaRect.Y + (32 - ((pinguinoRect.Right - plataformaRect.X + 1) >= 32 ? 32 : (pinguinoRect.Right - plataformaRect.X + 1)));
+
                 if (IsColliding(pinguinoRect, plataformaRect) && velocidadPinguino.Y > 0 && puntoBajoPin <= topTriParaX)
                 {
 
@@ -137,7 +127,7 @@ namespace Juego
                     posFotograma.Y = topTriParaX - 53;
                     jugadorEnElSuelo = true;
                     velocidadPinguino.Y = 0;
-                    message += $"\nposY:{posFotograma.Y}\npuntoBajo{puntoBajoPin}\npinResX:{posPinXrespectoPlatX}\nnoTomaRect:{noTomaRect}\nnewY{topTriParaX}";
+                  
                     break;
 
                 }
@@ -158,7 +148,6 @@ namespace Juego
                         jugadorEnElSuelo = true;
                         velocidadPinguino.Y = 0;
                     } 
-
 
                     break;
                 }
@@ -184,14 +173,10 @@ namespace Juego
             foreach (var plataforma in elementos.Where(e => e.Tipo == Elementos.PlataformaInclinadaIzq))
             {
                 Rectangle plataformaRect = new Rectangle((int)plataforma.Posicion.X + 10, (int)plataforma.Posicion.Y, (int)plataforma.Width, (int)plataforma.Height);
-                float puntoBajoPin = (int)posFotograma.Y + 40;
-                int interFin = plataformaRect.X + 32;
-                int interIni = plataformaRect.X;
-                int pinguinoEnX = pinguinoRect.Right;
-                int posPinXrespectoPlatX = pinguinoEnX - interIni - 9;
 
-                int noTomaRect = 32 - (posPinXrespectoPlatX >= 32 ? 32 : posPinXrespectoPlatX);
-                int topTriParaX = plataformaRect.Y + noTomaRect;
+                float puntoBajoPin = (int)posFotograma.Y + 40;
+                int topTriParaX = plataformaRect.Y + (32 - ((pinguinoRect.Right - plataformaRect.X - 9) >= 32 ? 32 : (pinguinoRect.Right - plataformaRect.X - 9)));
+                
                 if (IsColliding(pinguinoRect, plataformaRect) && velocidadPinguino.Y > 0 && puntoBajoPin <= topTriParaX)
                 {
 
@@ -202,9 +187,8 @@ namespace Juego
                     if (posFotograma.X >= maxIzq) posFotograma.X -= 3;
                     jugadorEnElSuelo = true;
                     velocidadPinguino.Y = 0;
-                    message += $"\nposY:{posFotograma.Y}\npuntoBajo{puntoBajoPin}\npinResX:{posPinXrespectoPlatX}\nnoTomaRect:{noTomaRect}\nnewY{topTriParaX}\ntop{plataformaRect.Top}";
+                    
                     break;
-
                 }
             }
 
@@ -213,12 +197,8 @@ namespace Juego
 
                 Rectangle plataformaRect = new Rectangle((int)plataforma.Posicion.X + 10, (int)plataforma.Posicion.Y, (int)plataforma.Width, (int)plataforma.Height);
                 float puntoBajoPin = (int)posFotograma.Y + 40;
-                int interFin = plataformaRect.Right;
-                int interIni = plataformaRect.X;
-                int pinguinoEnX = pinguinoRect.Left;
-                int posPinXrespectoPlatX = interFin - pinguinoEnX - 12;
-                int noTomaRect = 32 - (posPinXrespectoPlatX >= 32 ? 32 : posPinXrespectoPlatX);
-                int topTriParaX = plataformaRect.Y + noTomaRect;
+           
+                int topTriParaX = plataformaRect.Y + (32 - ((plataformaRect.Right - pinguinoRect.Left - 12) >= 32 ? 32 : (plataformaRect.Right - pinguinoRect.Left - 12)));
                 
                 if (IsColliding(pinguinoRect, plataformaRect) && velocidadPinguino.Y > -0.5 && puntoBajoPin <= topTriParaX)
                 {
@@ -229,7 +209,7 @@ namespace Juego
                     if (posFotograma.X <= maxDer) posFotograma.X += (float)3;
                     jugadorEnElSuelo = true;
                     velocidadPinguino.Y = 0;
-                    message += $"\nposY:{posFotograma.Y}\npuntoBajo{puntoBajoPin}\npinResX:{posPinXrespectoPlatX}\nnewY{topTriParaX}\ntop{plataformaRect.Top}\nplatLeft{plataformaRect.Right}\npinX{pinguinoEnX}\nfin{interFin}";
+                  
                     break;
                 }
             }
@@ -257,9 +237,7 @@ namespace Juego
                 left = false;
 
                 currentAnimation = animaciones.FirstOrDefault(a => a.nombre == "caminarAnimation").GetAnimation;
-
             
-
                 if (posFotograma.X + 3 == maxDer)
                 {
                     posFotograma.X += 3;
@@ -358,9 +336,6 @@ namespace Juego
 
                 currentAnimation = animaciones.FirstOrDefault(a => a.nombre == (!left ? "waitAnimation" : "waitAnimationL")).GetAnimation;
             }
-
-            //pinVelo = $"velocidadPin: {velocidadPinguino.Y}\nEsta en el suelo: {jugadorEnElSuelo}\nActivar salto: {activarSalto}\nColDer:{muroColDer}\nColIzq:{muroColIzq}";
-
       
                 velocidadPinguino.Y += gravedad;
                 posFotograma.Y += velocidadPinguino.Y;

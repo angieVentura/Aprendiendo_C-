@@ -237,7 +237,7 @@ namespace Juego
             colEnXB = pinguino1.message; 
             colEnYB = pinguino2.message;
 
-            viewMatrix = Matrix.CreateTranslation(new Vector3(-pinguino1.posFotograma.X + GraphicsDevice.Viewport.Width / 2, -pinguino1.posFotograma.Y +GraphicsDevice.Viewport.Height / 2, 0));
+            viewMatrix = Matrix.CreateTranslation(new Vector3(-pinguino1.posMedia + 380, -pinguino1.posFotograma.Y +GraphicsDevice.Viewport.Height / 2, 0));
             foreach (var elemento in elementos)
             {
                 elemento.Animacion.Update(gameTime);
@@ -247,8 +247,6 @@ namespace Juego
 
             pinguino1.Update(gameTime, keyboardState);
             pinguino2.Update(gameTime, keyboardState);
-
-        
 
             base.Update(gameTime);
         }
