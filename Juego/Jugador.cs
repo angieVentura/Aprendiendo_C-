@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Input.Touch;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,16 +22,22 @@ namespace Juego
         public List<Animationes> animaciones;
         public Vector2 velocidadPinguino;
         public float gravedad;
-        public int sueloY;
+        public float sueloY;
+        public float maxDer, maxIzq = 0;
         public bool jugadorEnElSuelo;
-        public bool entro,activarSalto, left, muroColIzq, muroColDer, hielo, platHielo, salto, hieloRight;
+        public bool entro, activarSalto, left, muroColIzq, muroColDer, hielo, platHielo, salto, hieloRight, desactivarV;
+        public bool topeLeft, topeRight = false;
         public Animation currentAnimation;
         public string message, salioRampa = "";
         public List<Keys> keys;
-        public Jugador compa;
+        public Vector2 posCompa;
+        private const float maxDist = 100;
+        public float posMedia, disMitadPin1X, disMitadPin2X;
+        KeyboardState tecladoAnterior;
+        Keys ultimaTeclaPresionada;
 
 
-        public Jugador(Vector2 posicion, List<Elemento> elementos, List<Animationes> animationes, Vector2 velocidadPinguino, float gravedad, int sueloY, bool jugadorEnElSuelo, bool activarSalto, bool left, bool muroColIzq, bool muroColDer, bool hielo, bool platHielo, bool salto, bool hieloRight, List<Keys> keys)
+        public Jugador(Vector2 posicion, List<Elemento> elementos, List<Animationes> animationes, Vector2 velocidadPinguino, float gravedad, int sueloY, bool jugadorEnElSuelo, bool activarSalto, bool left, bool muroColIzq, bool muroColDer, bool hielo, bool platHielo, bool salto, bool hieloRight, List<Keys> keys, Vector2 compa)
         {
             this.posFotograma = posicion;
 
@@ -49,22 +56,47 @@ namespace Juego
             this.platHielo = platHielo;
             this.hieloRight = hieloRight;
             this.keys = keys;
+            this.posCompa = compa;
         }
+
+
 
         public void Update(GameTime gameTime, KeyboardState keyboardState)
         {
-            message = $" {salioRampa}, {entro},{velocidadPinguino}";
+
             hielo = false;
             hieloRight = false;
             salioRampa = "";
             hielo = false;
             hieloRight = false;
             gravedad = 0.25f;
-            //pinPos = $"PinguinoX: {posFotograma.X} PinguinoY: {posFotograma.Y}";
-            
             muroColDer = false;
             muroColIzq = false;
             pinguinoRect = new Rectangle((int)posFotograma.X, (int)posFotograma.Y, 54, 54);
+            //gravedad = 0.3f;
+            disMitadPin1X = posFotograma.X;
+            disMitadPin2X = posCompa.X;
+
+            desactivarV = false;
+
+            float distMediaX = disMitadPin1X - disMitadPin2X;
+
+            if (distMediaX < 0) distMediaX *= -1;
+
+            posMedia = distMediaX == 0 ? 0 : (posFotograma.X > posCompa.X ? disMitadPin1X - (distMediaX / 2) : disMitadPin1X + (distMediaX / 2));
+
+            maxIzq = disMitadPin2X - 50;
+            maxDer = disMitadPin2X + 50;
+
+            //message = $"yo: {disMitadPin1X}\nEl: {disMitadPin2X}\n{distMediaX}\n{distMediaX / 2}\nMaxDer:{maxDer}\nMaxIzq:{maxIzq}\n{posMedia}\nLeft: {topeLeft}\nRigth: {topeRight}";
+            message = $"";
+            KeyboardState tecladoActual = Keyboard.GetState();
+            tecladoAnterior = tecladoActual;
+            tecladoActual = Keyboard.GetState();
+
+            if (tecladoActual.GetPressedKeys().Length > 0) ultimaTeclaPresionada = tecladoActual.GetPressedKeys()[0];
+
+
 
             foreach (var muro in elementos.Where(e => e.Tipo == Elementos.Muro))
             {
@@ -86,22 +118,53 @@ namespace Juego
                 }
             }
 
-            foreach (var plataforma in elementos.Where(e => e.Tipo == Elementos.Plataforma))
+            foreach (var plataforma in elementos.Where(e => e.Tipo == Elementos.Rampa))
             {
 
-                Rectangle plataformaRect = new Rectangle((int)plataforma.Posicion.X + 10 , (int)plataforma.Posicion.Y, (int)plataforma.Width, (int)plataforma.Height);
+                Rectangle plataformaRect = new Rectangle((int)plataforma.Posicion.X + 10, (int)plataforma.Posicion.Y, (int)plataforma.Width, (int)plataforma.Height);
                 float puntoBajoPin = (int)posFotograma.Y + 40;
+                int interFin = plataformaRect.X + 32;
+                int interIni = plataformaRect.X;
+                int pinguinoEnX = pinguinoRect.Right;
+                int posPinXrespectoPlatX = pinguinoEnX - interIni + 1;
 
-                if (IsColliding(pinguinoRect, plataformaRect) && velocidadPinguino.Y > 0 && puntoBajoPin <= plataformaRect.Y)
+                int noTomaRect = 32 - (posPinXrespectoPlatX >= 32 ? 32 : posPinXrespectoPlatX);
+                int topTriParaX = plataformaRect.Y  + noTomaRect;
+                if (IsColliding(pinguinoRect, plataformaRect) && velocidadPinguino.Y > 0 && puntoBajoPin <= topTriParaX)
                 {
-                    // message = "Col plat";
+
                     platHielo = false;
-                    posFotograma.Y = plataformaRect.Y - 53;
+                    posFotograma.Y = topTriParaX - 53;
                     jugadorEnElSuelo = true;
                     velocidadPinguino.Y = 0;
+                    message += $"\nposY:{posFotograma.Y}\npuntoBajo{puntoBajoPin}\npinResX:{posPinXrespectoPlatX}\nnoTomaRect:{noTomaRect}\nnewY{topTriParaX}";
+                    break;
+
+                }
+            }
+
+            foreach (var plataforma in elementos.Where(e => e.Tipo == Elementos.Plataforma ))
+            { 
+
+                Rectangle plataformaRect = new Rectangle((int)plataforma.Posicion.X + 10, (int)plataforma.Posicion.Y, (int)plataforma.Width, (int)plataforma.Height);
+                float puntoBajoPin = (int)posFotograma.Y + 40;
+           
+                if (IsColliding(pinguinoRect, plataformaRect) )
+                {
+                    if (velocidadPinguino.Y > 0 && puntoBajoPin <= plataformaRect.Y && plataforma.Tipo == Elementos.Plataforma)
+                    {
+                        platHielo = false;
+                        posFotograma.Y = plataformaRect.Y - 53;
+                        jugadorEnElSuelo = true;
+                        velocidadPinguino.Y = 0;
+                    } 
+
+
                     break;
                 }
             }
+
+
 
             foreach (var plataforma in elementos.Where(e => e.Tipo == Elementos.PlataformaHieloSup))
             {
@@ -120,72 +183,53 @@ namespace Juego
 
             foreach (var plataforma in elementos.Where(e => e.Tipo == Elementos.PlataformaInclinadaIzq))
             {
-
-                Rectangle plataformaRect = new Rectangle((int)plataforma.Posicion.X + 10, (int)plataforma.Posicion.Y, (int)plataforma.Width - 2, (int)plataforma.Height);
-
+                Rectangle plataformaRect = new Rectangle((int)plataforma.Posicion.X + 10, (int)plataforma.Posicion.Y, (int)plataforma.Width, (int)plataforma.Height);
+                float puntoBajoPin = (int)posFotograma.Y + 40;
                 int interFin = plataformaRect.X + 32;
                 int interIni = plataformaRect.X;
                 int pinguinoEnX = pinguinoRect.Right;
-                int posPinXrespectoPlatX = pinguinoEnX - interIni;
-                int noTomaRect = 32 - posPinXrespectoPlatX;
-                int topTriParaX = plataformaRect.Y + noTomaRect;
+                int posPinXrespectoPlatX = pinguinoEnX - interIni - 9;
 
-                if (IsColliding(pinguinoRect, plataformaRect) && pinguinoRect.Y + 52.7 >= topTriParaX && velocidadPinguino.Y > -0.5)
+                int noTomaRect = 32 - (posPinXrespectoPlatX >= 32 ? 32 : posPinXrespectoPlatX);
+                int topTriParaX = plataformaRect.Y + noTomaRect;
+                if (IsColliding(pinguinoRect, plataformaRect) && velocidadPinguino.Y > 0 && puntoBajoPin <= topTriParaX)
                 {
 
-                    hielo = true;
                     salioRampa = "L";
-
-                    //posFotograma.Y += (float)3;
-                    gravedad = 0;
-                    posFotograma.X -= (float)3.3;
-                    posFotograma.Y += (float)4;
-                    gravedad = 0.3f;
+                    hielo = true;
+                    posFotograma.Y = topTriParaX - 53;
+                    gravedad = (float)0.1;
+                    if (posFotograma.X >= maxIzq) posFotograma.X -= 3;
+                    jugadorEnElSuelo = true;
                     velocidadPinguino.Y = 0;
-
-
-                    if (pinguinoRect.X <= plataformaRect.X && !platHielo && jugadorEnElSuelo)
-                    {
-                        //colEnXB = "Entro al if de x";
-                        muroColDer = true;
-                        posFotograma.X += (float)3.3;
-                        posFotograma.Y -= (float)4;
-                    }
+                    message += $"\nposY:{posFotograma.Y}\npuntoBajo{puntoBajoPin}\npinResX:{posPinXrespectoPlatX}\nnoTomaRect:{noTomaRect}\nnewY{topTriParaX}\ntop{plataformaRect.Top}";
                     break;
+
                 }
             }
 
             foreach (var plataforma in elementos.Where(e => e.Tipo == Elementos.PlataformaInclinadaDer))
             {
 
-                Rectangle plataformaRect = new Rectangle((int)plataforma.Posicion.X + 10, (int)plataforma.Posicion.Y, (int)plataforma.Width - 2, (int)plataforma.Height);
-                int interFin = plataformaRect.X + 32;
+                Rectangle plataformaRect = new Rectangle((int)plataforma.Posicion.X + 10, (int)plataforma.Posicion.Y, (int)plataforma.Width, (int)plataforma.Height);
+                float puntoBajoPin = (int)posFotograma.Y + 40;
+                int interFin = plataformaRect.Right;
                 int interIni = plataformaRect.X;
-                int pinguinoEnX = pinguinoRect.Left + 13;
-                int posPinXrespectoPlatX = pinguinoEnX - interIni;
-                int noTomaRect = 32 - posPinXrespectoPlatX;
-                int topTriParaX = plataformaRect.Y + posPinXrespectoPlatX;
-                if (IsColliding(pinguinoRect, plataformaRect) && velocidadPinguino.Y > -0.5 && pinguinoRect.Y + 52.7 >= topTriParaX)
+                int pinguinoEnX = pinguinoRect.Left;
+                int posPinXrespectoPlatX = interFin - pinguinoEnX - 12;
+                int noTomaRect = 32 - (posPinXrespectoPlatX >= 32 ? 32 : posPinXrespectoPlatX);
+                int topTriParaX = plataformaRect.Y + noTomaRect;
+                
+                if (IsColliding(pinguinoRect, plataformaRect) && velocidadPinguino.Y > -0.5 && puntoBajoPin <= topTriParaX)
                 {
-
-                    //colEnYB = $"IntFin: {interFin}\nIntIni: {interIni}\npinguinoEnX: {pinguinoEnX}\nposPinXrespetoPlatX:{posPinXrespectoPlatX}\nnoTomaRect:{noTomaRect}\ntopTriParaX: {topTriParaX}\nTope{pinguinoRect.Y + 52.7 >= topTriParaX}";
                     hieloRight = true;
                     salioRampa = "R";
-
-                    //posFotograma.Y += (float)3;
-                    gravedad = 0;
-                    posFotograma.X += (float)3.3;
-                    posFotograma.Y += (float)4;
-                    gravedad = 0.3f;
+                    posFotograma.Y = topTriParaX - 53;
+                    gravedad = (float)0.1;
+                    if (posFotograma.X <= maxDer) posFotograma.X += (float)3;
+                    jugadorEnElSuelo = true;
                     velocidadPinguino.Y = 0;
-
-                    if (pinguinoRect.X <= plataformaRect.X && !platHielo && jugadorEnElSuelo)
-                    {
-                        // colEnXB = "Entro al if de x";
-                        muroColDer = true;
-                        posFotograma.X -= (float)3.3;
-                        posFotograma.Y -= (float)4;
-                    }
+                    message += $"\nposY:{posFotograma.Y}\npuntoBajo{puntoBajoPin}\npinResX:{posPinXrespectoPlatX}\nnewY{topTriParaX}\ntop{plataformaRect.Top}\nplatLeft{plataformaRect.Right}\npinX{pinguinoEnX}\nfin{interFin}";
                     break;
                 }
             }
@@ -209,10 +253,36 @@ namespace Juego
             }
             else if (keyboardState.IsKeyDown(keys[2]) && !muroColDer && !hielo && !hieloRight)
             {
+
                 left = false;
 
                 currentAnimation = animaciones.FirstOrDefault(a => a.nombre == "caminarAnimation").GetAnimation;
-                posFotograma.X += 3;
+
+            
+
+                if (posFotograma.X + 3 == maxDer)
+                {
+                    posFotograma.X += 3;
+
+                }
+                else if (posFotograma.X + 2 == maxDer)
+                {
+                    posFotograma.X += 2;
+
+                }
+                else if (posFotograma.X + 1 == maxDer)
+                {
+                    posFotograma.X += 1;
+
+                }
+                else if (posFotograma.X == maxDer)
+                {
+                    posFotograma.X += 0;
+                }
+                else if(posFotograma.X < maxDer)
+                {
+                    posFotograma.X += (float)3;
+                }
 
                 if (keyboardState.IsKeyDown(keys[1]) && jugadorEnElSuelo)
                 {
@@ -222,11 +292,37 @@ namespace Juego
             }
             else if (keyboardState.IsKeyDown(keys[0]) && !muroColIzq && !hielo && !hieloRight)
             {
-
+               
                 if (!keyboardState.IsKeyDown(keys[2]))
                 {
                     left = true;
-                    posFotograma.X -= 3;
+
+                    if (posFotograma.X - 3 == maxIzq)
+                    {
+                        posFotograma.X -= 3;
+
+                    }
+                    else if (posFotograma.X - 2 == maxIzq)
+                    {
+                        posFotograma.X -= 2;
+
+                    }
+                    else if (posFotograma.X - 1 == maxIzq)
+                    {
+                        posFotograma.X -= 1;
+
+                    }
+                    else if (posFotograma.X == maxIzq)
+                    {
+                        posFotograma.X -= 0;
+
+                    }
+                    else if (posFotograma.X > maxIzq)
+                    {
+                        posFotograma.X -= (float)3;
+
+                    }
+
                     currentAnimation = animaciones.FirstOrDefault(a => a.nombre == "caminarAnimationL").GetAnimation;
                 }
 
@@ -238,7 +334,7 @@ namespace Juego
                 }
 
             }
-            else if (keyboardState.IsKeyDown(keys[1]) && jugadorEnElSuelo)
+            else if (keyboardState.IsKeyDown(keys[1]) && jugadorEnElSuelo && !hielo && !hieloRight)
             {
                 currentAnimation = animaciones.FirstOrDefault(a => a.nombre == (!left ? "bend" : "bendL")).GetAnimation;
                 activarSalto = true;
@@ -265,24 +361,22 @@ namespace Juego
 
             //pinVelo = $"velocidadPin: {velocidadPinguino.Y}\nEsta en el suelo: {jugadorEnElSuelo}\nActivar salto: {activarSalto}\nColDer:{muroColDer}\nColIzq:{muroColIzq}";
 
-            velocidadPinguino.Y += gravedad;
-            posFotograma.Y += velocidadPinguino.Y;
+      
+                velocidadPinguino.Y += gravedad;
+                posFotograma.Y += velocidadPinguino.Y;
 
- 
-
-
-            // Verificar si el lokito esta en el suelo
-            if (posFotograma.Y >= sueloY)
-            {
-                posFotograma.Y = sueloY; // Para que el lokito no se vaya a la estratosfera
-                velocidadPinguino.Y = 0.0f; // No velocidad vertical 
-                jugadorEnElSuelo = true;
-            }
-            else
-            {
-                jugadorEnElSuelo = false;
-            }
-
+                // Verificar si el lokito esta en el suelo
+                if (posFotograma.Y >= sueloY)
+                {
+                    posFotograma.Y = sueloY; // Para que el lokito no se vaya a la estratosfera
+                    velocidadPinguino.Y = 0.0f; // No velocidad vertical 
+                    jugadorEnElSuelo = true;
+                }
+                else
+                {
+                    jugadorEnElSuelo = false;
+                }
+            
             currentAnimation.Update(gameTime);
         }
 
