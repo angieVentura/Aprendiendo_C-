@@ -56,6 +56,30 @@
 /processorParam:TextureFormat=Color
 /build:Blink (16 x 16).png
 
+#begin Buttons.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Buttons.png
+
+#begin Buttons.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Buttons.png
+
 #begin City Ground Tileset.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -296,6 +320,18 @@
 /processorParam:TextureFormat=Color
 /build:Idle (16 x 16).png
 
+#begin Inicio.jpg
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Inicio.jpg
+
 #begin Jump (16 x 16).png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -344,6 +380,18 @@
 /processorParam:TextureFormat=Color
 /build:Lying_On_Ground (16 x 16).png
 
+#begin Menu.jpg
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Menu.jpg
+
 #begin pinguino/pinguino.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -391,6 +439,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:pinguinoCaminando-export.png
+
+#begin portada.jpg
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:portada.jpg
 
 #begin Sitting (16 x 16).png
 /importer:TextureImporter

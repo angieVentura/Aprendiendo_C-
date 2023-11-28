@@ -14,8 +14,9 @@ namespace Juego
         public int frameWidth, frameHeight, frameCount, currentFrame, row, column;
         public float frameTime, timer;
         public bool left;
+        public string nombre;
 
-        public Animation(Texture2D texture, int frameWidth, int frameHeight, int frameCount, float frameTime, int row, bool left, int column)
+        public Animation(Texture2D texture, int frameWidth, int frameHeight, int frameCount, float frameTime, int row, bool left, int column, string nombre)
         {
             this.texture = texture;
             this.frameWidth = frameWidth;
@@ -27,6 +28,7 @@ namespace Juego
             this.row = row;
             this.left = left;
             this.column = column;
+            this.nombre = nombre;
         }
 
         public void Update(GameTime gameTime)

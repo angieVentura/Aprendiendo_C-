@@ -20,7 +20,7 @@ namespace Juego
         public Rectangle pinguinoRect;
         public List<Elemento> elementos;
         public Elementos tipoElementos;
-        public List<Animationes> animaciones;
+        public List<Animation> animaciones;
         public Vector2 velocidadPinguino;
         public float gravedad;
         public float sueloY;
@@ -39,7 +39,7 @@ namespace Juego
         public float restVelo = -10.0f;
         public float cameraX, cameraCompaX, cameraY, cameraCompaY, compaBajo, bajo = 0;
 
-        public Jugador(Vector2 posicion, List<Elemento> elementos, List<Animationes> animationes, Vector2 velocidadPinguino, float gravedad, int sueloY, bool jugadorEnElSuelo, bool activarSalto, bool left, bool muroColIzq, bool muroColDer, bool hielo, bool platHielo, bool salto, bool hieloRight, List<Keys> keys, Vector2 compa)
+        public Jugador(Vector2 posicion, List<Elemento> elementos, List<Animation> animationes, Vector2 velocidadPinguino, float gravedad, int sueloY, bool jugadorEnElSuelo, bool activarSalto, bool left, bool muroColIzq, bool muroColDer, bool hielo, bool platHielo, bool salto, bool hieloRight, List<Keys> keys, Vector2 compa)
         {
             this.posFotograma = posicion;
 
@@ -131,18 +131,17 @@ namespace Juego
             {
                 message += "\nBajo";
                 posFotograma.Y = compaBajo;
-                velocidadPinguino.Y = 0.25f;
+               
 
                 if (posFotograma.X < posCompa.X)
                 {
-                    float velocidadInerciaX = 0.25f /* ajusta según sea necesario */;
+                    velocidadPinguino.Y = 3f;
+                    float velocidadInerciaX = 1f;
                     posFotograma.X += velocidadInerciaX * 2;
 
                 }
 
             }
-
-
 
             if (tecladoActual.GetPressedKeys().Length > 0) ultimaTeclaPresionada = tecladoActual.GetPressedKeys()[0];
 
@@ -311,7 +310,7 @@ namespace Juego
             if (keyboardState.IsKeyDown(keys[1]) && activarSalto && keyboardState.IsKeyDown(keys[2]) && jugadorEnElSuelo && posFotograma.X > -100 && !hielo)
             {
 
-                currentAnimation = animaciones.FirstOrDefault(a => a.nombre == "verticalJump").GetAnimation;
+                currentAnimation = animaciones.FirstOrDefault(a => a.nombre == "verticalJump") ;
                 velocidadPinguino.Y = -10.0f;
                 posFotograma.X += 3;
                 activarSalto = false;
@@ -319,7 +318,7 @@ namespace Juego
             }
             else if (keyboardState.IsKeyDown(keys[1]) && activarSalto && keyboardState.IsKeyDown(keys[0]) && jugadorEnElSuelo && !hielo)
             {
-                currentAnimation = animaciones.FirstOrDefault(a => a.nombre == "verticalJumpL").GetAnimation;
+                currentAnimation = animaciones.FirstOrDefault(a => a.nombre == "verticalJumpL") ;
                 velocidadPinguino.Y = -10.0f;
                 posFotograma.X += 3;
                 activarSalto = false;
@@ -330,7 +329,7 @@ namespace Juego
 
                 left = false;
 
-                currentAnimation = animaciones.FirstOrDefault(a => a.nombre == "caminarAnimation").GetAnimation;
+                currentAnimation = animaciones.FirstOrDefault(a => a.nombre == "caminarAnimation") ;
 
                 if (posFotograma.X + 3 == maxDer)
                 {
@@ -358,7 +357,7 @@ namespace Juego
 
                 if (keyboardState.IsKeyDown(keys[1]) && jugadorEnElSuelo)
                 {
-                    currentAnimation = animaciones.FirstOrDefault(a => a.nombre == "verticalJump").GetAnimation;
+                    currentAnimation = animaciones.FirstOrDefault(a => a.nombre == "verticalJump") ;
                     velocidadPinguino.Y = -10.0f;
                     maxAlt = arriba;
                 }
@@ -372,7 +371,7 @@ namespace Juego
 
                     if (posFotograma.X - 3 == maxIzq)
                     {
-                        posFotograma.X -= 3;
+                        posFotograma.X -= 1;
 
                     }
                     else if (posFotograma.X - 2 == maxIzq)
@@ -396,13 +395,13 @@ namespace Juego
 
                     }
 
-                    currentAnimation = animaciones.FirstOrDefault(a => a.nombre == "caminarAnimationL").GetAnimation;
+                    currentAnimation = animaciones.FirstOrDefault(a => a.nombre == "caminarAnimationL") ;
                 }
 
                 if (keyboardState.IsKeyDown(keys[1]) && jugadorEnElSuelo)
                 {
 
-                    currentAnimation = animaciones.FirstOrDefault(a => a.nombre == "verticalJumpL").GetAnimation;
+                    currentAnimation = animaciones.FirstOrDefault(a => a.nombre == "verticalJumpL") ;
                     velocidadPinguino.Y = -10.0f;
                     maxAlt = arriba;
                 }
@@ -410,13 +409,13 @@ namespace Juego
             }
             else if (keyboardState.IsKeyDown(keys[1]) && jugadorEnElSuelo && !hielo && !hieloRight)
             {
-                currentAnimation = animaciones.FirstOrDefault(a => a.nombre == (!left ? "bend" : "bendL")).GetAnimation;
+                currentAnimation = animaciones.FirstOrDefault(a => a.nombre == (!left ? "bend" : "bendL")) ;
                 activarSalto = true;
                 actSalto = true;
             }
             else if (keyboardState.IsKeyUp(keys[1]) && activarSalto && jugadorEnElSuelo)
             {
-                currentAnimation = animaciones.FirstOrDefault(a => a.nombre == (!left ? "verticalJump" : "verticalJumpL")).GetAnimation;
+                currentAnimation = animaciones.FirstOrDefault(a => a.nombre == (!left ? "verticalJump" : "verticalJumpL")) ;
                 igualY = false;
 
                 velocidadPinguino.Y = -10.0f;
@@ -426,15 +425,15 @@ namespace Juego
             }
             else if (hielo)
             {
-                currentAnimation = animaciones.FirstOrDefault(a => a.nombre == "fallingLeft").GetAnimation;
+                currentAnimation = animaciones.FirstOrDefault(a => a.nombre == "fallingLeft") ;
             }
             else if (hieloRight)
             {
-                currentAnimation = animaciones.FirstOrDefault(a => a.nombre == "fallingRight").GetAnimation;
+                currentAnimation = animaciones.FirstOrDefault(a => a.nombre == "fallingRight") ;
             }
             else if (!activarSalto)
             {
-                currentAnimation = animaciones.FirstOrDefault(a => a.nombre == (!left ? "waitAnimation" : "waitAnimationL")).GetAnimation;
+                currentAnimation = animaciones.FirstOrDefault(a => a.nombre == (!left ? "waitAnimation" : "waitAnimationL")) ;
             }
 
             velocidadPinguino.Y += gravedad;
