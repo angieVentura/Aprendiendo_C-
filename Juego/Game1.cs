@@ -395,7 +395,7 @@ namespace Juego
                 elemento.Animacion.Draw(_spriteBatch, elemento.Posicion, Color.White, 2.0f);
             }
 
-            _spriteBatch.DrawString(colEnX, colEnXB, new Vector2(pinguino1.posFotograma.X - 100, pinguino1.posFotograma.Y + 100), Color.White);
+            //_spriteBatch.DrawString(colEnX, colEnXB, new Vector2(pinguino1.posFotograma.X - 100, pinguino1.posFotograma.Y + 100), Color.White);
             _spriteBatch.DrawString(colEnY, colEnYB, new Vector2(pinguino2.posFotograma.X, pinguino2.posFotograma.Y + 100), Color.White);
 
             _spriteBatch.End();

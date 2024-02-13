@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\angie\\OneDrive\\Escritorio\\Aprendiendo_C-\\Juego\\Juego.csproj": {}
+    "C:\\Users\\angie\\OneDrive\\Escritorio\\juego\\Aprendiendo_C-\\Juego\\Juego.csproj": {}
   },
   "projects": {
-    "C:\\Users\\angie\\OneDrive\\Escritorio\\Aprendiendo_C-\\Juego\\Juego.csproj": {
+    "C:\\Users\\angie\\OneDrive\\Escritorio\\juego\\Aprendiendo_C-\\Juego\\Juego.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\angie\\OneDrive\\Escritorio\\Aprendiendo_C-\\Juego\\Juego.csproj",
+        "projectUniqueName": "C:\\Users\\angie\\OneDrive\\Escritorio\\juego\\Aprendiendo_C-\\Juego\\Juego.csproj",
         "projectName": "Juego",
-        "projectPath": "C:\\Users\\angie\\OneDrive\\Escritorio\\Aprendiendo_C-\\Juego\\Juego.csproj",
+        "projectPath": "C:\\Users\\angie\\OneDrive\\Escritorio\\juego\\Aprendiendo_C-\\Juego\\Juego.csproj",
         "packagesPath": "C:\\Users\\angie\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\angie\\OneDrive\\Escritorio\\Aprendiendo_C-\\Juego\\obj\\",
+        "outputPath": "C:\\Users\\angie\\OneDrive\\Escritorio\\juego\\Aprendiendo_C-\\Juego\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\angie\\AppData\\Roaming\\NuGet\\NuGet.Config",

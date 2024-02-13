@@ -4,54 +4,54 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/angie/OneDrive/Escritorio/Aprendiendo_C-/Juego/Content/arial.spritefont</File>
-    <File>C:/Users/angie/OneDrive/Escritorio/Aprendiendo_C-/Juego/Content/Basic Tiles Only.png</File>
-    <File>C:/Users/angie/OneDrive/Escritorio/Aprendiendo_C-/Juego/Content/Belly_Sliding (16 x 16).png</File>
-    <File>C:/Users/angie/OneDrive/Escritorio/Aprendiendo_C-/Juego/Content/Blink (16 x 16).png</File>
-    <File>C:/Users/angie/OneDrive/Escritorio/Aprendiendo_C-/Juego/Content/Buttons.png</File>
-    <File>C:/Users/angie/OneDrive/Escritorio/Aprendiendo_C-/Juego/Content/City Ground Tileset.png</File>
-    <File>C:/Users/angie/OneDrive/Escritorio/Aprendiendo_C-/Juego/Content/cloud_lonely.png</File>
-    <File>C:/Users/angie/OneDrive/Escritorio/Aprendiendo_C-/Juego/Content/clouds_bg.png</File>
-    <File>C:/Users/angie/OneDrive/Escritorio/Aprendiendo_C-/Juego/Content/clouds_mg_1_lightened.png</File>
-    <File>C:/Users/angie/OneDrive/Escritorio/Aprendiendo_C-/Juego/Content/clouds_mg_1.png</File>
-    <File>C:/Users/angie/OneDrive/Escritorio/Aprendiendo_C-/Juego/Content/clouds_mg_2.png</File>
-    <File>C:/Users/angie/OneDrive/Escritorio/Aprendiendo_C-/Juego/Content/clouds_mg_3.png</File>
-    <File>C:/Users/angie/OneDrive/Escritorio/Aprendiendo_C-/Juego/Content/decoracion.png</File>
-    <File>C:/Users/angie/OneDrive/Escritorio/Aprendiendo_C-/Juego/Content/Ducking (16 x 16).png</File>
-    <File>C:/Users/angie/OneDrive/Escritorio/Aprendiendo_C-/Juego/Content/Falling (16 x 16).png</File>
-    <File>C:/Users/angie/OneDrive/Escritorio/Aprendiendo_C-/Juego/Content/Fireflies pot v2.gif</File>
-    <File>C:/Users/angie/OneDrive/Escritorio/Aprendiendo_C-/Juego/Content/Fireflies pot.gif</File>
-    <File>C:/Users/angie/OneDrive/Escritorio/Aprendiendo_C-/Juego/Content/Fondo.png</File>
-    <File>C:/Users/angie/OneDrive/Escritorio/Aprendiendo_C-/Juego/Content/glacial_mountains_lightened.png</File>
-    <File>C:/Users/angie/OneDrive/Escritorio/Aprendiendo_C-/Juego/Content/glacial_mountains.png</File>
-    <File>C:/Users/angie/OneDrive/Escritorio/Aprendiendo_C-/Juego/Content/House (Inside) Tileset.png</File>
-    <File>C:/Users/angie/OneDrive/Escritorio/Aprendiendo_C-/Juego/Content/House (Outside And Inside) Tileset.png</File>
-    <File>C:/Users/angie/OneDrive/Escritorio/Aprendiendo_C-/Juego/Content/House (Outside) Tileset.png</File>
-    <File>C:/Users/angie/OneDrive/Escritorio/Aprendiendo_C-/Juego/Content/Hurt (16 x 16).png</File>
-    <File>C:/Users/angie/OneDrive/Escritorio/Aprendiendo_C-/Juego/Content/Idle (16 x 16).png</File>
-    <File>C:/Users/angie/OneDrive/Escritorio/Aprendiendo_C-/Juego/Content/Inicio.jpg</File>
-    <File>C:/Users/angie/OneDrive/Escritorio/Aprendiendo_C-/Juego/Content/Jump (16 x 16).png</File>
-    <File>C:/Users/angie/OneDrive/Escritorio/Aprendiendo_C-/Juego/Content/Looking_Off (16 x 16).png</File>
-    <File>C:/Users/angie/OneDrive/Escritorio/Aprendiendo_C-/Juego/Content/Looking_Up (16 x 16).png</File>
-    <File>C:/Users/angie/OneDrive/Escritorio/Aprendiendo_C-/Juego/Content/Lying_On_Ground (16 x 16).png</File>
-    <File>C:/Users/angie/OneDrive/Escritorio/Aprendiendo_C-/Juego/Content/Menu.jpg</File>
-    <File>C:/Users/angie/OneDrive/Escritorio/Aprendiendo_C-/Juego/Content/pinguino/pinguino.png</File>
-    <File>C:/Users/angie/OneDrive/Escritorio/Aprendiendo_C-/Juego/Content/pinguino200-export.png</File>
-    <File>C:/Users/angie/OneDrive/Escritorio/Aprendiendo_C-/Juego/Content/pinguino200.png</File>
-    <File>C:/Users/angie/OneDrive/Escritorio/Aprendiendo_C-/Juego/Content/pinguinoCaminando-export.png</File>
-    <File>C:/Users/angie/OneDrive/Escritorio/Aprendiendo_C-/Juego/Content/portada.jpg</File>
-    <File>C:/Users/angie/OneDrive/Escritorio/Aprendiendo_C-/Juego/Content/Sitting (16 x 16).png</File>
-    <File>C:/Users/angie/OneDrive/Escritorio/Aprendiendo_C-/Juego/Content/sky_lightened.png</File>
-    <File>C:/Users/angie/OneDrive/Escritorio/Aprendiendo_C-/Juego/Content/sky.png</File>
-    <File>C:/Users/angie/OneDrive/Escritorio/Aprendiendo_C-/Juego/Content/Standing (16 x 16).png</File>
-    <File>C:/Users/angie/OneDrive/Escritorio/Aprendiendo_C-/Juego/Content/Surprised (16 x 16).png</File>
-    <File>C:/Users/angie/OneDrive/Escritorio/Aprendiendo_C-/Juego/Content/Swimming (16 x 16).png</File>
-    <File>C:/Users/angie/OneDrive/Escritorio/Aprendiendo_C-/Juego/Content/Terrain Tileset.png</File>
-    <File>C:/Users/angie/OneDrive/Escritorio/Aprendiendo_C-/Juego/Content/TIERRA.png</File>
-    <File>C:/Users/angie/OneDrive/Escritorio/Aprendiendo_C-/Juego/Content/Vegetation Tileset 1.png</File>
-    <File>C:/Users/angie/OneDrive/Escritorio/Aprendiendo_C-/Juego/Content/Vegetation Tileset 2.png</File>
-    <File>C:/Users/angie/OneDrive/Escritorio/Aprendiendo_C-/Juego/Content/Victory_Dance (16 x 16).png</File>
-    <File>C:/Users/angie/OneDrive/Escritorio/Aprendiendo_C-/Juego/Content/Waddling (16 x 16).png</File>
+    <File>C:/Users/angie/OneDrive/Escritorio/juego/Aprendiendo_C-/Juego/Content/arial.spritefont</File>
+    <File>C:/Users/angie/OneDrive/Escritorio/juego/Aprendiendo_C-/Juego/Content/Basic Tiles Only.png</File>
+    <File>C:/Users/angie/OneDrive/Escritorio/juego/Aprendiendo_C-/Juego/Content/Belly_Sliding (16 x 16).png</File>
+    <File>C:/Users/angie/OneDrive/Escritorio/juego/Aprendiendo_C-/Juego/Content/Blink (16 x 16).png</File>
+    <File>C:/Users/angie/OneDrive/Escritorio/juego/Aprendiendo_C-/Juego/Content/Buttons.png</File>
+    <File>C:/Users/angie/OneDrive/Escritorio/juego/Aprendiendo_C-/Juego/Content/City Ground Tileset.png</File>
+    <File>C:/Users/angie/OneDrive/Escritorio/juego/Aprendiendo_C-/Juego/Content/cloud_lonely.png</File>
+    <File>C:/Users/angie/OneDrive/Escritorio/juego/Aprendiendo_C-/Juego/Content/clouds_bg.png</File>
+    <File>C:/Users/angie/OneDrive/Escritorio/juego/Aprendiendo_C-/Juego/Content/clouds_mg_1_lightened.png</File>
+    <File>C:/Users/angie/OneDrive/Escritorio/juego/Aprendiendo_C-/Juego/Content/clouds_mg_1.png</File>
+    <File>C:/Users/angie/OneDrive/Escritorio/juego/Aprendiendo_C-/Juego/Content/clouds_mg_2.png</File>
+    <File>C:/Users/angie/OneDrive/Escritorio/juego/Aprendiendo_C-/Juego/Content/clouds_mg_3.png</File>
+    <File>C:/Users/angie/OneDrive/Escritorio/juego/Aprendiendo_C-/Juego/Content/decoracion.png</File>
+    <File>C:/Users/angie/OneDrive/Escritorio/juego/Aprendiendo_C-/Juego/Content/Ducking (16 x 16).png</File>
+    <File>C:/Users/angie/OneDrive/Escritorio/juego/Aprendiendo_C-/Juego/Content/Falling (16 x 16).png</File>
+    <File>C:/Users/angie/OneDrive/Escritorio/juego/Aprendiendo_C-/Juego/Content/Fireflies pot v2.gif</File>
+    <File>C:/Users/angie/OneDrive/Escritorio/juego/Aprendiendo_C-/Juego/Content/Fireflies pot.gif</File>
+    <File>C:/Users/angie/OneDrive/Escritorio/juego/Aprendiendo_C-/Juego/Content/Fondo.png</File>
+    <File>C:/Users/angie/OneDrive/Escritorio/juego/Aprendiendo_C-/Juego/Content/glacial_mountains_lightened.png</File>
+    <File>C:/Users/angie/OneDrive/Escritorio/juego/Aprendiendo_C-/Juego/Content/glacial_mountains.png</File>
+    <File>C:/Users/angie/OneDrive/Escritorio/juego/Aprendiendo_C-/Juego/Content/House (Inside) Tileset.png</File>
+    <File>C:/Users/angie/OneDrive/Escritorio/juego/Aprendiendo_C-/Juego/Content/House (Outside And Inside) Tileset.png</File>
+    <File>C:/Users/angie/OneDrive/Escritorio/juego/Aprendiendo_C-/Juego/Content/House (Outside) Tileset.png</File>
+    <File>C:/Users/angie/OneDrive/Escritorio/juego/Aprendiendo_C-/Juego/Content/Hurt (16 x 16).png</File>
+    <File>C:/Users/angie/OneDrive/Escritorio/juego/Aprendiendo_C-/Juego/Content/Idle (16 x 16).png</File>
+    <File>C:/Users/angie/OneDrive/Escritorio/juego/Aprendiendo_C-/Juego/Content/Inicio.jpg</File>
+    <File>C:/Users/angie/OneDrive/Escritorio/juego/Aprendiendo_C-/Juego/Content/Jump (16 x 16).png</File>
+    <File>C:/Users/angie/OneDrive/Escritorio/juego/Aprendiendo_C-/Juego/Content/Looking_Off (16 x 16).png</File>
+    <File>C:/Users/angie/OneDrive/Escritorio/juego/Aprendiendo_C-/Juego/Content/Looking_Up (16 x 16).png</File>
+    <File>C:/Users/angie/OneDrive/Escritorio/juego/Aprendiendo_C-/Juego/Content/Lying_On_Ground (16 x 16).png</File>
+    <File>C:/Users/angie/OneDrive/Escritorio/juego/Aprendiendo_C-/Juego/Content/Menu.jpg</File>
+    <File>C:/Users/angie/OneDrive/Escritorio/juego/Aprendiendo_C-/Juego/Content/pinguino/pinguino.png</File>
+    <File>C:/Users/angie/OneDrive/Escritorio/juego/Aprendiendo_C-/Juego/Content/pinguino200-export.png</File>
+    <File>C:/Users/angie/OneDrive/Escritorio/juego/Aprendiendo_C-/Juego/Content/pinguino200.png</File>
+    <File>C:/Users/angie/OneDrive/Escritorio/juego/Aprendiendo_C-/Juego/Content/pinguinoCaminando-export.png</File>
+    <File>C:/Users/angie/OneDrive/Escritorio/juego/Aprendiendo_C-/Juego/Content/portada.jpg</File>
+    <File>C:/Users/angie/OneDrive/Escritorio/juego/Aprendiendo_C-/Juego/Content/Sitting (16 x 16).png</File>
+    <File>C:/Users/angie/OneDrive/Escritorio/juego/Aprendiendo_C-/Juego/Content/sky_lightened.png</File>
+    <File>C:/Users/angie/OneDrive/Escritorio/juego/Aprendiendo_C-/Juego/Content/sky.png</File>
+    <File>C:/Users/angie/OneDrive/Escritorio/juego/Aprendiendo_C-/Juego/Content/Standing (16 x 16).png</File>
+    <File>C:/Users/angie/OneDrive/Escritorio/juego/Aprendiendo_C-/Juego/Content/Surprised (16 x 16).png</File>
+    <File>C:/Users/angie/OneDrive/Escritorio/juego/Aprendiendo_C-/Juego/Content/Swimming (16 x 16).png</File>
+    <File>C:/Users/angie/OneDrive/Escritorio/juego/Aprendiendo_C-/Juego/Content/Terrain Tileset.png</File>
+    <File>C:/Users/angie/OneDrive/Escritorio/juego/Aprendiendo_C-/Juego/Content/TIERRA.png</File>
+    <File>C:/Users/angie/OneDrive/Escritorio/juego/Aprendiendo_C-/Juego/Content/Vegetation Tileset 1.png</File>
+    <File>C:/Users/angie/OneDrive/Escritorio/juego/Aprendiendo_C-/Juego/Content/Vegetation Tileset 2.png</File>
+    <File>C:/Users/angie/OneDrive/Escritorio/juego/Aprendiendo_C-/Juego/Content/Victory_Dance (16 x 16).png</File>
+    <File>C:/Users/angie/OneDrive/Escritorio/juego/Aprendiendo_C-/Juego/Content/Waddling (16 x 16).png</File>
   </SourceFiles>
   <DestFiles>
     <File xsi:nil="true" />
